@@ -15,7 +15,9 @@ class MapController: UIViewController, CLLocationManagerDelegate {
     //MARK: Properties
     
     let locationManager = CLLocationManager()
+    let enableLocation = false;
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var inputLocationView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +46,14 @@ class MapController: UIViewController, CLLocationManagerDelegate {
         self.mapView.showsUserLocation = true
     }
     
+    // Check the current location enabled status, if there is no access - prompt user with display to input
+    // their current address or address of interest
     private func getLocationEnabledStatus(){
-        if CLLocationManager.locationServicesEnabled() {
+        let isEnabled = CLLocationManager.locationServicesEnabled()
+        if isEnabled || !isEnabled {
             switch(CLLocationManager.authorizationStatus()) {
             case .notDetermined, .restricted, .denied:
+                promptUserLocationInput()
                 print("No access")
             case .authorizedAlways, .authorizedWhenInUse:
                 print("Access")
@@ -57,5 +63,19 @@ class MapController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    // If user locations services are enabled, prompt the user to input an address of their current location
+    private func promptUserLocationInput(){
+        self.view.bringSubview(toFront: inputLocationView)
+    }
+    
+    // Return the current window height
+    private func windowHeight() -> CGFloat {
+        return UIScreen.main.bounds.size.height
+    }
+    
+    // Return the current window width
+    private func windowWidth() -> CGFloat {
+        return UIScreen.main.bounds.size.width
+    }
     
 }

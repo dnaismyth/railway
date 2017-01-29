@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E52E6A851E3EA7B5000B485F /* InputLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52E6A841E3EA7B5000B485F /* InputLocationView.xib */; };
+		E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E578CD721E3E952A00915825 /* InputLocationView.swift */; };
 		E5F5C3701E3CE33D005EAE21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F5C36F1E3CE33D005EAE21 /* AppDelegate.swift */; };
 		E5F5C3721E3CE33D005EAE21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F5C3711E3CE33D005EAE21 /* ViewController.swift */; };
 		E5F5C3751E3CE33D005EAE21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5F5C3731E3CE33D005EAE21 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E52E6A841E3EA7B5000B485F /* InputLocationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InputLocationView.xib; path = ../InputLocationView.xib; sourceTree = "<group>"; };
+		E578CD721E3E952A00915825 /* InputLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputLocationView.swift; sourceTree = "<group>"; };
 		E5F5C36C1E3CE33D005EAE21 /* railway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = railway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5F5C36F1E3CE33D005EAE21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5F5C3711E3CE33D005EAE21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 				E5F5C3941E3D8910005EAE21 /* Controllers */,
 				E5F5C36F1E3CE33D005EAE21 /* AppDelegate.swift */,
 				E5F5C3731E3CE33D005EAE21 /* Main.storyboard */,
+				E578CD721E3E952A00915825 /* InputLocationView.swift */,
+				E52E6A841E3EA7B5000B485F /* InputLocationView.xib */,
 				E5F5C3761E3CE33D005EAE21 /* Assets.xcassets */,
 				E5F5C3781E3CE33D005EAE21 /* LaunchScreen.storyboard */,
 				E5F5C37B1E3CE33D005EAE21 /* Info.plist */,
@@ -209,6 +215,7 @@
 			files = (
 				E5F5C37A1E3CE33D005EAE21 /* LaunchScreen.storyboard in Resources */,
 				E5F5C3771E3CE33D005EAE21 /* Assets.xcassets in Resources */,
+				E52E6A851E3EA7B5000B485F /* InputLocationView.xib in Resources */,
 				E5F5C3751E3CE33D005EAE21 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,6 +237,7 @@
 				E5F5C3961E3D8924005EAE21 /* SettingsController.swift in Sources */,
 				E5F5C3721E3CE33D005EAE21 /* ViewController.swift in Sources */,
 				E5F5C3931E3D8562005EAE21 /* MapController.swift in Sources */,
+				E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */,
 				E5F5C3701E3CE33D005EAE21 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +446,7 @@
 				E5F5C38B1E3CE33E005EAE21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E5F5C38C1E3CE33E005EAE21 /* Build configuration list for PBXNativeTarget "railwayTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +455,7 @@
 				E5F5C38E1E3CE33E005EAE21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
