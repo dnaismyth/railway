@@ -13,6 +13,9 @@
 		E5F5C3771E3CE33D005EAE21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5F5C3761E3CE33D005EAE21 /* Assets.xcassets */; };
 		E5F5C37A1E3CE33D005EAE21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5F5C3781E3CE33D005EAE21 /* LaunchScreen.storyboard */; };
 		E5F5C3851E3CE33E005EAE21 /* railwayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F5C3841E3CE33E005EAE21 /* railwayTests.swift */; };
+		E5F5C3911E3CE35E005EAE21 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F5C3901E3CE35E005EAE21 /* CoreLocation.framework */; };
+		E5F5C3931E3D8562005EAE21 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F5C3921E3D8562005EAE21 /* MapController.swift */; };
+		E5F5C3961E3D8924005EAE21 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F5C3951E3D8924005EAE21 /* SettingsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		E5F5C3801E3CE33E005EAE21 /* railwayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = railwayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5F5C3841E3CE33E005EAE21 /* railwayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = railwayTests.swift; sourceTree = "<group>"; };
 		E5F5C3861E3CE33E005EAE21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5F5C3901E3CE35E005EAE21 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E5F5C3921E3D8562005EAE21 /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		E5F5C3951E3D8924005EAE21 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5F5C3911E3CE35E005EAE21 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +69,7 @@
 				E5F5C36E1E3CE33D005EAE21 /* railway */,
 				E5F5C3831E3CE33E005EAE21 /* railwayTests */,
 				E5F5C36D1E3CE33D005EAE21 /* Products */,
+				E5F5C38F1E3CE35E005EAE21 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,8 +85,8 @@
 		E5F5C36E1E3CE33D005EAE21 /* railway */ = {
 			isa = PBXGroup;
 			children = (
+				E5F5C3941E3D8910005EAE21 /* Controllers */,
 				E5F5C36F1E3CE33D005EAE21 /* AppDelegate.swift */,
-				E5F5C3711E3CE33D005EAE21 /* ViewController.swift */,
 				E5F5C3731E3CE33D005EAE21 /* Main.storyboard */,
 				E5F5C3761E3CE33D005EAE21 /* Assets.xcassets */,
 				E5F5C3781E3CE33D005EAE21 /* LaunchScreen.storyboard */,
@@ -94,6 +102,24 @@
 				E5F5C3861E3CE33E005EAE21 /* Info.plist */,
 			);
 			path = railwayTests;
+			sourceTree = "<group>";
+		};
+		E5F5C38F1E3CE35E005EAE21 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5F5C3901E3CE35E005EAE21 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E5F5C3941E3D8910005EAE21 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E5F5C3711E3CE33D005EAE21 /* ViewController.swift */,
+				E5F5C3921E3D8562005EAE21 /* MapController.swift */,
+				E5F5C3951E3D8924005EAE21 /* SettingsController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,7 +227,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5F5C3961E3D8924005EAE21 /* SettingsController.swift in Sources */,
 				E5F5C3721E3CE33D005EAE21 /* ViewController.swift in Sources */,
+				E5F5C3931E3D8562005EAE21 /* MapController.swift in Sources */,
 				E5F5C3701E3CE33D005EAE21 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

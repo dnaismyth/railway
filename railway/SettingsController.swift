@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SettingsController.swift
 //  railway
 //
 //  Created by Dayna Naismyth on 2017-01-28.
@@ -9,17 +9,16 @@
 import UIKit
 
 
-class ViewController: UIViewController{
-
+class SettingsController: UIViewController{
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
-
