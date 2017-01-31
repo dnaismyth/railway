@@ -25,7 +25,7 @@ class MapController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        getLocationEnabledStatus()
+        //getLocationEnabledStatus()
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,9 +53,12 @@ class MapController: UIViewController, CLLocationManagerDelegate {
         if isEnabled || !isEnabled {
             switch(CLLocationManager.authorizationStatus()) {
             case .notDetermined, .restricted, .denied:
-                promptUserLocationInput()
+                //InputLocationView().setupView()
+                buildLocationFromUserInput()
                 print("No access")
             case .authorizedAlways, .authorizedWhenInUse:
+                //InputLocationView().setupView()
+                buildLocationFromUserInput()
                 print("Access")
             }
         } else {
@@ -63,9 +66,9 @@ class MapController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    // If user locations services are enabled, prompt the user to input an address of their current location
-    private func promptUserLocationInput(){
-        self.view.bringSubview(toFront: inputLocationView)
+    private func buildLocationFromUserInput(){
+        print(InputLocationView().getCityInput())
+        print(InputLocationView().getAddressInput())
     }
     
     // Return the current window height
