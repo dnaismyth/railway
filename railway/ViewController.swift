@@ -11,6 +11,10 @@ import UIKit
 
 class ViewController: UIViewController{
 
+    //MARK: Properties
+    @IBOutlet weak var emailLogin: UITextField!
+    @IBOutlet weak var passwordLogin: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -19,7 +23,28 @@ class ViewController: UIViewController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    // Check that email input is provided
+    func validateEmail() -> String {
+        let email: String! = self.emailLogin.text
+        print (email)
+        return email
+    }
+    
+    // Check that password input is provided
+    func validatePassword() -> String {
+        let password: String! = self.passwordLogin.text
+        print(password)
+        return password
+    }
+    
+    @IBAction func loginButton(_ sender: UIButton) {
+        let email = validateEmail()
+        let password = validatePassword()
+        let form = "username=".appending(email).appending("&password=").appending(password).appending("&grant_type=password")
+        let response = PostRequest().httpPost(postUrl: "oauth/token", form: form)
+        print(response)
+    }
 
 }
 

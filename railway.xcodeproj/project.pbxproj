@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E52E6A851E3EA7B5000B485F /* InputLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52E6A841E3EA7B5000B485F /* InputLocationView.xib */; };
 		E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E578CD721E3E952A00915825 /* InputLocationView.swift */; };
+		E5F218261E4FE97200BD6AB0 /* PostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F218251E4FE97200BD6AB0 /* PostRequest.swift */; };
 		E5F5C3701E3CE33D005EAE21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F5C36F1E3CE33D005EAE21 /* AppDelegate.swift */; };
 		E5F5C3721E3CE33D005EAE21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F5C3711E3CE33D005EAE21 /* ViewController.swift */; };
 		E5F5C3751E3CE33D005EAE21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5F5C3731E3CE33D005EAE21 /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		E52E6A841E3EA7B5000B485F /* InputLocationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InputLocationView.xib; path = ../InputLocationView.xib; sourceTree = "<group>"; };
 		E578CD721E3E952A00915825 /* InputLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputLocationView.swift; sourceTree = "<group>"; };
+		E5F218251E4FE97200BD6AB0 /* PostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRequest.swift; sourceTree = "<group>"; };
 		E5F5C36C1E3CE33D005EAE21 /* railway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = railway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5F5C36F1E3CE33D005EAE21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5F5C3711E3CE33D005EAE21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E5F218241E4FE95B00BD6AB0 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				E5F218251E4FE97200BD6AB0 /* PostRequest.swift */,
+			);
+			name = Requests;
+			sourceTree = "<group>";
+		};
 		E5F5C3631E3CE33D005EAE21 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +99,7 @@
 		E5F5C36E1E3CE33D005EAE21 /* railway */ = {
 			isa = PBXGroup;
 			children = (
+				E5F218241E4FE95B00BD6AB0 /* Requests */,
 				E5F5C3941E3D8910005EAE21 /* Controllers */,
 				E5F5C36F1E3CE33D005EAE21 /* AppDelegate.swift */,
 				E5F5C3731E3CE33D005EAE21 /* Main.storyboard */,
@@ -235,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5F5C3961E3D8924005EAE21 /* SettingsController.swift in Sources */,
+				E5F218261E4FE97200BD6AB0 /* PostRequest.swift in Sources */,
 				E5F5C3721E3CE33D005EAE21 /* ViewController.swift in Sources */,
 				E5F5C3931E3D8562005EAE21 /* MapController.swift in Sources */,
 				E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */,

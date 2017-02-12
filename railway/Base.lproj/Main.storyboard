@@ -45,6 +45,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AQf-fO-onb"/>
                                             <segue destination="S2D-kC-QR5" kind="presentation" identifier="navigationView" id="t87-nv-eZH"/>
                                         </connections>
                                     </button>
@@ -71,7 +72,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailLogin" destination="wKG-AV-MWC" id="J1U-PQ-az6"/>
                         <outlet property="mapView" destination="bBQ-Ej-h8O" id="KBU-Aq-3Yy"/>
+                        <outlet property="passwordLogin" destination="UFR-9r-ocs" id="VWb-DT-fxb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -236,7 +239,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s8G-eN-NR6" id="MPf-io-2lJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Railway Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tR-DS-YDh">
