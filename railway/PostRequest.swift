@@ -8,11 +8,9 @@
 import Foundation
 class PostRequest{
     
-    private let baseUrl = "http://localhost:8080/"
-    
-    public func httpPost(postUrl: String, form: String){
+    public func urlencodedPost(postUrl: String, form: String){
         // Build full URL with base
-        let formatUrl = baseUrl.appending(postUrl)
+        let formatUrl = Constants.API.baseUrl.appending(postUrl)
         print(formatUrl)
         let url = URL(string:formatUrl)!
         var request = URLRequest(url: url)

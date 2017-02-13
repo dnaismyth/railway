@@ -42,7 +42,7 @@ class ViewController: UIViewController{
         let email = validateEmail()
         let password = validatePassword()
         let form = "username=".appending(email).appending("&password=").appending(password).appending("&grant_type=password")
-        let response = PostRequest().httpPost(postUrl: "oauth/token", form: form)
+        let response = PostRequest().urlencodedPost(postUrl: Constants.API.login, form: form)
         print(response)
     }
 

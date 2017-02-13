@@ -25,7 +25,7 @@ class MapController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        //getLocationEnabledStatus()
+        getAllTrainCrossings()
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,6 +79,11 @@ class MapController: UIViewController, CLLocationManagerDelegate {
     // Return the current window width
     private func windowWidth() -> CGFloat {
         return UIScreen.main.bounds.size.width
+    }
+    
+    private func getAllTrainCrossings(){
+        let params : String = "?page=0&size=5"
+        GetRequest().HTTPGet(getUrl: Constants.API.allTrainCrossings.appending(params))
     }
     
 }

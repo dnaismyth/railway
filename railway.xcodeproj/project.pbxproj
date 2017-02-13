@@ -10,6 +10,8 @@
 		E52E6A851E3EA7B5000B485F /* InputLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52E6A841E3EA7B5000B485F /* InputLocationView.xib */; };
 		E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E578CD721E3E952A00915825 /* InputLocationView.swift */; };
 		E5F218261E4FE97200BD6AB0 /* PostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F218251E4FE97200BD6AB0 /* PostRequest.swift */; };
+		E5F2182B1E51413F00BD6AB0 /* GetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2182A1E51413F00BD6AB0 /* GetRequest.swift */; };
+		E5F2182D1E5141D400BD6AB0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2182C1E5141D400BD6AB0 /* Constants.swift */; };
 		E5F5C3701E3CE33D005EAE21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F5C36F1E3CE33D005EAE21 /* AppDelegate.swift */; };
 		E5F5C3721E3CE33D005EAE21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F5C3711E3CE33D005EAE21 /* ViewController.swift */; };
 		E5F5C3751E3CE33D005EAE21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5F5C3731E3CE33D005EAE21 /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 		E52E6A841E3EA7B5000B485F /* InputLocationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InputLocationView.xib; path = ../InputLocationView.xib; sourceTree = "<group>"; };
 		E578CD721E3E952A00915825 /* InputLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputLocationView.swift; sourceTree = "<group>"; };
 		E5F218251E4FE97200BD6AB0 /* PostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRequest.swift; sourceTree = "<group>"; };
+		E5F2182A1E51413F00BD6AB0 /* GetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRequest.swift; sourceTree = "<group>"; };
+		E5F2182C1E5141D400BD6AB0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E5F5C36C1E3CE33D005EAE21 /* railway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = railway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5F5C36F1E3CE33D005EAE21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5F5C3711E3CE33D005EAE21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				E5F218251E4FE97200BD6AB0 /* PostRequest.swift */,
+				E5F2182A1E51413F00BD6AB0 /* GetRequest.swift */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 				E5F218241E4FE95B00BD6AB0 /* Requests */,
 				E5F5C3941E3D8910005EAE21 /* Controllers */,
 				E5F5C36F1E3CE33D005EAE21 /* AppDelegate.swift */,
+				E5F2182C1E5141D400BD6AB0 /* Constants.swift */,
 				E5F5C3731E3CE33D005EAE21 /* Main.storyboard */,
 				E578CD721E3E952A00915825 /* InputLocationView.swift */,
 				E52E6A841E3EA7B5000B485F /* InputLocationView.xib */,
@@ -245,12 +251,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5F2182B1E51413F00BD6AB0 /* GetRequest.swift in Sources */,
 				E5F5C3961E3D8924005EAE21 /* SettingsController.swift in Sources */,
 				E5F218261E4FE97200BD6AB0 /* PostRequest.swift in Sources */,
 				E5F5C3721E3CE33D005EAE21 /* ViewController.swift in Sources */,
 				E5F5C3931E3D8562005EAE21 /* MapController.swift in Sources */,
 				E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */,
 				E5F5C3701E3CE33D005EAE21 /* AppDelegate.swift in Sources */,
+				E5F2182D1E5141D400BD6AB0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
