@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E50DC8BE1E520F7600920A89 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E50DC8BD1E520F7600920A89 /* KeychainWrapper.m */; };
 		E52E6A851E3EA7B5000B485F /* InputLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52E6A841E3EA7B5000B485F /* InputLocationView.xib */; };
 		E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E578CD721E3E952A00915825 /* InputLocationView.swift */; };
 		E5F218261E4FE97200BD6AB0 /* PostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F218251E4FE97200BD6AB0 /* PostRequest.swift */; };
@@ -34,6 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E50DC8BB1E520F7500920A89 /* railway-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "railway-Bridging-Header.h"; sourceTree = "<group>"; };
+		E50DC8BC1E520F7600920A89 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeychainWrapper.h; path = ../../../Downloads/KeychainWrapper/KeychainWrapper.h; sourceTree = "<group>"; };
+		E50DC8BD1E520F7600920A89 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeychainWrapper.m; path = ../../../Downloads/KeychainWrapper/KeychainWrapper.m; sourceTree = "<group>"; };
+		E50DC8BF1E52A74000920A89 /* railway.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = railway.entitlements; sourceTree = "<group>"; };
 		E52E6A841E3EA7B5000B485F /* InputLocationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InputLocationView.xib; path = ../InputLocationView.xib; sourceTree = "<group>"; };
 		E578CD721E3E952A00915825 /* InputLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputLocationView.swift; sourceTree = "<group>"; };
 		E5F218251E4FE97200BD6AB0 /* PostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRequest.swift; sourceTree = "<group>"; };
@@ -104,9 +109,12 @@
 		E5F5C36E1E3CE33D005EAE21 /* railway */ = {
 			isa = PBXGroup;
 			children = (
+				E50DC8BF1E52A74000920A89 /* railway.entitlements */,
 				E5F218241E4FE95B00BD6AB0 /* Requests */,
 				E5F5C3941E3D8910005EAE21 /* Controllers */,
 				E5F5C36F1E3CE33D005EAE21 /* AppDelegate.swift */,
+				E50DC8BC1E520F7600920A89 /* KeychainWrapper.h */,
+				E50DC8BD1E520F7600920A89 /* KeychainWrapper.m */,
 				E5F2182C1E5141D400BD6AB0 /* Constants.swift */,
 				E5F5C3731E3CE33D005EAE21 /* Main.storyboard */,
 				E578CD721E3E952A00915825 /* InputLocationView.swift */,
@@ -114,6 +122,7 @@
 				E5F5C3761E3CE33D005EAE21 /* Assets.xcassets */,
 				E5F5C3781E3CE33D005EAE21 /* LaunchScreen.storyboard */,
 				E5F5C37B1E3CE33D005EAE21 /* Info.plist */,
+				E50DC8BB1E520F7500920A89 /* railway-Bridging-Header.h */,
 			);
 			path = railway;
 			sourceTree = "<group>";
@@ -196,7 +205,13 @@
 					E5F5C36B1E3CE33D005EAE21 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = P9758Y5MP9;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					E5F5C37F1E3CE33E005EAE21 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -251,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E50DC8BE1E520F7600920A89 /* KeychainWrapper.m in Sources */,
 				E5F2182B1E51413F00BD6AB0 /* GetRequest.swift in Sources */,
 				E5F5C3961E3D8924005EAE21 /* SettingsController.swift in Sources */,
 				E5F218261E4FE97200BD6AB0 /* PostRequest.swift in Sources */,
@@ -395,11 +411,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = railway/railway.entitlements;
 				DEVELOPMENT_TEAM = P9758Y5MP9;
 				INFOPLIST_FILE = railway/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flow.railway;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "railway/railway-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -408,11 +428,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = railway/railway.entitlements;
 				DEVELOPMENT_TEAM = P9758Y5MP9;
 				INFOPLIST_FILE = railway/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flow.railway;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "railway/railway-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

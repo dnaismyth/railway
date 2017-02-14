@@ -8,7 +8,10 @@
 import Foundation
 class PostRequest{
     
-    public func urlencodedPost(postUrl: String, form: String){
+    let MyKeychainWrapper = KeychainWrapper()
+
+    
+    public func urlencodedPost(postUrl: String, form: String) -> Void{
         // Build full URL with base
         let formatUrl = Constants.API.baseUrl.appending(postUrl)
         print(formatUrl)
@@ -24,21 +27,34 @@ class PostRequest{
         request.httpBody = form.data(using: .utf8)
         
         
-        //create dataTask using the session object to send data to the server
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(error)")
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data,response,error in
+            if error != nil{
+                print(error?.localizedDescription)
                 return
             }
             
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+                
+                if let parseJSON = json {
+                    let resultValue:String = parseJSON["access_token"] as! String;
+                    print("result: \(resultValue)")
+                    print(parseJSON)
+                    self.storeLoginResponse(response: json!)
+                }
+            } catch let error as NSError {
+                print(error)
             }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
         }
         task.resume()
+    }
+    
+    private func storeLoginResponse(response : NSDictionary){
+        let access_token = "Bearer ".appending(response["access_token"] as! String)
+        let refresh_token = response["refresh_token"] as! String
+        print(access_token)
+        print(refresh_token)
+        MyKeychainWrapper.mySetObject(access_token, forKey: "access_token")
+        MyKeychainWrapper.mySetObject(refresh_token, forKey: "refresh_token")
     }
 }
