@@ -11,6 +11,8 @@ import UIKit
 
 class ViewController: UIViewController{
     
+    let userDefaults = Foundation.UserDefaults.standard
+    
     //MARK: Properties
     @IBOutlet weak var emailLogin: UITextField!
     @IBOutlet weak var passwordLogin: UITextField!
@@ -42,7 +44,7 @@ class ViewController: UIViewController{
         let email = validateEmail()
         let password = validatePassword()
         let form = "username=".appending(email).appending("&password=").appending(password).appending("&grant_type=password")
-        let response = PostRequest().urlencodedPost(postUrl: Constants.API.login, form: form)    
+        let response = PostRequest().urlencodedPost(postUrl: Constants.API.login, form: form)
         print(response)
     }
 

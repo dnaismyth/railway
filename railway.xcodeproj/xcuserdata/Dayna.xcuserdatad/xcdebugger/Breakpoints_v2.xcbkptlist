@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/ViewController.swift"
-            timestampString = "508695224.542658"
+            timestampString = "508820224.290285"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "validateEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,13 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/ViewController.swift"
-            timestampString = "508695154.357854"
+            timestampString = "508820309.314198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "loginButton(_:)"
-            landmarkType = "7">
+            startingLineNumber = "52"
+            endingLineNumber = "52">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/PostRequest.swift"
-            timestampString = "508733116.348251"
+            timestampString = "508819516.88682"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "urlencodedPost(postUrl:form:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/PostRequest.swift"
-            timestampString = "508733116.348251"
+            timestampString = "508819516.88682"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "urlencodedPost(postUrl:form:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,28 +104,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/PostRequest.swift"
-            timestampString = "508733088.615795"
+            timestampString = "508819516.88682"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "urlencodedPost(postUrl:form:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "railway/PostRequest.swift"
-            timestampString = "508733090.939052"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "storeLoginResponse(response:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

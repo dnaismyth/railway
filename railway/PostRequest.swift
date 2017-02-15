@@ -6,10 +6,9 @@
 //  Copyright © 2017 Dayna Naismyth. All rights reserved.
 //
 import Foundation
-class PostRequest{
+class PostRequest : NSObject, NSURLConnectionDataDelegate {
     
-    let MyKeychainWrapper = KeychainWrapper()
-
+    let userDefaults = Foundation.UserDefaults.standard
     
     public func urlencodedPost(postUrl: String, form: String) -> Void{
         // Build full URL with base
@@ -29,7 +28,7 @@ class PostRequest{
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data,response,error in
             if error != nil{
-                print(error?.localizedDescription)
+                print(error?.localizedDescription ?? "Error")
                 return
             }
             
@@ -54,7 +53,7 @@ class PostRequest{
         let refresh_token = response["refresh_token"] as! String
         print(access_token)
         print(refresh_token)
-        MyKeychainWrapper.mySetObject(access_token, forKey: "access_token")
-        MyKeychainWrapper.mySetObject(refresh_token, forKey: "refresh_token")
+        userDefaults.set( access_token , forKey: "access_token")
+        userDefaults.set( refresh_token, forKey: "refresh_token")
     }
 }
