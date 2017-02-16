@@ -46,7 +46,6 @@
                                         </state>
                                         <connections>
                                             <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AQf-fO-onb"/>
-                                            <segue destination="S2D-kC-QR5" kind="presentation" identifier="navigationView" id="t87-nv-eZH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hiw-C9-pS6">
@@ -221,7 +220,7 @@
         <!--Crossings-->
         <scene sceneID="fKN-2J-XEt">
             <objects>
-                <viewController id="eFK-xy-eug" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="crossingsView" id="eFK-xy-eug" customClass="CrossingsViewController" customModule="railway" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HK4-R7-Jzf"/>
                         <viewControllerLayoutGuide type="bottom" id="PgM-4Y-Aah"/>

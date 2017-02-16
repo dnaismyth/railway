@@ -8,8 +8,7 @@
 import Foundation
 class PostRequest : NSObject, NSURLConnectionDataDelegate {
     
-    let userDefaults = Foundation.UserDefaults.standard
-    typealias CompletionHandler = (Bool) -> ()
+    typealias CompletionHandler = (NSDictionary) -> ()
 
     public func urlencodedPost(postUrl: String, form: String, completionHandler: @escaping (CompletionHandler)){
         // Build full URL with base
@@ -39,23 +38,13 @@ class PostRequest : NSObject, NSURLConnectionDataDelegate {
                     let resultValue:String = parseJSON["access_token"] as! String;
                     print("result: \(resultValue)")
                     print(parseJSON)
-                    self.storeLoginResponse(response: json!)
-                    completionHandler(true)
+                    completionHandler(json!)
                 }
             } catch let error as NSError {
-                completionHandler(false)
+                completionHandler([String: String]() as NSDictionary)
                 print(error)
             }
         }
         task.resume()
-    }
-    
-    private func storeLoginResponse(response : NSDictionary){
-        let access_token = "Bearer ".appending(response["access_token"] as! String)
-        let refresh_token = response["refresh_token"] as! String
-        print(access_token)
-        print(refresh_token)
-        userDefaults.set( access_token , forKey: "access_token")
-        userDefaults.set( refresh_token, forKey: "refresh_token")
     }
 }

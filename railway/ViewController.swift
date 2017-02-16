@@ -44,11 +44,29 @@ class ViewController: UIViewController{
         let email = validateEmail()
         let password = validatePassword()
         let form = "username=".appending(email).appending("&password=").appending(password).appending("&grant_type=password")
-        PostRequest().urlencodedPost(postUrl: Constants.API.login, form: form, completionHandler: { (success) -> Void in
-            print("Finished")
+        PostRequest().urlencodedPost(postUrl: Constants.API.login, form: form, completionHandler: { (dictionary) -> Void in
+            if(dictionary["access_token"] != nil){
+                OperationQueue.main.addOperation {
+                    self.storeLoginResponse(response: dictionary)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier :"crossingsView")
+                    self.present(viewController, animated: true)
+                }
+            } else {
+                // Show invalid credentials screen
+                print("Not finished")
+            }
         })
     }
     
+    private func storeLoginResponse(response : NSDictionary){
+        let access_token = "Bearer ".appending(response["access_token"] as! String)
+        let refresh_token = response["refresh_token"] as! String
+        let expires_in = response["expires_in"]
+        userDefaults.set( access_token , forKey: "access_token")
+        userDefaults.set( refresh_token, forKey: "refresh_token")
+        userDefaults.set( expires_in, forKey:"expires_in")
+    }
 
 }
 
