@@ -35,9 +35,6 @@ class PostRequest : NSObject, NSURLConnectionDataDelegate {
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
                 if let parseJSON = json {
-                    let resultValue:String = parseJSON["access_token"] as! String;
-                    print("result: \(resultValue)")
-                    print(parseJSON)
                     completionHandler(json!)
                 }
             } catch let error as NSError {

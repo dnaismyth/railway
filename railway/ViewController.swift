@@ -29,15 +29,25 @@ class ViewController: UIViewController{
     // Check that email input is provided
     func validateEmail() -> String {
         let email: String! = self.emailLogin.text
-        print (email)
-        return email
+        if(email.characters.count <= 0){
+            self.showInvalidAlert(alertTitle:"Error", alertMessage:"Please enter valid credentials.")
+        }
+        return email;
     }
     
     // Check that password input is provided
     func validatePassword() -> String {
         let password: String! = self.passwordLogin.text
-        print(password)
-        return password
+        if(password.characters.count <= 0){
+            self.showInvalidAlert(alertTitle:"Error", alertMessage:"Please enter valid credentials.")
+        }
+        return password;
+    }
+    
+    private func showInvalidAlert(alertTitle: String, alertMessage: String){
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func loginButton(_ sender: UIButton) {
@@ -45,16 +55,15 @@ class ViewController: UIViewController{
         let password = validatePassword()
         let form = "username=".appending(email).appending("&password=").appending(password).appending("&grant_type=password")
         PostRequest().urlencodedPost(postUrl: Constants.API.login, form: form, completionHandler: { (dictionary) -> Void in
-            if(dictionary["access_token"] != nil){
-                OperationQueue.main.addOperation {
+            OperationQueue.main.addOperation{
+                if(dictionary["access_token"] != nil){
                     self.storeLoginResponse(response: dictionary)
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier :"crossingsView")
                     self.present(viewController, animated: true)
+                } else {
+                    self.showInvalidAlert(alertTitle: "Error Signing In", alertMessage: "The e-mail or password is incorrect.")
                 }
-            } else {
-                // Show invalid credentials screen
-                print("Not finished")
             }
         })
     }
