@@ -20,7 +20,7 @@ class PostRequest : NSObject, NSURLConnectionDataDelegate {
         request.httpMethod = "POST"
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("Basic cmFpbHdheXNlcnZpY2UtaW9zOmtKRktDdDJFenNXM2oyYTQ=", forHTTPHeaderField: "Authorization")
+        request.addValue(Constants.TOKEN.basic_token, forHTTPHeaderField: "Authorization")
         request.addValue("gzip, deflate, br", forHTTPHeaderField: "Accept-Encoding")
         
         request.httpBody = form.data(using: .utf8)

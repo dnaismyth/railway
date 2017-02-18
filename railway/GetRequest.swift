@@ -10,16 +10,17 @@ import Foundation
 
 class GetRequest{
     
-    public func HTTPGet(getUrl : String)  {
+    public func HTTPGet(getUrl : String, token: String)  {
         
         let formatUrl = Constants.API.baseUrl.appending(getUrl)
         print(formatUrl)
         let url = URL(string:formatUrl)!
-        let request = URLRequest(url: url)
-
+        var request = URLRequest(url: url)
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
             guard error == nil else {
-                print(error)
+                print(error ?? "Error sending get request.")
                 return
             }
             guard let data = data else {

@@ -83,7 +83,7 @@ class MapController: UIViewController, CLLocationManagerDelegate {
     
     private func getAllTrainCrossings(){
         let params : String = "?page=0&size=5"
-        GetRequest().HTTPGet(getUrl: Constants.API.allTrainCrossings.appending(params))
+        //GetRequest().HTTPGet(getUrl: Constants.API.allTrainCrossings.appending(params))
     }
     
 }

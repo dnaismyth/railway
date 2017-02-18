@@ -15,5 +15,10 @@ struct Constants {
         static let baseUrl = "http://localhost:8080"
         static let login = "/oauth/token"
         static let allTrainCrossings = "/api/traincrossings"
+        static let userTrainAlerts = "/api/trainalerts"
+    }
+    
+    struct TOKEN {
+        static let basic_token = "Basic cmFpbHdheXNlcnZpY2UtaW9zOmtKRktDdDJFenNXM2oyYTQ=";
     }
 }

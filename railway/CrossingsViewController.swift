@@ -9,9 +9,12 @@
 import UIKit
 
 class CrossingsViewController: UIViewController {
+    
+    let userDefaults = Foundation.UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserTrainAlerts()
 
         // Do any additional setup after loading the view.
     }
@@ -22,14 +25,9 @@ class CrossingsViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func getUserTrainAlerts(){
+        let access_token :String? = userDefaults.string(forKey: "access_token")
+        GetRequest().HTTPGet(getUrl: Constants.API.userTrainAlerts.appending("?page=0&size=50"), token: access_token!)
     }
-    */
 
 }
