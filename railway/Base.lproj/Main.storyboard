@@ -172,7 +172,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="pdw-ax-fKG">
             <objects>
-                <tabBarController id="S2D-kC-QR5" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarView" id="S2D-kC-QR5" customClass="TabBarController" customModule="railway" customModuleProvider="target" sceneMemberID="viewController">
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="681"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="CqO-UG-thv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>

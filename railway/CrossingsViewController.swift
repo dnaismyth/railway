@@ -14,8 +14,8 @@ class CrossingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUserTrainAlerts()
-
+        setUpTrainAlerts()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -28,6 +28,10 @@ class CrossingsViewController: UIViewController {
     private func getUserTrainAlerts(){
         let access_token :String? = userDefaults.string(forKey: "access_token")
         GetRequest().HTTPGet(getUrl: Constants.API.userTrainAlerts.appending("?page=0&size=50"), token: access_token!)
+    }
+    
+    private func setUpTrainAlerts(){
+        getUserTrainAlerts()
     }
 
 }

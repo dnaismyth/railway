@@ -59,7 +59,7 @@ class ViewController: UIViewController{
                 if(dictionary["access_token"] != nil){
                     self.storeLoginResponse(response: dictionary)
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier :"crossingsView")
+                    let viewController = storyboard.instantiateViewController(withIdentifier :"tabBarView")
                     self.present(viewController, animated: true)
                 } else {
                     self.showInvalidAlert(alertTitle: "Error Signing In", alertMessage: "The e-mail or password is incorrect.")
