@@ -34,7 +34,7 @@ class PostRequest : NSObject, NSURLConnectionDataDelegate {
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
-                if let parseJSON = json {
+                if json != nil {
                     completionHandler(json!)
                 }
             } catch let error as NSError {

@@ -234,7 +234,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="s8G-eN-NR6">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="trainAlertCell" id="s8G-eN-NR6" customClass="TrainAlertTableViewCell" customModule="railway" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s8G-eN-NR6" id="MPf-io-2lJ">
@@ -250,6 +250,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wn1-j4-MJd">
                                                     <rect key="frame" x="13" y="59" width="55" height="30"/>
                                                     <state key="normal" title="Remove"/>
+                                                    <connections>
+                                                        <action selector="removeAlertButton:" destination="s8G-eN-NR6" eventType="touchUpInside" id="qta-RB-2pv"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -259,6 +262,10 @@
                                                 <constraint firstItem="7tR-DS-YDh" firstAttribute="top" secondItem="MPf-io-2lJ" secondAttribute="topMargin" constant="5" id="VB1-fO-2p4"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="trainCrossingCell"/>
+                                        <connections>
+                                            <outlet property="locationTextField" destination="7tR-DS-YDh" id="VTI-ce-eZv"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -266,6 +273,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Crossings" image="trainIcon" selectedImage="trainIcon" id="Bga-Tz-Zjy"/>
+                    <connections>
+                        <outlet property="trainAlertTableView" destination="Dm4-4B-XRr" id="DHU-Sq-8ah"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kUp-cR-xMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

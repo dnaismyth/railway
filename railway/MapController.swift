@@ -13,7 +13,7 @@ import CoreLocation
 class MapController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: Properties
-    
+    let userDefaults = Foundation.UserDefaults.standard
     let locationManager = CLLocationManager()
     let enableLocation = false;
     @IBOutlet weak var mapView: MKMapView!
@@ -81,9 +81,16 @@ class MapController: UIViewController, CLLocationManagerDelegate {
         return UIScreen.main.bounds.size.width
     }
     
+    //TODO: Change this to get nearby train crossings
     private func getAllTrainCrossings(){
         let params : String = "?page=0&size=5"
-        //GetRequest().HTTPGet(getUrl: Constants.API.allTrainCrossings.appending(params))
+        let token : String? = userDefaults.string(forKey: "access_token")
+        GetRequest().HTTPGet(getUrl: Constants.API.allTrainCrossings.appending(params), token: token!, completionHandler : { (dictionary) -> Void in
+            
+            OperationQueue.main.addOperation{
+                
+            }
+        })
     }
     
 }

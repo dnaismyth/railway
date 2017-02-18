@@ -10,7 +10,9 @@ import Foundation
 
 class GetRequest{
     
-    public func HTTPGet(getUrl : String, token: String)  {
+    typealias CompletionHandler = (NSDictionary) -> ()
+
+    public func HTTPGet(getUrl : String, token: String, completionHandler: @escaping (CompletionHandler))  {
         
         let formatUrl = Constants.API.baseUrl.appending(getUrl)
         print(formatUrl)
@@ -29,7 +31,7 @@ class GetRequest{
             }
             
             let json = try! JSONSerialization.jsonObject(with: data, options: [])
-            print(json)
+            completionHandler(json as! NSDictionary)
         }
         
         task.resume()

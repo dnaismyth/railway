@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E50DC8BE1E520F7600920A89 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E50DC8BD1E520F7600920A89 /* KeychainWrapper.m */; };
 		E52E6A851E3EA7B5000B485F /* InputLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52E6A841E3EA7B5000B485F /* InputLocationView.xib */; };
+		E54E479B1E58E3D100BCDC28 /* TrainAlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54E479A1E58E3D100BCDC28 /* TrainAlertTableViewCell.swift */; };
 		E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E578CD721E3E952A00915825 /* InputLocationView.swift */; };
 		E5B40ECA1E5546000030F8ED /* CrossingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B40EC91E5546000030F8ED /* CrossingsViewController.swift */; };
 		E5B40ECC1E5895C00030F8ED /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B40ECB1E5895C00030F8ED /* TabBarController.swift */; };
@@ -42,6 +43,7 @@
 		E50DC8BD1E520F7600920A89 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeychainWrapper.m; path = ../../../Downloads/KeychainWrapper/KeychainWrapper.m; sourceTree = "<group>"; };
 		E50DC8BF1E52A74000920A89 /* railway.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = railway.entitlements; sourceTree = "<group>"; };
 		E52E6A841E3EA7B5000B485F /* InputLocationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InputLocationView.xib; path = ../InputLocationView.xib; sourceTree = "<group>"; };
+		E54E479A1E58E3D100BCDC28 /* TrainAlertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainAlertTableViewCell.swift; sourceTree = "<group>"; };
 		E578CD721E3E952A00915825 /* InputLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputLocationView.swift; sourceTree = "<group>"; };
 		E5B40EC91E5546000030F8ED /* CrossingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossingsViewController.swift; sourceTree = "<group>"; };
 		E5B40ECB1E5895C00030F8ED /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E54E47991E58E36500BCDC28 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				E54E479A1E58E3D100BCDC28 /* TrainAlertTableViewCell.swift */,
+			);
+			name = Custom;
+			sourceTree = "<group>";
+		};
 		E5F218241E4FE95B00BD6AB0 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				E50DC8BF1E52A74000920A89 /* railway.entitlements */,
+				E54E47991E58E36500BCDC28 /* Custom */,
 				E5F218241E4FE95B00BD6AB0 /* Requests */,
 				E5F5C3941E3D8910005EAE21 /* Controllers */,
 				E5F5C36F1E3CE33D005EAE21 /* AppDelegate.swift */,
@@ -277,6 +288,7 @@
 				E5B40ECC1E5895C00030F8ED /* TabBarController.swift in Sources */,
 				E5F5C3961E3D8924005EAE21 /* SettingsController.swift in Sources */,
 				E5F218261E4FE97200BD6AB0 /* PostRequest.swift in Sources */,
+				E54E479B1E58E3D100BCDC28 /* TrainAlertTableViewCell.swift in Sources */,
 				E5F5C3721E3CE33D005EAE21 /* ViewController.swift in Sources */,
 				E5F5C3931E3D8562005EAE21 /* MapController.swift in Sources */,
 				E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */,

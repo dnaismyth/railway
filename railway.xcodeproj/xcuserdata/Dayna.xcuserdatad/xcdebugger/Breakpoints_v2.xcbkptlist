@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/ViewController.swift"
-            timestampString = "508993420.975993"
+            timestampString = "509146719.120858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
@@ -104,7 +104,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/ViewController.swift"
-            timestampString = "508993420.975993"
+            timestampString = "509146719.120858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
@@ -120,12 +120,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/GetRequest.swift"
-            timestampString = "509089167.858881"
+            timestampString = "509128386.946497"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "HTTPGet(getUrl:token:)"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "HTTPGet(getUrl:token:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -136,45 +136,77 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/GetRequest.swift"
-            timestampString = "509089167.858881"
+            timestampString = "509128386.946497"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "HTTPGet(getUrl:token:)"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "HTTPGet(getUrl:token:completionHandler:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "railway.GetRequest.HTTPGet (getUrl : Swift.String, token : Swift.String) -&gt; ()"
+                  symbolName = "railway.GetRequest.HTTPGet (getUrl : Swift.String, token : Swift.String, completionHandler : (__ObjC.NSDictionary) -&gt; ()) -&gt; ()"
                   moduleName = "railway"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Dayna/Desktop/railway/railway/GetRequest.swift"
-                  timestampString = "509122249.728808"
+                  timestampString = "509147667.236459"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "746">
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "775">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "railway.GetRequest.(HTTPGet (getUrl : Swift.String, token : Swift.String) -&gt; ()).(closure #1)"
+                  symbolName = "railway.GetRequest.(HTTPGet (getUrl : Swift.String, token : Swift.String, completionHandler : (__ObjC.NSDictionary) -&gt; ()) -&gt; ()).(closure #1)"
                   moduleName = "railway"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Dayna/Desktop/railway/railway/GetRequest.swift"
-                  timestampString = "509122249.731238"
+                  timestampString = "509147667.241789"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "23">
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "31">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "railway/CrossingsViewController.swift"
+            timestampString = "509147667.092224"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "setUpTrainAlerts()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "railway/CrossingsViewController.swift"
+            timestampString = "509147667.092224"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
