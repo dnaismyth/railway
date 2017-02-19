@@ -16,6 +16,10 @@ class MapController: UIViewController, CLLocationManagerDelegate {
     let userDefaults = Foundation.UserDefaults.standard
     let locationManager = CLLocationManager()
     let enableLocation = false;
+    var trainCrossingData : NSDictionary = [:]     // data from api call to retrieve all user train crossings
+    var trainCrossingContent : [[String:AnyObject]] = []  // this will store the content of each train crossing
+    var mapAnnotations:[MKPointAnnotation] = [] // map pin annotiations for train crossing locations
+
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var inputLocationView: UIView!
     
@@ -86,11 +90,30 @@ class MapController: UIViewController, CLLocationManagerDelegate {
         let params : String = "?page=0&size=5"
         let token : String? = userDefaults.string(forKey: "access_token")
         GetRequest().HTTPGet(getUrl: Constants.API.allTrainCrossings.appending(params), token: token!, completionHandler : { (dictionary) -> Void in
-            
             OperationQueue.main.addOperation{
-                
+                self.mapTrainCrossingCoordinates(trainCrossings: dictionary)
             }
         })
+    }
+    
+    private func mapTrainCrossingCoordinates(trainCrossings : NSDictionary){
+        self.trainCrossingData = (trainCrossings.value(forKey: "page") as! NSDictionary?)!
+        self.trainCrossingContent = self.trainCrossingData["content"] as! [[String:AnyObject]]
+        for trainCrossing in self.trainCrossingContent {
+            let annotation = MKPointAnnotation()
+            
+
+            var location : [String : AnyObject] = trainCrossing["location"] as! [String:AnyObject]
+            let latitude : Double = location["latitude"] as! Double
+            let longitude : Double = location["longitude"] as! Double
+            //let city : String = location["city"] as! String
+            annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+
+            self.mapAnnotations.append(annotation)
+            
+        }
+        self.mapView.addAnnotations(self.mapAnnotations)
+
     }
     
 }
