@@ -87,7 +87,7 @@ class MapController: UIViewController, CLLocationManagerDelegate {
     
     //TODO: Change this to get nearby train crossings
     private func getAllTrainCrossings(){
-        let params : String = "?page=0&size=5"
+        let params : String = "?page=0&size=100"
         let token : String? = userDefaults.string(forKey: "access_token")
         GetRequest().HTTPGet(getUrl: Constants.API.allTrainCrossings.appending(params), token: token!, completionHandler : { (dictionary) -> Void in
             OperationQueue.main.addOperation{

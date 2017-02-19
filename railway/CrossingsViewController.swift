@@ -52,10 +52,29 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         cell.tag = trainCrossing["id"] as! Int
         
         // TODO: Use this later to change the image icon
-        //var railway : String = trainCrossing["railway"] as! String
-        
+        var railway : String = trainCrossing["railway"] as! String
+        setRailwayCellImage(railway: railway, cell: cell)
         return cell
         
+    }
+    
+    private func setRailwayCellImage(railway : String, cell : TrainAlertTableViewCell){
+        switch(railway){
+            case "CN":
+                cell.railwayImage.image = #imageLiteral(resourceName: "CNRailway")
+                break
+            case "VIA":
+                cell.railwayImage.image = #imageLiteral(resourceName: "VIARailway")
+                break
+            case "GO":
+                cell.railwayImage.image = #imageLiteral(resourceName: "GORailway")
+                break
+            case "CP":
+                cell.railwayImage.image = #imageLiteral(resourceName: "CPRailway")
+                break
+            default:
+                break
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
