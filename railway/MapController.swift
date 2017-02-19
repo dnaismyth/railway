@@ -19,19 +19,19 @@ class MapController: UIViewController, CLLocationManagerDelegate {
     var trainCrossingData : NSDictionary = [:]     // data from api call to retrieve all user train crossings
     var trainCrossingContent : [[String:AnyObject]] = []  // this will store the content of each train crossing
     var mapAnnotations:[MKPointAnnotation] = [] // map pin annotiations for train crossing locations
-
+    var location : CLLocation?
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var inputLocationView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("View is loaded")
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        getAllTrainCrossings()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -39,15 +39,22 @@ class MapController: UIViewController, CLLocationManagerDelegate {
     
     // Called every time user's location is updated
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
+        location = locations.last!
+        
         let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        
-        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-        
+        let latitude: Double? = location!.coordinate.latitude
+        let longitude : Double? = location!.coordinate.longitude
+        let myLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
+        print("My Location is: \(myLocation)")
         let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         
         mapView.setRegion(region, animated: true)
         self.mapView.showsUserLocation = true
+        if((latitude != nil) && (longitude != nil)){
+            locationManager.stopUpdatingLocation()
+            getAllTrainCrossingsNearby(latitude: latitude!, longitude: longitude!)
+        }
+
     }
     
     // Check the current location enabled status, if there is no access - prompt user with display to input
@@ -86,10 +93,13 @@ class MapController: UIViewController, CLLocationManagerDelegate {
     }
     
     //TODO: Change this to get nearby train crossings
-    private func getAllTrainCrossings(){
-        let params : String = "?page=0&size=100"
+    private func getAllTrainCrossingsNearby(latitude : Double, longitude : Double){
+        print("calling get all nearby train crossings")
+        let latitude : String = String(latitude)
+        let longitude : String = String(longitude)
+        let params : String = "?page=0&size=50&radius=3&lat=".appending(latitude).appending("&lon=").appending(longitude)
         let token : String? = userDefaults.string(forKey: "access_token")
-        GetRequest().HTTPGet(getUrl: Constants.API.allTrainCrossings.appending(params), token: token!, completionHandler : { (dictionary) -> Void in
+        GetRequest().HTTPGet(getUrl: Constants.API.nearbyTrainCrossings.appending(params), token: token!, completionHandler : { (dictionary) -> Void in
             OperationQueue.main.addOperation{
                 self.mapTrainCrossingCoordinates(trainCrossings: dictionary)
             }
@@ -97,12 +107,9 @@ class MapController: UIViewController, CLLocationManagerDelegate {
     }
     
     private func mapTrainCrossingCoordinates(trainCrossings : NSDictionary){
-        self.trainCrossingData = (trainCrossings.value(forKey: "page") as! NSDictionary?)!
-        self.trainCrossingContent = self.trainCrossingData["content"] as! [[String:AnyObject]]
+        self.trainCrossingContent = trainCrossings["data"] as! [[String:AnyObject]]
         for trainCrossing in self.trainCrossingContent {
             let annotation = MKPointAnnotation()
-            
-
             var location : [String : AnyObject] = trainCrossing["location"] as! [String:AnyObject]
             let latitude : Double = location["latitude"] as! Double
             let longitude : Double = location["longitude"] as! Double
