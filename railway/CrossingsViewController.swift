@@ -1,4 +1,4 @@
-    //
+        //
 //  CrossingsViewController.swift
 //  railway
 //
@@ -22,6 +22,7 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         self.trainAlertTableView.delegate = self
         self.trainAlertTableView.dataSource = self
         self.trainAlertTableView.tableFooterView = UIView()
+
         // Do any additional setup after loading the view.
     }
 
@@ -42,9 +43,39 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "trainAlertCell") as! TrainAlertTableViewCell
         var alertInfo : [String : AnyObject] = trainAlertContent[indexPath.row]
         var trainCrossing : [String : AnyObject] = alertInfo["trainCrossing"] as! [String : AnyObject]
-        cell.locationTextField.text = trainCrossing ["railway"] as! String?
+        var trainCrossingLocation : [String : AnyObject] = trainCrossing["location"] as! [String : AnyObject]
+        let province : String = trainCrossingLocation ["province"] as! String
+        let city : String = trainCrossingLocation ["city"] as! String
+        let address : String = trainCrossingLocation["address"] as! String
+        cell.locationTextField.text = city.appending(", ").appending(province)
+        cell.addressTextField.text = address
+        cell.tag = trainCrossing["id"] as! Int
+        
+        // TODO: Use this later to change the image icon
+        //var railway : String = trainCrossing["railway"] as! String
+        
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            let cell = tableView.cellForRow(at: indexPath as IndexPath) as! TrainAlertTableViewCell
+            let idToRemove : Int = cell.tag
+            print("Removing id \(idToRemove)")
+            let removed : Bool = removeTrainAlert(trainCrossingId : idToRemove)
+            trainAlertContent.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.right)
+            if(removed){
+                self.refreshTableView()
+                print("Row removed")
+            }
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 
     private func getUserTrainAlerts(){
@@ -54,13 +85,32 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
                 
                 self.trainAlertData = (dictionary.value(forKey: "page") as! NSDictionary?)!
                 self.trainAlertContent = self.trainAlertData["content"] as! [[String:AnyObject]]
-                self.trainAlertTableView.reloadData()
+                self.refreshTableView()
             }
         })
     }
     
     public func setUpTrainAlerts(){
         getUserTrainAlerts()
+    }
+    
+    public func refreshTableView(){
+        self.trainAlertTableView.reloadData()
+    }
+    
+    private func removeTrainAlert(trainCrossingId : Int) -> Bool{
+        var removed : Bool = false
+        let access_token : String = userDefaults.string(forKey: "access_token")!
+        let url : String = Constants.API.removeTrainAlert.replacingOccurrences(of: "id", with: String(trainCrossingId))
+        DeleteRequest().HTTPDelete(getUrl: url, token: access_token, completionHandler: {
+            (dictionary) -> Void in  OperationQueue.main.addOperation{
+                if((dictionary["operationType"]! as AnyObject).isEqual("DELETE")){
+                    print("Removing alert")
+                    removed = true
+                }
+            }
+        })
+        return removed
     }
 
 }

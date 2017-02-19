@@ -10,8 +10,12 @@ import UIKit
 
 class TrainAlertTableViewCell: UITableViewCell {
     
+    //MARK: Properties
     @IBOutlet weak var locationTextField: UILabel!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var railwayImage: UIImageView!
     
+    let userDefaults = Foundation.UserDefaults.standard
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,10 +26,6 @@ class TrainAlertTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    @IBAction func removeAlertButton(_ sender: UIButton) {
-        print("Removing alert")
     }
 
 }

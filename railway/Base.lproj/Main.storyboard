@@ -241,30 +241,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="100.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Railway Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tR-DS-YDh">
-                                                    <rect key="frame" x="13" y="13" width="127.5" height="21"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CNRailway" translatesAutoresizingMaskIntoConstraints="NO" id="lpn-3I-zVL">
+                                                    <rect key="frame" x="8" y="5" width="90" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Address" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OQa-CJ-LMv">
+                                                    <rect key="frame" x="140" y="53" width="128" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tR-DS-YDh">
+                                                    <rect key="frame" x="140" y="15" width="128" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wn1-j4-MJd">
-                                                    <rect key="frame" x="13" y="59" width="55" height="30"/>
-                                                    <state key="normal" title="Remove"/>
-                                                    <connections>
-                                                        <action selector="removeAlertButton:" destination="s8G-eN-NR6" eventType="touchUpInside" id="qta-RB-2pv"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="wn1-j4-MJd" firstAttribute="top" secondItem="7tR-DS-YDh" secondAttribute="bottom" constant="25" id="5Px-zH-daz"/>
-                                                <constraint firstItem="wn1-j4-MJd" firstAttribute="leading" secondItem="MPf-io-2lJ" secondAttribute="leadingMargin" constant="5" id="IFv-FQ-A54"/>
-                                                <constraint firstItem="7tR-DS-YDh" firstAttribute="leading" secondItem="MPf-io-2lJ" secondAttribute="leadingMargin" constant="5" id="OQU-7c-7ty"/>
-                                                <constraint firstItem="7tR-DS-YDh" firstAttribute="top" secondItem="MPf-io-2lJ" secondAttribute="topMargin" constant="5" id="VB1-fO-2p4"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="trainCrossingCell"/>
                                         <connections>
+                                            <outlet property="addressTextField" destination="OQa-CJ-LMv" id="ker-M7-dop"/>
                                             <outlet property="locationTextField" destination="7tR-DS-YDh" id="VTI-ce-eZv"/>
+                                            <outlet property="railwayImage" destination="lpn-3I-zVL" id="b6V-bZ-m8D"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -279,10 +280,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kUp-cR-xMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1717.5" y="138.5"/>
+            <point key="canvasLocation" x="1716" y="138.0809595202399"/>
         </scene>
     </scenes>
     <resources>
+        <image name="CNRailway" width="200" height="200"/>
         <image name="mapIcon" width="30" height="30"/>
         <image name="settingsIcon" width="30" height="30"/>
         <image name="trainIcon" width="30" height="30"/>
