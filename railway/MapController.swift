@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapController: UIViewController, CLLocationManagerDelegate {
+class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     //MARK: Properties
     let userDefaults = Foundation.UserDefaults.standard
@@ -26,6 +26,7 @@ class MapController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("View is loaded")
+        self.mapView.delegate = self
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -92,6 +93,30 @@ class MapController: UIViewController, CLLocationManagerDelegate {
         return UIScreen.main.bounds.size.width
     }
     
+    // Custom annotation view
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        
+//        if !(annotation is CustomPointAnnotation) {
+//            return nil
+//        }
+//        
+//        let reuseId = "trainPin"
+//        
+//        var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+//        if anView == nil {
+//            anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+//            anView?.canShowCallout = true
+//        }
+//        else {
+//            anView?.annotation = annotation
+//        }
+//        
+//        //let cpa = annotation as! CustomPointAnnotation
+//        //anView?.image = UIImage(named:cpa.imageName)
+//        
+//        return anView
+//    }
+    
     //TODO: Change this to get nearby train crossings
     private func getAllTrainCrossingsNearby(latitude : Double, longitude : Double){
         print("calling get all nearby train crossings")
@@ -109,13 +134,16 @@ class MapController: UIViewController, CLLocationManagerDelegate {
     private func mapTrainCrossingCoordinates(trainCrossings : NSDictionary){
         self.trainCrossingContent = trainCrossings["data"] as! [[String:AnyObject]]
         for trainCrossing in self.trainCrossingContent {
-            let annotation = MKPointAnnotation()
+            let annotation = CustomPointAnnotation()
             var location : [String : AnyObject] = trainCrossing["location"] as! [String:AnyObject]
             let latitude : Double = location["latitude"] as! Double
             let longitude : Double = location["longitude"] as! Double
-            //let city : String = location["city"] as! String
+            let city : String = location["city"] as! String
+            let address : String = location["address"] as! String
             annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-
+            annotation.title = city
+            annotation.subtitle = address
+            //annotation.imageName = "trainPin"
             self.mapAnnotations.append(annotation)
             
         }
