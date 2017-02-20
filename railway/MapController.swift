@@ -20,6 +20,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     var trainCrossingContent : [[String:AnyObject]] = []  // this will store the content of each train crossing
     var mapAnnotations:[MKPointAnnotation] = [] // map pin annotiations for train crossing locations
     var location : CLLocation?
+    let defaultAudioId : Int = 1
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var inputLocationView: UIView!
     
@@ -36,6 +37,20 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc private func addTrainCrossingAlert(_ sender: AnyObject?){
+        let access_token : String = userDefaults.string(forKey: "access_token")!
+        let trainCrossingId : Int = sender!.tag
+        let formatUrl : String = Constants.API.addTrainAlert.replacingOccurrences(of: "id", with: String(trainCrossingId))
+        let data : [String:AnyObject] = [
+            "id" : self.defaultAudioId as AnyObject
+        ]
+        PostRequest().jsonPost(postUrl: formatUrl, token: access_token, body: data, completionHandler: {
+            (dictionary) -> Void in OperationQueue.main.addOperation{
+                print(dictionary)
+            }
+        })
     }
     
     // Called every time user's location is updated
@@ -94,28 +109,30 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     }
     
     // Custom annotation view
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        
-//        if !(annotation is CustomPointAnnotation) {
-//            return nil
-//        }
-//        
-//        let reuseId = "trainPin"
-//        
-//        var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
-//        if anView == nil {
-//            anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-//            anView?.canShowCallout = true
-//        }
-//        else {
-//            anView?.annotation = annotation
-//        }
-//        
-//        //let cpa = annotation as! CustomPointAnnotation
-//        //anView?.image = UIImage(named:cpa.imageName)
-//        
-//        return anView
-//    }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if !(annotation is CustomPointAnnotation) {
+            return nil
+        }
+        
+        let reuseId = "trainPin"
+        
+        var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+        if anView == nil {
+            anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            anView?.canShowCallout = true
+        }
+        else {
+            anView?.annotation = annotation
+        }
+        
+        let cpa = annotation as! CustomPointAnnotation
+        anView?.image = UIImage(named:cpa.imageName)
+        cpa.annotationButton.addTarget(self, action: #selector(self.addTrainCrossingAlert(_:)), for: .touchUpInside)
+        anView?.rightCalloutAccessoryView = cpa.annotationButton
+        
+        return anView
+    }
     
     //TODO: Change this to get nearby train crossings
     private func getAllTrainCrossingsNearby(latitude : Double, longitude : Double){
@@ -143,7 +160,9 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             annotation.title = city
             annotation.subtitle = address
-            //annotation.imageName = "trainPin"
+            annotation.imageName = "trainIcon"
+            annotation.trainCrossingId = trainCrossing["id"] as! Int!
+            annotation.annotationButton.tag = trainCrossing["id"] as! Int!
             self.mapAnnotations.append(annotation)
             
         }

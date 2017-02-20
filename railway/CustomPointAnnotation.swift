@@ -11,4 +11,6 @@ import MapKit
 
 class CustomPointAnnotation: MKPointAnnotation {
     var imageName: String!
+    var trainCrossingId : Int!
+    var annotationButton : UIButton = UIButton(type : UIButtonType.contactAdd) as UIButton // button for map annotations
 }

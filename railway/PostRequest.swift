@@ -44,4 +44,40 @@ class PostRequest : NSObject, NSURLConnectionDataDelegate {
         }
         task.resume()
     }
+    
+    public func jsonPost(postUrl: String, token: String, body: [String : AnyObject], completionHandler: @escaping (CompletionHandler)){
+        
+        let formatUrl = Constants.API.baseUrl.appending(postUrl)
+        print(formatUrl)
+        let url = URL(string:formatUrl)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        if(body.count > 0){
+            let data = NSKeyedArchiver.archivedData(withRootObject: body)
+            request.httpBody = data
+        }
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data,response,error in
+            if error != nil{
+                print(error?.localizedDescription ?? "Error")
+                return
+            }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+                if json != nil {
+                    completionHandler(json!)
+                }
+            } catch let error as NSError {
+                completionHandler([String: String]() as NSDictionary)
+                print(error)
+            }
+        }
+        task.resume()
+        
+    }
 }
