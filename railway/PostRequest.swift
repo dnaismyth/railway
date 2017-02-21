@@ -57,8 +57,11 @@ class PostRequest : NSObject, NSURLConnectionDataDelegate {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue(token, forHTTPHeaderField: "Authorization")
         if(body.count > 0){
-            let data = NSKeyedArchiver.archivedData(withRootObject: body)
-            request.httpBody = data
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+            } catch let error {
+                print(error.localizedDescription)
+            }
         }
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data,response,error in
