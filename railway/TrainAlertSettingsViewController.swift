@@ -9,10 +9,17 @@
 import UIKit
 
 class TrainAlertSettingsViewController: UIViewController {
+    
+    var city : String = ""
+    var address : String = ""
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // Initialize labels with string passed through
+        cityLabel.text = city
+        addressLabel.text = address
         // Do any additional setup after loading the view.
     }
 

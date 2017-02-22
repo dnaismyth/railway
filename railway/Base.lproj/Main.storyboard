@@ -180,7 +180,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="eFK-xy-eug" kind="relationship" relationship="viewControllers" id="C6m-b0-dNq"/>
+                        <segue destination="Fjc-H6-QRE" kind="relationship" relationship="viewControllers" id="C6m-b0-dNq"/>
                         <segue destination="6iN-cd-48L" kind="relationship" relationship="viewControllers" id="2PV-id-t9Y"/>
                         <segue destination="P9T-ey-tZu" kind="relationship" relationship="viewControllers" id="YCg-zy-Uqw"/>
                     </connections>
@@ -217,7 +217,7 @@
             </objects>
             <point key="canvasLocation" x="973.60000000000002" y="649.92503748125944"/>
         </scene>
-        <!--Crossings-->
+        <!--Crossings View Controller-->
         <scene sceneID="fKN-2J-XEt">
             <objects>
                 <viewController storyboardIdentifier="crossingsView" id="eFK-xy-eug" customClass="CrossingsViewController" customModule="railway" customModuleProvider="target" sceneMemberID="viewController">
@@ -266,7 +266,6 @@
                                             <outlet property="addressTextField" destination="OQa-CJ-LMv" id="ker-M7-dop"/>
                                             <outlet property="locationTextField" destination="7tR-DS-YDh" id="VTI-ce-eZv"/>
                                             <outlet property="railwayImage" destination="lpn-3I-zVL" id="b6V-bZ-m8D"/>
-                                            <segue destination="6D1-qB-fRq" kind="show" id="Bt1-y0-UKW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -274,19 +273,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Crossings" image="trainIcon" selectedImage="trainIcon" id="Bga-Tz-Zjy"/>
+                    <navigationItem key="navigationItem" id="rkG-AD-Sfz"/>
                     <connections>
                         <outlet property="trainAlertTableView" destination="Dm4-4B-XRr" id="DHU-Sq-8ah"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kUp-cR-xMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1716" y="138.0809595202399"/>
+            <point key="canvasLocation" x="2655.1999999999998" y="138.0809595202399"/>
         </scene>
-        <!--View Controller-->
+        <!--Train Alert Settings View Controller-->
         <scene sceneID="LIX-FI-tTR">
             <objects>
-                <viewController id="6D1-qB-fRq" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="trainAlertSettings" id="6D1-qB-fRq" customClass="TrainAlertSettingsViewController" customModule="railway" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wY8-UL-n3d"/>
                         <viewControllerLayoutGuide type="bottom" id="zNh-vg-Xli"/>
@@ -296,9 +295,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZn-o7-TSD">
-                                <rect key="frame" x="16" y="95" width="343" height="36"/>
+                                <rect key="frame" x="16" y="118" width="343" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -313,19 +312,42 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Az-1m-8OO">
-                                <rect key="frame" x="16" y="43" width="343" height="44"/>
+                                <rect key="frame" x="16" y="66" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="wZn-o7-TSD" id="WoB-zh-CLu"/>
+                        <outlet property="cityLabel" destination="6Az-1m-8OO" id="69j-px-ivA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GP7-Lz-EMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2564" y="137.18140929535232"/>
+            <point key="canvasLocation" x="3503.1999999999998" y="137.18140929535232"/>
+        </scene>
+        <!--Crossings-->
+        <scene sceneID="dBd-RZ-3ns">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fjc-H6-QRE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Crossings" image="trainIcon" selectedImage="trainIcon" id="Bga-Tz-Zjy"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2LS-0v-3Pb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eFK-xy-eug" kind="relationship" relationship="rootViewController" id="Zzh-Ow-gZq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X2f-hy-CNn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1716" y="138.0809595202399"/>
         </scene>
     </scenes>
     <resources>

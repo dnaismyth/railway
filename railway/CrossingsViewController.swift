@@ -101,6 +101,12 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("I am touched")
+        let cell = tableView.cellForRow(at: indexPath as IndexPath) as! TrainAlertTableViewCell
+        viewTrainAlertSettings(cell: cell)
+    }
 
     private func getUserTrainAlerts(){
         let access_token :String? = userDefaults.string(forKey: "access_token")
@@ -136,6 +142,16 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
             }
         })
         return removed
+    }
+    
+    // View alert settings and pass through data
+    private func viewTrainAlertSettings( cell : TrainAlertTableViewCell){
+        let alertSettings = self.storyboard?.instantiateViewController(withIdentifier: "trainAlertSettings") as! TrainAlertSettingsViewController
+        print("Location text field: \(cell.locationTextField.text!)")
+        alertSettings.city = cell.locationTextField.text!
+        alertSettings.address = cell.addressTextField.text!
+        self.navigationController?.pushViewController(alertSettings, animated: true)
+
     }
 
 }
