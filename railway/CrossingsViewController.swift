@@ -22,6 +22,11 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         self.trainAlertTableView.delegate = self
         self.trainAlertTableView.dataSource = self
         self.trainAlertTableView.tableFooterView = UIView()
+        let notificationName = Notification.Name("RefreshTrainAlertData")
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView(notification:)), name: notificationName, object: nil)
+
+
+
 
         // Do any additional setup after loading the view.
     }
@@ -86,7 +91,7 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
             trainAlertContent.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.right)
             if(removed){
-                self.refreshTableView()
+                self.trainAlertTableView.reloadData()
                 print("Row removed")
             }
             
@@ -104,7 +109,7 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
                 
                 self.trainAlertData = (dictionary.value(forKey: "page") as! NSDictionary?)!
                 self.trainAlertContent = self.trainAlertData["content"] as! [[String:AnyObject]]
-                self.refreshTableView()
+                self.trainAlertTableView.reloadData()
             }
         })
     }
@@ -113,8 +118,9 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         getUserTrainAlerts()
     }
     
-    public func refreshTableView(){
-        self.trainAlertTableView.reloadData()
+    @objc private func refreshTableView(notification: NSNotification){
+        print("Begin refreshing table data...")
+        self.getUserTrainAlerts()
     }
     
     private func removeTrainAlert(trainCrossingId : Int) -> Bool{

@@ -49,6 +49,8 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         PostRequest().jsonPost(postUrl: formatUrl, token: access_token, body: data, completionHandler: {
             (dictionary) -> Void in OperationQueue.main.addOperation{
                 print(dictionary)
+                let notificationName = Notification.Name("RefreshTrainAlertData")
+                NotificationCenter.default.post(name: notificationName, object: nil)
             }
         })
     }
