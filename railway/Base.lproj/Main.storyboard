@@ -80,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="-556" y="138.98050974512745"/>
         </scene>
-        <!--View Controller-->
+        <!--Signup View Controller-->
         <scene sceneID="AP1-qq-3Lw">
             <objects>
-                <viewController id="YzA-Sv-h9Y" sceneMemberID="viewController">
+                <viewController id="YzA-Sv-h9Y" customClass="SignupViewController" customModule="railway" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XM7-Nw-w2W"/>
                         <viewControllerLayoutGuide type="bottom" id="1yN-Lt-PQO"/>
@@ -121,6 +121,9 @@
                                 <state key="normal" title="Register">
                                     <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="registerButton:" destination="YzA-Sv-h9Y" eventType="touchUpInside" id="IKK-aA-wBM"/>
+                                </connections>
                             </button>
                             <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLs-vo-myd">
                                 <rect key="frame" x="77" y="368" width="220" height="49"/>
@@ -136,6 +139,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="C2B-UD-02y" id="2hp-mE-OVa"/>
+                        <outlet property="nameTextField" destination="AMb-l5-6X1" id="tCG-5V-meN"/>
+                        <outlet property="passwordTextField" destination="BXL-dR-6M6" id="zGc-dz-87f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yYw-W0-9uS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
