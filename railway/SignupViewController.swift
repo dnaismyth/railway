@@ -12,12 +12,14 @@ class SignupViewController: UIViewController {
     
     //MARK: Properties
     let userDefaults = Foundation.UserDefaults.standard
+    typealias FinishedStoringResponse = () -> ()
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -77,7 +79,10 @@ class SignupViewController: UIViewController {
                     print(dictionary)
                     let response : [String:AnyObject] = dictionary["data"] as! [String:AnyObject]
                     if(response["access_token"] != nil){
-                        self.storeSignupResponse(response: response as NSDictionary)
+                        self.storeSignupResponse(response: response as NSDictionary, completed :{
+                            () -> () in
+                            self.saveUserDeviceToken() // save the device token on registration
+                        })
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let viewController = storyboard.instantiateViewController(withIdentifier :"tabBarView")
                         self.present(viewController, animated: true)
@@ -90,13 +95,31 @@ class SignupViewController: UIViewController {
         
     }
     
-    private func storeSignupResponse(response : NSDictionary){
+    private func storeSignupResponse(response : NSDictionary, completed : FinishedStoringResponse){
         let access_token = "Bearer ".appending(response["access_token"] as! String)
         let refresh_token = response["refresh_token"] as! String
         let expires_in = response["expires_in"]
         userDefaults.set( access_token , forKey: "access_token")
         userDefaults.set( refresh_token, forKey: "refresh_token")
         userDefaults.set( expires_in, forKey:"expires_in")
+        completed()
+    }
+    
+    
+    // Save the user device token
+    private func saveUserDeviceToken(){
+        let device_token = userDefaults.string(forKey: "device_token")
+        let access_token = userDefaults.string(forKey: "access_token")
+        let data : [String:AnyObject] = [
+            "deviceToken" : device_token as AnyObject,
+            "platform" : Constants.PLATFORM.apple as AnyObject
+        ]
+        PutRequest().jsonPut(postUrl: Constants.API.storeDeviceToken, token: access_token!, body: data, completionHandler: { (dictionary) -> Void in
+            OperationQueue.main.addOperation {
+                print(dictionary)
+            }
+        })
+        
     }
     
 

@@ -13,11 +13,13 @@
 		E54E479D1E59206400BCDC28 /* DeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54E479C1E59206400BCDC28 /* DeleteRequest.swift */; };
 		E54E47A11E592E6800BCDC28 /* RemoveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54E47A01E592E6800BCDC28 /* RemoveButton.swift */; };
 		E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E578CD721E3E952A00915825 /* InputLocationView.swift */; };
+		E590A58D1E61ED5F008BE58F /* PutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590A58C1E61ED5F008BE58F /* PutRequest.swift */; };
 		E5B40ECA1E5546000030F8ED /* CrossingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B40EC91E5546000030F8ED /* CrossingsViewController.swift */; };
 		E5B40ECC1E5895C00030F8ED /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B40ECB1E5895C00030F8ED /* TabBarController.swift */; };
 		E5E3F7951E5A5E9D00CB7C5F /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E3F7941E5A5E9D00CB7C5F /* CustomPointAnnotation.swift */; };
 		E5E3F7971E5D338100CB7C5F /* TrainAlertSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E3F7961E5D338100CB7C5F /* TrainAlertSettingsViewController.swift */; };
 		E5E3F7991E5E7E2000CB7C5F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E3F7981E5E7E2000CB7C5F /* SignupViewController.swift */; };
+		E5E546D21E61DCB80007C79A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E546D11E61DCB80007C79A /* UserNotifications.framework */; };
 		E5F218261E4FE97200BD6AB0 /* PostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F218251E4FE97200BD6AB0 /* PostRequest.swift */; };
 		E5F2182B1E51413F00BD6AB0 /* GetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2182A1E51413F00BD6AB0 /* GetRequest.swift */; };
 		E5F2182D1E5141D400BD6AB0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2182C1E5141D400BD6AB0 /* Constants.swift */; };
@@ -52,11 +54,13 @@
 		E54E479C1E59206400BCDC28 /* DeleteRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRequest.swift; sourceTree = "<group>"; };
 		E54E47A01E592E6800BCDC28 /* RemoveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveButton.swift; sourceTree = "<group>"; };
 		E578CD721E3E952A00915825 /* InputLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputLocationView.swift; sourceTree = "<group>"; };
+		E590A58C1E61ED5F008BE58F /* PutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PutRequest.swift; sourceTree = "<group>"; };
 		E5B40EC91E5546000030F8ED /* CrossingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossingsViewController.swift; sourceTree = "<group>"; };
 		E5B40ECB1E5895C00030F8ED /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E5E3F7941E5A5E9D00CB7C5F /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		E5E3F7961E5D338100CB7C5F /* TrainAlertSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainAlertSettingsViewController.swift; sourceTree = "<group>"; };
 		E5E3F7981E5E7E2000CB7C5F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		E5E546D11E61DCB80007C79A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		E5F218251E4FE97200BD6AB0 /* PostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRequest.swift; sourceTree = "<group>"; };
 		E5F2182A1E51413F00BD6AB0 /* GetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRequest.swift; sourceTree = "<group>"; };
 		E5F2182C1E5141D400BD6AB0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5E546D21E61DCB80007C79A /* UserNotifications.framework in Frameworks */,
 				E5F5C3911E3CE35E005EAE21 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,6 +115,7 @@
 				E5F218251E4FE97200BD6AB0 /* PostRequest.swift */,
 				E5F2182A1E51413F00BD6AB0 /* GetRequest.swift */,
 				E54E479C1E59206400BCDC28 /* DeleteRequest.swift */,
+				E590A58C1E61ED5F008BE58F /* PutRequest.swift */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
@@ -167,6 +173,7 @@
 		E5F5C38F1E3CE35E005EAE21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5E546D11E61DCB80007C79A /* UserNotifications.framework */,
 				E5F5C3901E3CE35E005EAE21 /* CoreLocation.framework */,
 			);
 			name = Frameworks;
@@ -236,11 +243,14 @@
 				TargetAttributes = {
 					E5F5C36B1E3CE33D005EAE21 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = P9758Y5MP9;
+						DevelopmentTeam = L7J3P5UEVQ;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -301,6 +311,7 @@
 				E50DC8BE1E520F7600920A89 /* KeychainWrapper.m in Sources */,
 				E5E3F7951E5A5E9D00CB7C5F /* CustomPointAnnotation.swift in Sources */,
 				E5F2182B1E51413F00BD6AB0 /* GetRequest.swift in Sources */,
+				E590A58D1E61ED5F008BE58F /* PutRequest.swift in Sources */,
 				E54E479D1E59206400BCDC28 /* DeleteRequest.swift in Sources */,
 				E5B40ECC1E5895C00030F8ED /* TabBarController.swift in Sources */,
 				E5F5C3961E3D8924005EAE21 /* SettingsController.swift in Sources */,
@@ -377,6 +388,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -399,6 +411,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "980053c3-bf25-4380-82c7-0c79df0414ed";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -441,6 +454,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "980053c3-bf25-4380-82c7-0c79df0414ed";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -453,11 +467,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = railway/railway.entitlements;
-				DEVELOPMENT_TEAM = P9758Y5MP9;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = L7J3P5UEVQ;
 				INFOPLIST_FILE = railway/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flow.railway;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flow.traincrossing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "railway/railway-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -470,11 +487,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = railway/railway.entitlements;
-				DEVELOPMENT_TEAM = P9758Y5MP9;
+				DEVELOPMENT_TEAM = L7J3P5UEVQ;
 				INFOPLIST_FILE = railway/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flow.railway;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flow.traincrossing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "railway/railway-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
