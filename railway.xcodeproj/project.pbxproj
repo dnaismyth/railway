@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A9FB6A0E0FE1F3D0B104F28 /* libPods-railway.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C46D8C7B593E1720FA27CBC3 /* libPods-railway.a */; };
 		E50DC8BE1E520F7600920A89 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E50DC8BD1E520F7600920A89 /* KeychainWrapper.m */; };
 		E52E6A851E3EA7B5000B485F /* InputLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52E6A841E3EA7B5000B485F /* InputLocationView.xib */; };
 		E54E479B1E58E3D100BCDC28 /* TrainAlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54E479A1E58E3D100BCDC28 /* TrainAlertTableViewCell.swift */; };
 		E54E479D1E59206400BCDC28 /* DeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54E479C1E59206400BCDC28 /* DeleteRequest.swift */; };
 		E54E47A11E592E6800BCDC28 /* RemoveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54E47A01E592E6800BCDC28 /* RemoveButton.swift */; };
 		E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E578CD721E3E952A00915825 /* InputLocationView.swift */; };
+		E57A0A9D1E628A32005D8A1F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E57A0A9C1E628A32005D8A1F /* .gitignore */; };
 		E590A58D1E61ED5F008BE58F /* PutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590A58C1E61ED5F008BE58F /* PutRequest.swift */; };
+		E590A58F1E624384008BE58F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E590A58E1E624384008BE58F /* GoogleService-Info.plist */; };
+		E590A5901E624384008BE58F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E590A58E1E624384008BE58F /* GoogleService-Info.plist */; };
 		E5B40ECA1E5546000030F8ED /* CrossingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B40EC91E5546000030F8ED /* CrossingsViewController.swift */; };
 		E5B40ECC1E5895C00030F8ED /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B40ECB1E5895C00030F8ED /* TabBarController.swift */; };
 		E5E3F7951E5A5E9D00CB7C5F /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E3F7941E5A5E9D00CB7C5F /* CustomPointAnnotation.swift */; };
@@ -45,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8CEE7DA8C5D0C43606B72B1A /* Pods-railway.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-railway.release.xcconfig"; path = "Pods/Target Support Files/Pods-railway/Pods-railway.release.xcconfig"; sourceTree = "<group>"; };
+		97F1CB4644F485ED9A18DF52 /* Pods-railway.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-railway.debug.xcconfig"; path = "Pods/Target Support Files/Pods-railway/Pods-railway.debug.xcconfig"; sourceTree = "<group>"; };
+		C46D8C7B593E1720FA27CBC3 /* libPods-railway.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-railway.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E50DC8BB1E520F7500920A89 /* railway-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "railway-Bridging-Header.h"; sourceTree = "<group>"; };
 		E50DC8BC1E520F7600920A89 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeychainWrapper.h; path = ../../../Downloads/KeychainWrapper/KeychainWrapper.h; sourceTree = "<group>"; };
 		E50DC8BD1E520F7600920A89 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeychainWrapper.m; path = ../../../Downloads/KeychainWrapper/KeychainWrapper.m; sourceTree = "<group>"; };
@@ -54,7 +61,9 @@
 		E54E479C1E59206400BCDC28 /* DeleteRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRequest.swift; sourceTree = "<group>"; };
 		E54E47A01E592E6800BCDC28 /* RemoveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveButton.swift; sourceTree = "<group>"; };
 		E578CD721E3E952A00915825 /* InputLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputLocationView.swift; sourceTree = "<group>"; };
+		E57A0A9C1E628A32005D8A1F /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E590A58C1E61ED5F008BE58F /* PutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PutRequest.swift; sourceTree = "<group>"; };
+		E590A58E1E624384008BE58F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5B40EC91E5546000030F8ED /* CrossingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossingsViewController.swift; sourceTree = "<group>"; };
 		E5B40ECB1E5895C00030F8ED /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E5E3F7941E5A5E9D00CB7C5F /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
@@ -86,6 +95,7 @@
 			files = (
 				E5E546D21E61DCB80007C79A /* UserNotifications.framework in Frameworks */,
 				E5F5C3911E3CE35E005EAE21 /* CoreLocation.framework in Frameworks */,
+				2A9FB6A0E0FE1F3D0B104F28 /* libPods-railway.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +119,14 @@
 			name = Custom;
 			sourceTree = "<group>";
 		};
+		E57A0A9B1E628A0E005D8A1F /* Git */ = {
+			isa = PBXGroup;
+			children = (
+				E57A0A9C1E628A32005D8A1F /* .gitignore */,
+			);
+			name = Git;
+			sourceTree = "<group>";
+		};
 		E5F218241E4FE95B00BD6AB0 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,10 +141,12 @@
 		E5F5C3631E3CE33D005EAE21 = {
 			isa = PBXGroup;
 			children = (
+				E57A0A9B1E628A0E005D8A1F /* Git */,
 				E5F5C36E1E3CE33D005EAE21 /* railway */,
 				E5F5C3831E3CE33E005EAE21 /* railwayTests */,
 				E5F5C36D1E3CE33D005EAE21 /* Products */,
 				E5F5C38F1E3CE35E005EAE21 /* Frameworks */,
+				F885EF090C67BC0FF129D480 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -155,6 +175,7 @@
 				E52E6A841E3EA7B5000B485F /* InputLocationView.xib */,
 				E5F5C3761E3CE33D005EAE21 /* Assets.xcassets */,
 				E5F5C3781E3CE33D005EAE21 /* LaunchScreen.storyboard */,
+				E590A58E1E624384008BE58F /* GoogleService-Info.plist */,
 				E5F5C37B1E3CE33D005EAE21 /* Info.plist */,
 				E50DC8BB1E520F7500920A89 /* railway-Bridging-Header.h */,
 			);
@@ -175,6 +196,7 @@
 			children = (
 				E5E546D11E61DCB80007C79A /* UserNotifications.framework */,
 				E5F5C3901E3CE35E005EAE21 /* CoreLocation.framework */,
+				C46D8C7B593E1720FA27CBC3 /* libPods-railway.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -193,6 +215,15 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		F885EF090C67BC0FF129D480 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				97F1CB4644F485ED9A18DF52 /* Pods-railway.debug.xcconfig */,
+				8CEE7DA8C5D0C43606B72B1A /* Pods-railway.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -200,9 +231,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5F5C3891E3CE33E005EAE21 /* Build configuration list for PBXNativeTarget "railway" */;
 			buildPhases = (
+				269EAA483950E85D57FC7754 /* [CP] Check Pods Manifest.lock */,
 				E5F5C3681E3CE33D005EAE21 /* Sources */,
 				E5F5C3691E3CE33D005EAE21 /* Frameworks */,
 				E5F5C36A1E3CE33D005EAE21 /* Resources */,
+				FD9C447D43CE8DB38DB02E63 /* [CP] Embed Pods Frameworks */,
+				12DDF750694F9B13C164EA37 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -289,7 +323,9 @@
 			files = (
 				E5F5C37A1E3CE33D005EAE21 /* LaunchScreen.storyboard in Resources */,
 				E5F5C3771E3CE33D005EAE21 /* Assets.xcassets in Resources */,
+				E590A58F1E624384008BE58F /* GoogleService-Info.plist in Resources */,
 				E52E6A851E3EA7B5000B485F /* InputLocationView.xib in Resources */,
+				E57A0A9D1E628A32005D8A1F /* .gitignore in Resources */,
 				E5F5C3751E3CE33D005EAE21 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,10 +334,59 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E590A5901E624384008BE58F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12DDF750694F9B13C164EA37 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-railway/Pods-railway-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		269EAA483950E85D57FC7754 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FD9C447D43CE8DB38DB02E63 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-railway/Pods-railway-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E5F5C3681E3CE33D005EAE21 /* Sources */ = {
@@ -463,6 +548,7 @@
 		};
 		E5F5C38A1E3CE33E005EAE21 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97F1CB4644F485ED9A18DF52 /* Pods-railway.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -483,6 +569,7 @@
 		};
 		E5F5C38B1E3CE33E005EAE21 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CEE7DA8C5D0C43606B72B1A /* Pods-railway.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
