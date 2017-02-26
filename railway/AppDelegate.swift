@@ -86,11 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("APNs registration failed: \(error)")
     }
     
-//    // Push notification received
-//    func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
-//        // Print notification payload data
-//        print("Push notification received: \(data)")
-//    }
     
     // Push notification received from fcm
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> ()) {
@@ -105,6 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func tokenRefreshNotification(notification: NSNotification) {
         let refreshedToken = FIRInstanceID.instanceID().token()!
         print("InstanceID token: \(refreshedToken)")
+        userDefaults.set( refreshedToken , forKey: "fcm_token")
         // Connect to FCM since connection may have failed when attempted before having a token.
         connectToFcm()
     }

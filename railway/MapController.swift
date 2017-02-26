@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 import CoreLocation
+import FirebaseMessaging
+import Firebase
 
 class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
@@ -49,7 +51,10 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         PostRequest().jsonPost(postUrl: formatUrl, token: access_token, body: data, completionHandler: {
             (dictionary) -> Void in OperationQueue.main.addOperation{
                 print(dictionary)
-                let notificationName = Notification.Name("RefreshTrainAlertData")
+                let dataResponse : [String : AnyObject] = dictionary["data"] as! [String : AnyObject]
+                let FCMTopic : String = dataResponse["notificationTopic"] as! String
+                let notificationName = Notification.Name("RefreshTrainAlertData")   // refresh table view
+                FIRMessaging.messaging().subscribe(toTopic: "/topics/".appending(FCMTopic))
                 NotificationCenter.default.post(name: notificationName, object: nil)
             }
         })

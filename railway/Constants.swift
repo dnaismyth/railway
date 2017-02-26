@@ -23,7 +23,7 @@ struct Constants {
         static let removeTrainAlert = "/api/traincrossings/id/trainalerts"
         static let addTrainAlert = "/api/traincrossings/id/trainalerts"
         static let nearbyTrainCrossings = "/api/nearby/traincrossings"
-        static let storeDeviceToken = "/api/users/devicetoken"
+        static let storeDeviceToken = "/api/users/resources/tokens"
         
     }
     

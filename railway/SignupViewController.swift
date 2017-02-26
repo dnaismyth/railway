@@ -81,7 +81,7 @@ class SignupViewController: UIViewController {
                     if(response["access_token"] != nil){
                         self.storeSignupResponse(response: response as NSDictionary, completed :{
                             () -> () in
-                            self.saveUserDeviceToken() // save the device token on registration
+                            self.saveUserResourceTokens() // save the device token on registration
                         })
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let viewController = storyboard.instantiateViewController(withIdentifier :"tabBarView")
@@ -106,12 +106,14 @@ class SignupViewController: UIViewController {
     }
     
     
-    // Save the user device token
-    private func saveUserDeviceToken(){
+    // Save the user device token and FCM refresh token
+    private func saveUserResourceTokens(){
         let device_token = userDefaults.string(forKey: "device_token")
+        let fcm_token = userDefaults.string(forKey: "fcm_token")
         let access_token = userDefaults.string(forKey: "access_token")
         let data : [String:AnyObject] = [
             "deviceToken" : device_token as AnyObject,
+            "fcmToken" : fcm_token as AnyObject,
             "platform" : Constants.PLATFORM.apple as AnyObject
         ]
         PutRequest().jsonPut(postUrl: Constants.API.storeDeviceToken, token: access_token!, body: data, completionHandler: { (dictionary) -> Void in
