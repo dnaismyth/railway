@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+import Firebase
+import FirebaseMessaging
+        
 class CrossingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: Properties
@@ -135,9 +137,12 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         let url : String = Constants.API.removeTrainAlert.replacingOccurrences(of: "id", with: String(trainCrossingId))
         DeleteRequest().HTTPDelete(getUrl: url, token: access_token, completionHandler: {
             (dictionary) -> Void in  OperationQueue.main.addOperation{
-                if((dictionary["operationType"]! as AnyObject).isEqual("DELETE")){
-                    print("Removing alert")
-                    removed = true
+                let dataResponse : [String : AnyObject] = dictionary["data"] as! [String : AnyObject]
+                let FCMTopic : String? = dataResponse["notificationTopic"] as? String
+                if(FCMTopic != nil){
+                    print("Topic is: \(FCMTopic)")
+                    FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/".appending(FCMTopic!))
+                    removed = true;
                 }
             }
         })
