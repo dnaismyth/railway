@@ -64,7 +64,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = locations.last!
         
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1)
         let latitude: Double? = location!.coordinate.latitude
         let longitude : Double? = location!.coordinate.longitude
         let myLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
@@ -87,11 +87,9 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         if isEnabled || !isEnabled {
             switch(CLLocationManager.authorizationStatus()) {
             case .notDetermined, .restricted, .denied:
-                //InputLocationView().setupView()
                 buildLocationFromUserInput()
                 print("No access")
             case .authorizedAlways, .authorizedWhenInUse:
-                //InputLocationView().setupView()
                 buildLocationFromUserInput()
                 print("Access")
             }

@@ -10,18 +10,28 @@ import UIKit
 import UserNotifications
 import Firebase
 import FirebaseMessaging
+import AVFoundation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, AVSpeechSynthesizerDelegate {
 
     let userDefaults = Foundation.UserDefaults.standard
     var window: UIWindow?
+    let synth = AVSpeechSynthesizer()
+    var player: AVAudioPlayer!
+    var audioSession = AVAudioSession.sharedInstance()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayback)
+            try audioSession.setActive(true)
+        } catch {
+            print("Error setting audio session category")
+            print(error)
+        }
         FIRApp.configure()  // fcm notification configure
-
         // Add observer for InstanceID token refresh callback.
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(tokenRefreshNotification(notification:)),
@@ -50,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        
+        self.playSound()
         FIRMessaging.messaging().disconnect()   // disconnect from FCM
         print("Disconnecting from firebase cloud messaging.")
     }
@@ -90,6 +100,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Push notification received from fcm
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> ()) {
         
+        if(application.applicationState == UIApplicationState.background || application.applicationState == UIApplicationState.inactive) {
+            self.playSound()
+            synth.delegate = self
+            let message_repeat : String = ".  I repeat, active train crossing at ".appending(userInfo["body"] as! String)
+            let message : String = "Oh dear, there appears to be an active train crossing at ".appending(userInfo["body"] as! String).appending(message_repeat)
+            let utter = AVSpeechUtterance(string: message)
+            let voice = AVSpeechSynthesisVoice(language: "en-gb")
+            utter.volume = 1.0
+            utter.voice = voice
+            synth.speak(utter)
+            print("Is speaking? : \(synth.isSpeaking)")
+        }
+        else {
+            print("I'm in the foreground.")
+        }
+        
         print("Message ID \(userInfo["gcm.message_id"]!)")
         print(userInfo)
     }
@@ -113,6 +139,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 print("Connected to FCM.")
             }
+        }
+    }
+    
+    // Set Audio Session as active when receiving notification
+    private func playSound(){
+        setAudioSessionAsActive()
+        do {
+            player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "RobotBlip", ofType:"mp3")!))
+        } catch {
+            print("Error fetching resource sound")
+            print(error)
+        }
+        player.play()
+    }
+    
+    private func setAudioSessionAsActive(){
+        do {
+            try audioSession.setActive(true)
+        } catch {
+            print("Error setting active audio session")
+            print(error)
         }
     }
    
