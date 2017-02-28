@@ -25,11 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVSpeechSynthesizerDelega
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         do {
-            try audioSession.setCategory(AVAudioSessionCategoryPlayback)
+            try audioSession.setCategory(AVAudioSessionCategoryPlayback, with: AVAudioSessionCategoryOptions.duckOthers)
+            try audioSession.setCategory(AVAudioSessionCategoryPlayback, with: AVAudioSessionCategoryOptions.mixWithOthers)
             try audioSession.setActive(true)
         } catch {
             print("Error setting audio session category")
-            print(error)
+            print(error.localizedDescription)
         }
         FIRApp.configure()  // fcm notification configure
         // Add observer for InstanceID token refresh callback.
@@ -159,7 +160,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVSpeechSynthesizerDelega
             try audioSession.setActive(true)
         } catch {
             print("Error setting active audio session")
-            print(error)
+            print(error.localizedDescription)
         }
     }
    

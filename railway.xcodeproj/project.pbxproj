@@ -20,6 +20,7 @@
 		E590A5901E624384008BE58F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E590A58E1E624384008BE58F /* GoogleService-Info.plist */; };
 		E5B40ECA1E5546000030F8ED /* CrossingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B40EC91E5546000030F8ED /* CrossingsViewController.swift */; };
 		E5B40ECC1E5895C00030F8ED /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B40ECB1E5895C00030F8ED /* TabBarController.swift */; };
+		E5B418F11E64BBB300D9D46A /* RobotBlip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E5B418F01E64BBB300D9D46A /* RobotBlip.mp3 */; };
 		E5E3F7951E5A5E9D00CB7C5F /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E3F7941E5A5E9D00CB7C5F /* CustomPointAnnotation.swift */; };
 		E5E3F7971E5D338100CB7C5F /* TrainAlertSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E3F7961E5D338100CB7C5F /* TrainAlertSettingsViewController.swift */; };
 		E5E3F7991E5E7E2000CB7C5F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E3F7981E5E7E2000CB7C5F /* SignupViewController.swift */; };
@@ -66,6 +67,7 @@
 		E590A58E1E624384008BE58F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5B40EC91E5546000030F8ED /* CrossingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossingsViewController.swift; sourceTree = "<group>"; };
 		E5B40ECB1E5895C00030F8ED /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E5B418F01E64BBB300D9D46A /* RobotBlip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = RobotBlip.mp3; path = ../../Downloads/RobotBlip.mp3; sourceTree = "<group>"; };
 		E5E3F7941E5A5E9D00CB7C5F /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		E5E3F7961E5D338100CB7C5F /* TrainAlertSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainAlertSettingsViewController.swift; sourceTree = "<group>"; };
 		E5E3F7981E5E7E2000CB7C5F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,14 @@
 			name = Git;
 			sourceTree = "<group>";
 		};
+		E5B418EF1E64BBA900D9D46A /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				E5B418F01E64BBB300D9D46A /* RobotBlip.mp3 */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		E5F218241E4FE95B00BD6AB0 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 		E5F5C3631E3CE33D005EAE21 = {
 			isa = PBXGroup;
 			children = (
+				E5B418EF1E64BBA900D9D46A /* Sounds */,
 				E57A0A9B1E628A0E005D8A1F /* Git */,
 				E5F5C36E1E3CE33D005EAE21 /* railway */,
 				E5F5C3831E3CE33E005EAE21 /* railwayTests */,
@@ -281,6 +292,9 @@
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
@@ -323,6 +337,7 @@
 			files = (
 				E5F5C37A1E3CE33D005EAE21 /* LaunchScreen.storyboard in Resources */,
 				E5F5C3771E3CE33D005EAE21 /* Assets.xcassets in Resources */,
+				E5B418F11E64BBB300D9D46A /* RobotBlip.mp3 in Resources */,
 				E590A58F1E624384008BE58F /* GoogleService-Info.plist in Resources */,
 				E52E6A851E3EA7B5000B485F /* InputLocationView.xib in Resources */,
 				E57A0A9D1E628A32005D8A1F /* .gitignore in Resources */,
