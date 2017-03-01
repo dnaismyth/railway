@@ -12,6 +12,7 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
 
         // Do any additional setup after loading the view.
     }
@@ -21,6 +22,18 @@ class TabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override open var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
+    }
+
 
     /*
     // MARK: - Navigation

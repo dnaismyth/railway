@@ -16,9 +16,29 @@ class ViewController: UIViewController{
     //MARK: Properties
     @IBOutlet weak var emailLogin: UITextField!
     @IBOutlet weak var passwordLogin: UITextField!
+    @IBOutlet weak var LoginButton: UIButton!
+    @IBOutlet weak var LogoImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailLogin.addRadius()
+        passwordLogin.addRadius()
+        LoginButton.addRadius()
+        LoginButton.addShadowView()
+        LogoImage.addShadowView()
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override open var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
     }
 
     override func didReceiveMemoryWarning() {

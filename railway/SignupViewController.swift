@@ -17,12 +17,29 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var RegisterButton: UIButton!
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        nameTextField.addRadius()
+        emailTextField.addRadius()
+        passwordTextField.addRadius()
+        RegisterButton.addRadius()
+        RegisterButton.addShadowView()
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override open var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
     }
 
     override func didReceiveMemoryWarning() {

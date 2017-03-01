@@ -30,10 +30,24 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         super.viewDidLoad()
         print("View is loaded")
         self.mapView.delegate = self
+        self.mapView.isRotateEnabled = false
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override open var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
     }
 
     override func didReceiveMemoryWarning() {

@@ -21,6 +21,9 @@
 		E5B40ECA1E5546000030F8ED /* CrossingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B40EC91E5546000030F8ED /* CrossingsViewController.swift */; };
 		E5B40ECC1E5895C00030F8ED /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B40ECB1E5895C00030F8ED /* TabBarController.swift */; };
 		E5B418F11E64BBB300D9D46A /* RobotBlip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E5B418F01E64BBB300D9D46A /* RobotBlip.mp3 */; };
+		E5B418F41E662EA900D9D46A /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B418F31E662EA900D9D46A /* ViewControllerExtension.swift */; };
+		E5B418F61E66443D00D9D46A /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B418F51E66443D00D9D46A /* UIViewExtension.swift */; };
+		E5B418F81E665AED00D9D46A /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B418F71E665AED00D9D46A /* GradientView.swift */; };
 		E5E3F7951E5A5E9D00CB7C5F /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E3F7941E5A5E9D00CB7C5F /* CustomPointAnnotation.swift */; };
 		E5E3F7971E5D338100CB7C5F /* TrainAlertSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E3F7961E5D338100CB7C5F /* TrainAlertSettingsViewController.swift */; };
 		E5E3F7991E5E7E2000CB7C5F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E3F7981E5E7E2000CB7C5F /* SignupViewController.swift */; };
@@ -68,6 +71,9 @@
 		E5B40EC91E5546000030F8ED /* CrossingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossingsViewController.swift; sourceTree = "<group>"; };
 		E5B40ECB1E5895C00030F8ED /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E5B418F01E64BBB300D9D46A /* RobotBlip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = RobotBlip.mp3; path = ../../Downloads/RobotBlip.mp3; sourceTree = "<group>"; };
+		E5B418F31E662EA900D9D46A /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		E5B418F51E66443D00D9D46A /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		E5B418F71E665AED00D9D46A /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		E5E3F7941E5A5E9D00CB7C5F /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		E5E3F7961E5D338100CB7C5F /* TrainAlertSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainAlertSettingsViewController.swift; sourceTree = "<group>"; };
 		E5E3F7981E5E7E2000CB7C5F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +123,7 @@
 				E54E479A1E58E3D100BCDC28 /* TrainAlertTableViewCell.swift */,
 				E54E47A01E592E6800BCDC28 /* RemoveButton.swift */,
 				E5E3F7941E5A5E9D00CB7C5F /* CustomPointAnnotation.swift */,
+				E5B418F71E665AED00D9D46A /* GradientView.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -135,6 +142,15 @@
 				E5B418F01E64BBB300D9D46A /* RobotBlip.mp3 */,
 			);
 			name = Sounds;
+			sourceTree = "<group>";
+		};
+		E5B418F21E662E8F00D9D46A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E5B418F31E662EA900D9D46A /* ViewControllerExtension.swift */,
+				E5B418F51E66443D00D9D46A /* UIViewExtension.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 		E5F218241E4FE95B00BD6AB0 /* Requests */ = {
@@ -215,6 +231,7 @@
 		E5F5C3941E3D8910005EAE21 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E5B418F21E662E8F00D9D46A /* Extension */,
 				E5F5C3711E3CE33D005EAE21 /* ViewController.swift */,
 				E5F5C3921E3D8562005EAE21 /* MapController.swift */,
 				E5F5C3951E3D8924005EAE21 /* SettingsController.swift */,
@@ -418,9 +435,12 @@
 				E5F218261E4FE97200BD6AB0 /* PostRequest.swift in Sources */,
 				E5E3F7971E5D338100CB7C5F /* TrainAlertSettingsViewController.swift in Sources */,
 				E54E479B1E58E3D100BCDC28 /* TrainAlertTableViewCell.swift in Sources */,
+				E5B418F61E66443D00D9D46A /* UIViewExtension.swift in Sources */,
+				E5B418F81E665AED00D9D46A /* GradientView.swift in Sources */,
 				E5F5C3721E3CE33D005EAE21 /* ViewController.swift in Sources */,
 				E5F5C3931E3D8562005EAE21 /* MapController.swift in Sources */,
 				E5E3F7991E5E7E2000CB7C5F /* SignupViewController.swift in Sources */,
+				E5B418F41E662EA900D9D46A /* ViewControllerExtension.swift in Sources */,
 				E54E47A11E592E6800BCDC28 /* RemoveButton.swift in Sources */,
 				E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */,
 				E5F5C3701E3CE33D005EAE21 /* AppDelegate.swift in Sources */,

@@ -26,12 +26,21 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         self.trainAlertTableView.tableFooterView = UIView()
         let notificationName = Notification.Name("RefreshTrainAlertData")
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView(notification:)), name: notificationName, object: nil)
-
-
-
-
-        // Do any additional setup after loading the view.
+        self.hideKeyboardWhenTappedAround()
     }
+    
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override open var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
