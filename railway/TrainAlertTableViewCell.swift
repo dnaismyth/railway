@@ -14,6 +14,7 @@ class TrainAlertTableViewCell: UITableViewCell {
     @IBOutlet weak var locationTextField: UILabel!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var railwayImage: UIImageView!
+    @IBOutlet weak var notificationCount: UILabel!
     
     let userDefaults = Foundation.UserDefaults.standard
 

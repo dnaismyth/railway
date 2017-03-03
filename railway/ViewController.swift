@@ -7,17 +7,19 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 
 class ViewController: UIViewController{
     
     let userDefaults = Foundation.UserDefaults.standard
-    
+
     //MARK: Properties
     @IBOutlet weak var emailLogin: UITextField!
     @IBOutlet weak var passwordLogin: UITextField!
     @IBOutlet weak var LoginButton: UIButton!
     @IBOutlet weak var LogoImage: UIImageView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,10 @@ class ViewController: UIViewController{
         LoginButton.addShadowView()
         LogoImage.addShadowView()
         self.hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("View appearing")
     }
     
     override open var shouldAutorotate: Bool {
@@ -78,6 +84,7 @@ class ViewController: UIViewController{
             OperationQueue.main.addOperation{
                 if(dictionary["access_token"] != nil){
                     self.storeLoginResponse(response: dictionary)
+                    FirebaseAuthentication().getFirebaseToken(token: "Bearer ".appending(dictionary["access_token"] as! String))
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier :"tabBarView")
                     self.present(viewController, animated: true)
@@ -96,6 +103,7 @@ class ViewController: UIViewController{
         userDefaults.set( refresh_token, forKey: "refresh_token")
         userDefaults.set( expires_in, forKey:"expires_in")
     }
+    
 
 }
 

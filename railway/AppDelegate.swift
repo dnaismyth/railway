@@ -9,6 +9,7 @@
 import UIKit
 import UserNotifications
 import Firebase
+import FirebaseDatabase
 import FirebaseMessaging
 import AVFoundation
 
@@ -33,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVSpeechSynthesizerDelega
             print(error.localizedDescription)
         }
         FIRApp.configure()  // fcm notification configure
+        
         // Add observer for InstanceID token refresh callback.
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(tokenRefreshNotification(notification:)),
@@ -72,7 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVSpeechSynthesizerDelega
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
         self.connectToFcm() // when the application becomes active, we want to connect to firebase
     }
 
@@ -104,8 +105,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVSpeechSynthesizerDelega
         if(application.applicationState == UIApplicationState.background || application.applicationState == UIApplicationState.inactive) {
             self.playSound()
             synth.delegate = self
-            let message_repeat : String = ".  I repeat, active train crossing at ".appending(userInfo["body"] as! String)
-            let message : String = "Oh dear, there appears to be an active train crossing at ".appending(userInfo["body"] as! String).appending(message_repeat)
+            //let message_repeat : String = ".  I repeat, active train crossing at ".appending(userInfo["body"] as! String)
+            let message : String = "There appears to be an active train crossing at ".appending(userInfo["body"] as! String)
             let utter = AVSpeechUtterance(string: message)
             let voice = AVSpeechSynthesisVoice(language: "en-gb")
             utter.volume = 1.0

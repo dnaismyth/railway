@@ -12,21 +12,35 @@ import FirebaseMessaging
         
 class CrossingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    typealias FinishedSettingData = () -> ()
+
     //MARK: Properties
     @IBOutlet weak var trainAlertTableView: UITableView!
+    
     let userDefaults = Foundation.UserDefaults.standard
     var trainAlertData : NSDictionary = [:]     // data from api call to retrieve all user train alerts
     var trainAlertContent : [[String:AnyObject]] = []  // this will store the content of each train alert
+    var firebaseData: [TrainCrossingData]! = []
+    let rootRef = FIRDatabase.database().reference()    // reference to the firebase database
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpTrainAlerts()
-        self.trainAlertTableView.delegate = self
-        self.trainAlertTableView.dataSource = self
-        self.trainAlertTableView.tableFooterView = UIView()
-        let notificationName = Notification.Name("RefreshTrainAlertData")
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableView(notification:)), name: notificationName, object: nil)
-        self.hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // Find user train alerts
+        getUserTrainAlerts(completed :{
+            () -> () in
+                // Initialize data from realtime firebase database
+                self.initializeFirebaseData()
+                self.trainAlertTableView.delegate = self
+                self.trainAlertTableView.dataSource = self
+                self.trainAlertTableView.tableFooterView = UIView()
+                let notificationName = Notification.Name("RefreshTrainAlertData")
+                NotificationCenter.default.addObserver(self, selector: #selector(self.refreshTableView(notification:)), name: notificationName, object: nil)
+                self.hideKeyboardWhenTappedAround()
+
+        })
     }
     
     override open var shouldAutorotate: Bool {
@@ -40,8 +54,6 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
     override open var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return .portrait
     }
-
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -56,13 +68,20 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("Beginning to fill table view")
         let cell = tableView.dequeueReusableCell(withIdentifier: "trainAlertCell") as! TrainAlertTableViewCell
+        print("Size of firebase data is \(firebaseData.count)")
         var alertInfo : [String : AnyObject] = trainAlertContent[indexPath.row]
         var trainCrossing : [String : AnyObject] = alertInfo["trainCrossing"] as! [String : AnyObject]
         var trainCrossingLocation : [String : AnyObject] = trainCrossing["location"] as! [String : AnyObject]
         let province : String = trainCrossingLocation ["province"] as! String
         let city : String = trainCrossingLocation ["city"] as! String
         let address : String = trainCrossingLocation["address"] as! String
+        print("Index path row is : \(indexPath.row)")
+        if(firebaseData.count > 0){
+            let data : TrainCrossingData = firebaseData[indexPath.row]
+            cell.notificationCount.text = String(data.getNotificationCount())
+        }
         cell.locationTextField.text = city.appending(", ").appending(province)
         cell.addressTextField.text = address
         cell.tag = trainCrossing["id"] as! Int
@@ -119,7 +138,7 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         viewTrainAlertSettings(cell: cell)
     }
 
-    private func getUserTrainAlerts(){
+    private func getUserTrainAlerts(completed : @escaping FinishedSettingData){
         let access_token :String? = userDefaults.string(forKey: "access_token")
         GetRequest().HTTPGet(getUrl: Constants.API.userTrainAlerts.appending("?page=0&size=50"), token: access_token!, completionHandler: { (dictionary) -> Void in
             OperationQueue.main.addOperation{
@@ -127,17 +146,17 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
                 self.trainAlertData = (dictionary.value(forKey: "page") as! NSDictionary?)!
                 self.trainAlertContent = self.trainAlertData["content"] as! [[String:AnyObject]]
                 self.trainAlertTableView.reloadData()
+                print("Content size: \(self.trainAlertContent.count)")
+                completed()
             }
         })
     }
     
-    public func setUpTrainAlerts(){
-        getUserTrainAlerts()
-    }
-    
     @objc private func refreshTableView(notification: NSNotification){
         print("Begin refreshing table data...")
-        self.getUserTrainAlerts()
+        self.getUserTrainAlerts(completed: {() -> () in
+            print("Finished refreshing")
+        })
     }
     
     private func removeTrainAlert(trainCrossingId : Int) -> Bool{
@@ -165,6 +184,34 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         alertSettings.city = cell.locationTextField.text!
         alertSettings.address = cell.addressTextField.text!
         self.navigationController?.pushViewController(alertSettings, animated: true)
+    }
+    
+    // Call to initialize data from firebase database, this will be used to keep track of
+    // Active train crossings and notification counts
+    private func initializeFirebaseData(){
+        print("Beginning to initialize firebase data")
+        for dictionary in trainAlertContent {
+            var trainCrossing : [String : AnyObject] = dictionary["trainCrossing"] as! [String : AnyObject]
+            let id : Int = trainCrossing["id"] as! Int
+            print("Id is: \(id)")
+            loadTrainCrossingData(trainCrossingId: id)
+        }
+    }
+    
+    // Load train crossing data from Firebase Database
+    private func loadTrainCrossingData(trainCrossingId : Int){
+        self.firebaseData.removeAll()
+        let key : String = "traincrossing_".appending(String(trainCrossingId))
+        let trainCrossingData = rootRef.child("traincrossing")
+        let childNode = trainCrossingData.child(key)    // find a child node by the train crossing id
+        let model = TrainCrossingData()
+        childNode.observe(.value, with: { (snapshot) in
+            print(snapshot)
+            model.setIsActive(isActive: snapshot.childSnapshot(forPath: "is_active").value as! Bool)
+            model.setNotificationCount(notificationCount: snapshot.childSnapshot(forPath: "notification_count").value as! Int)
+            self.firebaseData.append(model)
+            self.trainAlertTableView.reloadData()
+        })
 
     }
 

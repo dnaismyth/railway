@@ -91,7 +91,7 @@ class SignupViewController: UIViewController {
             "password" : password as AnyObject
         ]
         
-        PostRequest().jsonPost(postUrl: Constants.API.signup, token: Constants.TOKEN.basic_token, body: data, completionHandler: {            (dictionary) -> Void in
+        PostRequest().jsonPost(postUrl: Constants.API.signup, token: Constants.TOKEN.basic_token, body: data, completionHandler: { (dictionary) -> Void in
                 OperationQueue.main.addOperation{
                     print(dictionary)
                     let response : [String:AnyObject] = dictionary["data"] as! [String:AnyObject]
@@ -99,6 +99,7 @@ class SignupViewController: UIViewController {
                         self.storeSignupResponse(response: response as NSDictionary, completed :{
                             () -> () in
                             self.saveUserResourceTokens() // save the device token on registration
+                            FirebaseAuthentication().getFirebaseToken(token: "Bearer ".appending(dictionary["access_token"] as! String))
                         })
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let viewController = storyboard.instantiateViewController(withIdentifier :"tabBarView")

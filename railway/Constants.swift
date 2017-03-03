@@ -24,6 +24,7 @@ struct Constants {
         static let addTrainAlert = "/api/traincrossings/id/trainalerts"
         static let nearbyTrainCrossings = "/api/nearby/traincrossings"
         static let storeDeviceToken = "/api/users/resources/tokens"
+        static let getFirebaseToken = "/api/users/resources/firebase"
         
     }
     
@@ -33,5 +34,9 @@ struct Constants {
     
     struct PLATFORM {
         static let apple = "APNS"
+    }
+    
+    struct FIREBASE {
+        static let databaseUrl = "https://traincrossing-9cf80.firebaseio.com/"
     }
 }
