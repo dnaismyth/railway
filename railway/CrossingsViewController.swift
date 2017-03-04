@@ -38,8 +38,6 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
                 self.trainAlertTableView.tableFooterView = UIView()
                 let notificationName = Notification.Name("RefreshTrainAlertData")
                 NotificationCenter.default.addObserver(self, selector: #selector(self.refreshTableView(notification:)), name: notificationName, object: nil)
-                self.hideKeyboardWhenTappedAround()
-
         })
     }
     
@@ -94,7 +92,7 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         // TODO: Use this later to change the image icon
         let railway : String = trainCrossing["railway"] as! String
         setRailwayCellImage(railway: railway, cell: cell)
-        formatCellLabels(cell: cell)
+        //formatCellLabels(cell: cell)
         return cell
         
     }
@@ -107,7 +105,6 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         cell.cityLabel.numberOfLines = 1
         cell.cityLabel.adjustsFontSizeToFitWidth = true
         cell.addressLabel.minimumScaleFactor = 0.5
-        cell.notificationCount.layer.backgroundColor = UIColor.blue.cgColor
     }
     
     private func setRailwayCellImage(railway : String, cell : TrainAlertTableViewCell){
@@ -127,6 +124,16 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
             default:
                 break
         }
+    }
+    
+    
+    // Customize the delete button for the table view cell
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteButton = UITableViewRowAction(style: .default, title: "\u{267A}\n Remove") { action, indexPath in
+            self.tableView(tableView, commit: UITableViewCellEditingStyle.delete, forRowAt: indexPath)
+        }
+        deleteButton.backgroundColor = UIColor(red:0.87, green:0.48, blue:0.48, alpha:1.0)
+        return [deleteButton]
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -174,6 +181,7 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         print("Begin refreshing table data...")
         self.getUserTrainAlerts(completed: {() -> () in
             print("Finished refreshing")
+            
         })
     }
     
@@ -201,6 +209,7 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         print("Location text field: \(cell.cityLabel.text!)")
         alertSettings.city = cell.cityLabel.text!
         alertSettings.address = cell.addressLabel.text!
+        alertSettings.trainCrossingId = cell.tag
         self.navigationController?.pushViewController(alertSettings, animated: true)
     }
     

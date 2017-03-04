@@ -34,6 +34,7 @@ class FirebaseAuthentication {
         GetRequest().HTTPGet(getUrl: Constants.API.getFirebaseToken, token: token, completionHandler : { (dictionary) -> Void in
             OperationQueue.main.addOperation{
                 let firebaseToken : String = dictionary["data"] as! String!
+                print("Firebase token is: \(firebaseToken)")
                 self.signInWithCustomToken(customToken: firebaseToken)
             }
         })

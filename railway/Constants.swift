@@ -20,6 +20,7 @@ struct Constants {
         static let signup = "/api/signup"
         static let allTrainCrossings = "/api/traincrossings"
         static let userTrainAlerts = "/api/trainalerts"
+        static let reportTrainCrossing = "/api/traincrossings/id/reports"
         static let removeTrainAlert = "/api/traincrossings/id/trainalerts"
         static let addTrainAlert = "/api/traincrossings/id/trainalerts"
         static let nearbyTrainCrossings = "/api/nearby/traincrossings"

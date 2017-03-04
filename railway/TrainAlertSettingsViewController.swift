@@ -10,17 +10,20 @@ import UIKit
 
 class TrainAlertSettingsViewController: UIViewController {
     
+    let userDefaults = Foundation.UserDefaults.standard
+    
     var city : String = ""
     var address : String = ""
+    var trainCrossingId : Int = -1
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Initialize labels with string passed through
         cityLabel.text = city
         addressLabel.text = address
-        self.hideKeyboardWhenTappedAround()
+        print(trainCrossingId)
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,15 +43,20 @@ class TrainAlertSettingsViewController: UIViewController {
         return .portrait
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func sendAlertButton(_ sender: UIButton) {
+        if(trainCrossingId >= 0){
+            sendTrainCrossingAlert(trainCrossingId: trainCrossingId)
+        } else {
+            print("Error sending train alert")
+        }
     }
-    */
-
+    
+    private func sendTrainCrossingAlert(trainCrossingId : Int){
+        let access_token = userDefaults.string(forKey:"access_token")
+        let params : [String : AnyObject] = [:]
+        let url : String = Constants.API.reportTrainCrossing.replacingOccurrences(of: "id", with: String(trainCrossingId))
+        PostRequest().jsonPost(postUrl: url, token: access_token!, body: params) { (dictionary) in
+            print("Finished reporting")
+        }
+    }
 }
