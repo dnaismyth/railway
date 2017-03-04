@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/ViewController.swift"
-            timestampString = "510182661.154661"
+            timestampString = "510259767.936974"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111">
+            startingLineNumber = "127"
+            endingLineNumber = "127">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -104,12 +104,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/ViewController.swift"
-            timestampString = "510181050.558351"
+            timestampString = "510259471.325599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "loginButton(_:)"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "storeLoginResponse(response:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -184,12 +184,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/CrossingsViewController.swift"
-            timestampString = "510201834.201188"
+            timestampString = "510279794.342245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "refreshTableView(notification:)"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "getUserTrainAlerts(completed:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -200,11 +200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/CrossingsViewController.swift"
-            timestampString = "510201834.201188"
+            timestampString = "510279794.342245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "setRailwayCellImage(railway:cell:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -376,29 +376,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/CrossingsViewController.swift"
-            timestampString = "510201834.201188"
+            timestampString = "510279794.342245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "getUserTrainAlerts(completed:)"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "initializeFirebaseData()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "railway/CrossingsViewController.swift"
-            timestampString = "510205709.896866"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
-            landmarkName = "CrossingsViewController"
-            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -431,36 +415,6 @@
                   offsetFromSymbolStart = "2766">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "railway/CrossingsViewController.swift"
-            timestampString = "510206122.636465"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "railway/CrossingsViewController.swift"
-            timestampString = "510206122.636465"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
-            landmarkName = "CrossingsViewController"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

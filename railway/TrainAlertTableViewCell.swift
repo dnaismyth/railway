@@ -11,10 +11,11 @@ import UIKit
 class TrainAlertTableViewCell: UITableViewCell {
     
     //MARK: Properties
-    @IBOutlet weak var locationTextField: UILabel!
-    @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var railwayImage: UIImageView!
     @IBOutlet weak var notificationCount: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+
     
     let userDefaults = Foundation.UserDefaults.standard
 

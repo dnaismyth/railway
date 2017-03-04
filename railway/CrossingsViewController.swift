@@ -20,7 +20,7 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
     let userDefaults = Foundation.UserDefaults.standard
     var trainAlertData : NSDictionary = [:]     // data from api call to retrieve all user train alerts
     var trainAlertContent : [[String:AnyObject]] = []  // this will store the content of each train alert
-    var firebaseData: [TrainCrossingData]! = []
+    var firebaseData: [Int :TrainCrossingData]! = [:]
     let rootRef = FIRDatabase.database().reference()    // reference to the firebase database
 
     override func viewDidLoad() {
@@ -78,19 +78,36 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         let city : String = trainCrossingLocation ["city"] as! String
         let address : String = trainCrossingLocation["address"] as! String
         print("Index path row is : \(indexPath.row)")
-        if(firebaseData.count > 0){
-            let data : TrainCrossingData = firebaseData[indexPath.row]
-            cell.notificationCount.text = String(data.getNotificationCount())
+        cell.cityLabel.text = city.appending(", ").appending(province)
+        cell.addressLabel.text = address
+        let trainCrossingId : Int = trainCrossing["id"] as! Int
+        cell.tag = trainCrossingId
+        let data : TrainCrossingData? = firebaseData[trainCrossingId]
+        if(data != nil){
+            if(data!.getNotificationCount() > 0){
+                cell.notificationCount.text = String(data!.getNotificationCount())
+                cell.notificationCount.layer.isHidden = false   // show notification
+            } else {
+                print ("I have zero notifications")
+            }
         }
-        cell.locationTextField.text = city.appending(", ").appending(province)
-        cell.addressTextField.text = address
-        cell.tag = trainCrossing["id"] as! Int
-        
         // TODO: Use this later to change the image icon
         let railway : String = trainCrossing["railway"] as! String
         setRailwayCellImage(railway: railway, cell: cell)
+        formatCellLabels(cell: cell)
         return cell
         
+    }
+
+    
+    private func formatCellLabels(cell : TrainAlertTableViewCell){
+        cell.addressLabel.numberOfLines = 1
+        cell.addressLabel.adjustsFontSizeToFitWidth = true
+        cell.addressLabel.minimumScaleFactor = 0.5
+        cell.cityLabel.numberOfLines = 1
+        cell.cityLabel.adjustsFontSizeToFitWidth = true
+        cell.addressLabel.minimumScaleFactor = 0.5
+        cell.notificationCount.layer.backgroundColor = UIColor.blue.cgColor
     }
     
     private func setRailwayCellImage(railway : String, cell : TrainAlertTableViewCell){
@@ -139,6 +156,7 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
     private func getUserTrainAlerts(completed : @escaping FinishedSettingData){
+        self.firebaseData.removeAll()
         let access_token :String? = userDefaults.string(forKey: "access_token")
         GetRequest().HTTPGet(getUrl: Constants.API.userTrainAlerts.appending("?page=0&size=50"), token: access_token!, completionHandler: { (dictionary) -> Void in
             OperationQueue.main.addOperation{
@@ -180,9 +198,9 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
     // View alert settings and pass through data
     private func viewTrainAlertSettings( cell : TrainAlertTableViewCell){
         let alertSettings = self.storyboard?.instantiateViewController(withIdentifier: "trainAlertSettings") as! TrainAlertSettingsViewController
-        print("Location text field: \(cell.locationTextField.text!)")
-        alertSettings.city = cell.locationTextField.text!
-        alertSettings.address = cell.addressTextField.text!
+        print("Location text field: \(cell.cityLabel.text!)")
+        alertSettings.city = cell.cityLabel.text!
+        alertSettings.address = cell.addressLabel.text!
         self.navigationController?.pushViewController(alertSettings, animated: true)
     }
     
@@ -200,16 +218,19 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
     
     // Load train crossing data from Firebase Database
     private func loadTrainCrossingData(trainCrossingId : Int){
-        self.firebaseData.removeAll()
+        print("Loading train crossing data")
         let key : String = "traincrossing_".appending(String(trainCrossingId))
         let trainCrossingData = rootRef.child("traincrossing")
         let childNode = trainCrossingData.child(key)    // find a child node by the train crossing id
         let model = TrainCrossingData()
         childNode.observe(.value, with: { (snapshot) in
             print(snapshot)
-            model.setIsActive(isActive: snapshot.childSnapshot(forPath: "is_active").value as! Bool)
-            model.setNotificationCount(notificationCount: snapshot.childSnapshot(forPath: "notification_count").value as! Int)
-            self.firebaseData.append(model)
+            if(snapshot.hasChild("is_active") && snapshot.hasChild("notification_count")){
+                model.setIsActive(isActive: snapshot.childSnapshot(forPath: "is_active").value as! Bool)
+                model.setNotificationCount(notificationCount: snapshot.childSnapshot(forPath: "notification_count").value as! Int)
+            }
+            model.setTrainCrossingId(trainCrossingId: trainCrossingId)
+            self.firebaseData[trainCrossingId] = model
             self.trainAlertTableView.reloadData()
         })
 

@@ -15,6 +15,8 @@
 		E54E47A11E592E6800BCDC28 /* RemoveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54E47A01E592E6800BCDC28 /* RemoveButton.swift */; };
 		E54FEA581E68BBCE007A3A0B /* FirebaseAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FEA571E68BBCE007A3A0B /* FirebaseAuthentication.swift */; };
 		E559F7FB1E68F45000F1153A /* TrainCrossingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559F7FA1E68F45000F1153A /* TrainCrossingData.swift */; };
+		E559F8001E69F89100F1153A /* NotificationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559F7FF1E69F89100F1153A /* NotificationLabel.swift */; };
+		E559F8041E6A1C8800F1153A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559F8031E6A1C8800F1153A /* NavigationController.swift */; };
 		E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E578CD721E3E952A00915825 /* InputLocationView.swift */; };
 		E57A0A9D1E628A32005D8A1F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E57A0A9C1E628A32005D8A1F /* .gitignore */; };
 		E590A58D1E61ED5F008BE58F /* PutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590A58C1E61ED5F008BE58F /* PutRequest.swift */; };
@@ -68,6 +70,8 @@
 		E54E47A01E592E6800BCDC28 /* RemoveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveButton.swift; sourceTree = "<group>"; };
 		E54FEA571E68BBCE007A3A0B /* FirebaseAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuthentication.swift; sourceTree = "<group>"; };
 		E559F7FA1E68F45000F1153A /* TrainCrossingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCrossingData.swift; sourceTree = "<group>"; };
+		E559F7FF1E69F89100F1153A /* NotificationLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationLabel.swift; sourceTree = "<group>"; };
+		E559F8031E6A1C8800F1153A /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		E578CD721E3E952A00915825 /* InputLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputLocationView.swift; sourceTree = "<group>"; };
 		E57A0A9C1E628A32005D8A1F /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E590A58C1E61ED5F008BE58F /* PutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PutRequest.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				E54E47A01E592E6800BCDC28 /* RemoveButton.swift */,
 				E5E3F7941E5A5E9D00CB7C5F /* CustomPointAnnotation.swift */,
 				E5B418F71E665AED00D9D46A /* GradientView.swift */,
+				E559F7FF1E69F89100F1153A /* NotificationLabel.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 				E5B40ECB1E5895C00030F8ED /* TabBarController.swift */,
 				E5E3F7961E5D338100CB7C5F /* TrainAlertSettingsViewController.swift */,
 				E5E3F7981E5E7E2000CB7C5F /* SignupViewController.swift */,
+				E559F8031E6A1C8800F1153A /* NavigationController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -440,11 +446,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E50DC8BE1E520F7600920A89 /* KeychainWrapper.m in Sources */,
+				E559F8001E69F89100F1153A /* NotificationLabel.swift in Sources */,
 				E559F7FB1E68F45000F1153A /* TrainCrossingData.swift in Sources */,
 				E5E3F7951E5A5E9D00CB7C5F /* CustomPointAnnotation.swift in Sources */,
 				E54FEA581E68BBCE007A3A0B /* FirebaseAuthentication.swift in Sources */,
 				E5F2182B1E51413F00BD6AB0 /* GetRequest.swift in Sources */,
 				E590A58D1E61ED5F008BE58F /* PutRequest.swift in Sources */,
+				E559F8041E6A1C8800F1153A /* NavigationController.swift in Sources */,
 				E54E479D1E59206400BCDC28 /* DeleteRequest.swift in Sources */,
 				E5B40ECC1E5895C00030F8ED /* TabBarController.swift in Sources */,
 				E5F5C3961E3D8924005EAE21 /* SettingsController.swift in Sources */,

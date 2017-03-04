@@ -10,6 +10,7 @@ import Foundation
 
 class TrainCrossingData : NSObject{
     
+    private var trainCrossingId : Int = -1
     private var notificationCount : Int = 0
     private var isActive : Bool = false
     
@@ -27,6 +28,14 @@ class TrainCrossingData : NSObject{
     
     public func setIsActive(isActive : Bool){
         self.isActive = isActive
+    }
+    
+    public func getTrainCrossingId() -> Int {
+        return trainCrossingId
+    }
+    
+    public func setTrainCrossingId(trainCrossingId : Int){
+        self.trainCrossingId = trainCrossingId
     }
     
 }
