@@ -12,7 +12,6 @@
 		E52E6A851E3EA7B5000B485F /* InputLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52E6A841E3EA7B5000B485F /* InputLocationView.xib */; };
 		E54E479B1E58E3D100BCDC28 /* TrainAlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54E479A1E58E3D100BCDC28 /* TrainAlertTableViewCell.swift */; };
 		E54E479D1E59206400BCDC28 /* DeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54E479C1E59206400BCDC28 /* DeleteRequest.swift */; };
-		E54E47A11E592E6800BCDC28 /* RemoveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54E47A01E592E6800BCDC28 /* RemoveButton.swift */; };
 		E54FEA581E68BBCE007A3A0B /* FirebaseAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FEA571E68BBCE007A3A0B /* FirebaseAuthentication.swift */; };
 		E559F7FB1E68F45000F1153A /* TrainCrossingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559F7FA1E68F45000F1153A /* TrainCrossingData.swift */; };
 		E559F8001E69F89100F1153A /* NotificationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559F7FF1E69F89100F1153A /* NotificationLabel.swift */; };
@@ -68,7 +67,6 @@
 		E52E6A841E3EA7B5000B485F /* InputLocationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InputLocationView.xib; path = ../InputLocationView.xib; sourceTree = "<group>"; };
 		E54E479A1E58E3D100BCDC28 /* TrainAlertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainAlertTableViewCell.swift; sourceTree = "<group>"; };
 		E54E479C1E59206400BCDC28 /* DeleteRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRequest.swift; sourceTree = "<group>"; };
-		E54E47A01E592E6800BCDC28 /* RemoveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveButton.swift; sourceTree = "<group>"; };
 		E54FEA571E68BBCE007A3A0B /* FirebaseAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuthentication.swift; sourceTree = "<group>"; };
 		E559F7FA1E68F45000F1153A /* TrainCrossingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCrossingData.swift; sourceTree = "<group>"; };
 		E559F7FF1E69F89100F1153A /* NotificationLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationLabel.swift; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				E54E479A1E58E3D100BCDC28 /* TrainAlertTableViewCell.swift */,
-				E54E47A01E592E6800BCDC28 /* RemoveButton.swift */,
 				E5E3F7941E5A5E9D00CB7C5F /* CustomPointAnnotation.swift */,
 				E5B418F71E665AED00D9D46A /* GradientView.swift */,
 				E559F7FF1E69F89100F1153A /* NotificationLabel.swift */,
@@ -469,7 +466,6 @@
 				E5F5C3931E3D8562005EAE21 /* MapController.swift in Sources */,
 				E5E3F7991E5E7E2000CB7C5F /* SignupViewController.swift in Sources */,
 				E5B418F41E662EA900D9D46A /* ViewControllerExtension.swift in Sources */,
-				E54E47A11E592E6800BCDC28 /* RemoveButton.swift in Sources */,
 				E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */,
 				E5F5C3701E3CE33D005EAE21 /* AppDelegate.swift in Sources */,
 				E5B40ECA1E5546000030F8ED /* CrossingsViewController.swift in Sources */,

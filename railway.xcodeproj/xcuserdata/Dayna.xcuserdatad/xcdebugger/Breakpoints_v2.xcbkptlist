@@ -232,23 +232,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/MapController.swift"
-            timestampString = "510013210.943556"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "getAllTrainCrossingsNearby(latitude:longitude:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "railway/MapController.swift"
-            timestampString = "510013210.943556"
+            timestampString = "510365765.827398"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
@@ -264,11 +248,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "railway/MapController.swift"
-            timestampString = "510013210.943556"
+            timestampString = "510365765.827398"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
             endingLineNumber = "160"
+            landmarkName = "getAllTrainCrossingsNearby(latitude:longitude:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "railway/MapController.swift"
+            timestampString = "510365765.827398"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "getAllTrainCrossingsNearby(latitude:longitude:)"
             landmarkType = "7">
          </BreakpointContent>
