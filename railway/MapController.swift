@@ -20,7 +20,9 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     let enableLocation = false;
     var trainCrossingData : NSDictionary = [:]     // data from api call to retrieve all user train crossings
     var trainCrossingContent : [[String:AnyObject]] = []  // this will store the content of each train crossing
-    var mapAnnotations:[MKPointAnnotation] = [] // map pin annotiations for train crossing locations
+    var mapAnnotations:[Int : CustomPointAnnotation] = [:] // map pin annotiations for train crossing locations
+    var firebaseData: [Int :TrainCrossingData]! = [:]   // store firebase data
+    let rootRef = FIRDatabase.database().reference()    // reference to the firebase database
     var location : CLLocation?
     let defaultAudioId : Int = 1
     @IBOutlet weak var mapView: MKMapView!
@@ -29,13 +31,18 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         print("View is loaded")
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //mapView.removeAnnotations(mapAnnotations)
         self.mapView.delegate = self
         self.mapView.isRotateEnabled = false
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        self.hideKeyboardWhenTappedAround()
+        //self.setupAnnotationData()
     }
     
     override open var shouldAutorotate: Bool {
@@ -127,6 +134,10 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         return UIScreen.main.bounds.size.width
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        //let screenSize: CGRect = UIScreen.main.bounds
+    }
+    
     // Custom annotation view
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
@@ -139,17 +150,23 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
         if anView == nil {
             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            anView?.canShowCallout = true
         }
         else {
             anView?.annotation = annotation
         }
         
         let cpa = annotation as! CustomPointAnnotation
-        anView?.image = UIImage(named:cpa.imageName)
+        let icon : UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+        icon.image = UIImage(named:cpa.imageName)
+       
         cpa.annotationButton.addTarget(self, action: #selector(self.addTrainCrossingAlert(_:)), for: .touchUpInside)
         anView?.rightCalloutAccessoryView = cpa.annotationButton
-        
+        anView?.rightCalloutAccessoryView = cpa.reportButton
+        anView?.addSubview(icon)
+        anView?.frame = CGRect(x: 0, y:0, width:32, height:32)
+        anView?.layer.zPosition = 1
+        anView?.addSubview(cpa.notificationCount)
+        anView?.canShowCallout = true
         return anView
     }
     
@@ -167,6 +184,19 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         })
     }
     
+    private func formatNotificationLabel(notifyLabel : UILabel){
+        notifyLabel.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        notifyLabel.layer.zPosition = 0
+        notifyLabel.backgroundColor = UIColor(red:0.32, green:0.49, blue:0.69, alpha:1.0)
+        notifyLabel.textColor = UIColor.white
+        notifyLabel.tag = 30
+        notifyLabel.textAlignment = NSTextAlignment.center
+        notifyLabel.font =  UIFont(name: Constants.FONT.navBarFont, size: 16) ?? UIFont.systemFont(ofSize: 16)
+        notifyLabel.layer.cornerRadius = notifyLabel.bounds.width/2
+        notifyLabel.clipsToBounds = true
+        notifyLabel.isHidden = false
+    }
+    
     private func mapTrainCrossingCoordinates(trainCrossings : NSDictionary){
         self.trainCrossingContent = trainCrossings["data"] as! [[String:AnyObject]]
         for trainCrossing in self.trainCrossingContent {
@@ -176,17 +206,40 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             let longitude : Double = location["longitude"] as! Double
             let city : String = location["city"] as! String
             let address : String = location["address"] as! String
+            
             annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             annotation.title = city
             annotation.subtitle = address
-            annotation.imageName = "trainIcon"
+            annotation.imageName = "mapPin"
             annotation.trainCrossingId = trainCrossing["id"] as! Int!
-            annotation.annotationButton.tag = trainCrossing["id"] as! Int!
-            self.mapAnnotations.append(annotation)
-            
+            loadTrainCrossingData(trainCrossingId: annotation.trainCrossingId)
+            annotation.annotationButton.tag = annotation.trainCrossingId
+            self.mapAnnotations[annotation.trainCrossingId] = annotation
         }
-        self.mapView.addAnnotations(self.mapAnnotations)
-
+        
+        let pins = Array(mapAnnotations.values)
+        self.mapView.addAnnotations(pins)   // add all of the annotations to the map
     }
     
+    // Load train crossing data from Firebase Database
+    private func loadTrainCrossingData(trainCrossingId : Int){
+        let key : String = "traincrossing_".appending(String(trainCrossingId))
+        let trainCrossingData = rootRef.child("traincrossing")
+        let childNode = trainCrossingData.child(key)    // find a child node by the train crossing id
+        childNode.observe(.value, with: { (snapshot) in
+            print(snapshot)
+            if(snapshot.hasChild("is_active") && snapshot.hasChild("notification_count")){
+                let notificationCount : Int = snapshot.childSnapshot(forPath: "notification_count").value as! Int
+                if(notificationCount > 0){
+                    self.mapView.removeAnnotation(self.mapAnnotations[trainCrossingId]!)
+                    let annotation: CustomPointAnnotation = self.mapAnnotations[trainCrossingId]!
+                    annotation.notificationCount.text = String(notificationCount)
+                    self.formatNotificationLabel(notifyLabel: annotation.notificationCount)
+                    annotation.labelIsHidden = false
+                    self.mapAnnotations[trainCrossingId] = annotation
+                    self.mapView.addAnnotation(annotation)
+                }
+            }
+        })
+    }
 }

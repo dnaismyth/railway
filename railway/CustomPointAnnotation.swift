@@ -10,7 +10,11 @@ import UIKit
 import MapKit
 
 class CustomPointAnnotation: MKPointAnnotation {
-    var imageName: String!
+    var imageName: String!  // regular image name
+    var activeImageName : String!   // annotation image for when the train crossing is active
     var trainCrossingId : Int!
+    var notificationCount : UILabel = UILabel()
+    var labelIsHidden : Bool = true
     var annotationButton : UIButton = UIButton(type : UIButtonType.contactAdd) as UIButton // button for map annotations
+    var reportButton : UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton // button to report train crossings
 }
