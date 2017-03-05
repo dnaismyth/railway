@@ -158,14 +158,13 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         let cpa = annotation as! CustomPointAnnotation
         let icon : UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
         icon.image = UIImage(named:cpa.imageName)
-       
+        icon.layer.zPosition = 1
         cpa.annotationButton.addTarget(self, action: #selector(self.addTrainCrossingAlert(_:)), for: .touchUpInside)
         anView?.rightCalloutAccessoryView = cpa.annotationButton
         anView?.rightCalloutAccessoryView = cpa.reportButton
+        anView?.addSubview(cpa.notificationCount)
         anView?.addSubview(icon)
         anView?.frame = CGRect(x: 0, y:0, width:32, height:32)
-        anView?.layer.zPosition = 1
-        anView?.addSubview(cpa.notificationCount)
         anView?.canShowCallout = true
         return anView
     }
@@ -195,6 +194,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         notifyLabel.layer.cornerRadius = notifyLabel.bounds.width/2
         notifyLabel.clipsToBounds = true
         notifyLabel.isHidden = false
+        notifyLabel.layer.zPosition = 2
     }
     
     private func mapTrainCrossingCoordinates(trainCrossings : NSDictionary){
