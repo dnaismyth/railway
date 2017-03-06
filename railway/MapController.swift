@@ -188,7 +188,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         notifyLabel.layer.zPosition = 0
         notifyLabel.backgroundColor = UIColor(red:0.32, green:0.49, blue:0.69, alpha:1.0)
         notifyLabel.textColor = UIColor.white
-        notifyLabel.tag = 30
+        //notifyLabel.tag = 30
         notifyLabel.textAlignment = NSTextAlignment.center
         notifyLabel.font =  UIFont(name: Constants.FONT.navBarFont, size: 16) ?? UIFont.systemFont(ofSize: 16)
         notifyLabel.layer.cornerRadius = notifyLabel.bounds.width/2

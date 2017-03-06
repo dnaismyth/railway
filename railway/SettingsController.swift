@@ -9,7 +9,9 @@
 import UIKit
 
 
-class SettingsController: UIViewController{
+class SettingsController: UITableViewController{
+    
+    @IBOutlet weak var signoutCell: UITableViewCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,10 @@ class SettingsController: UIViewController{
     override open var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return .portrait
     }
-
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("section: \(indexPath.section)")
+        print("row: \(indexPath.row)")
+    }
     
 }
