@@ -29,6 +29,7 @@ struct Constants {
         static let updateLanguageKey = "/api/users/langkey"
         static let updateEmailPrefs = "/api/users/emailupdates"
         static let updatePassword = "/api/users/password"
+        static let logout = "/api/logout"
         
     }
     

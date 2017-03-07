@@ -58,8 +58,11 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
                 languageToBeUpdated = true      // if cell has been touch, we need to flag this to be updated
                 showLanguagePicker()
                 break
-        case "changePasswordCell" :
+            case "changePasswordCell" :
                 goToUpdatePasswordView()
+                break
+            case "signoutCell"  :
+                logoutUser()
                 break
             default :
                 self.checkIfDirty()
@@ -110,6 +113,19 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         PutRequest().jsonPut(postUrl: Constants.API.updateEmailPrefs, token: token, body: params) { (dictionary) in
             print(dictionary)
             self.emailUpdateSwitch.isEnabled = true  // re-enable the switch after api call is complete
+        }
+    }
+    
+    // Logout user
+    private func logoutUser(){
+        let token : String = userDefaults.string(forKey: "access_token")!
+        let params : [String : AnyObject] = [:]
+        PutRequest().jsonPut(postUrl: Constants.API.logout, token: token, body: params) { (dictionary) in
+            // Remove user defaults
+            let appDomain = Bundle.main.bundleIdentifier!
+            UserDefaults.standard.removePersistentDomain(forName: appDomain)
+            // Dismiss view
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
