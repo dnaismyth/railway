@@ -46,9 +46,7 @@ class UpdatePasswordViewController : UIViewController {
     // Return back to settings view
     private func returnToSettingsView(){
         print("Returning to settings view.")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "settingsView") as! SettingsController
-        self.present(vc, animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func storeUpdatePasswordResponse(response : NSDictionary, completionHandler: @escaping FinishedStoringResponse ){
