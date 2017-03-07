@@ -28,6 +28,7 @@
 		E5B418F61E66443D00D9D46A /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B418F51E66443D00D9D46A /* UIViewExtension.swift */; };
 		E5B418F81E665AED00D9D46A /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B418F71E665AED00D9D46A /* GradientView.swift */; };
 		E5BD66C81E6A522100822DDA /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD66C71E6A522100822DDA /* UIScreenExtension.swift */; };
+		E5BD66CC1E6E046500822DDA /* UpdatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD66CB1E6E046500822DDA /* UpdatePasswordViewController.swift */; };
 		E5E3F7951E5A5E9D00CB7C5F /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E3F7941E5A5E9D00CB7C5F /* CustomPointAnnotation.swift */; };
 		E5E3F7971E5D338100CB7C5F /* TrainAlertSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E3F7961E5D338100CB7C5F /* TrainAlertSettingsViewController.swift */; };
 		E5E3F7991E5E7E2000CB7C5F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E3F7981E5E7E2000CB7C5F /* SignupViewController.swift */; };
@@ -82,6 +83,7 @@
 		E5B418F51E66443D00D9D46A /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		E5B418F71E665AED00D9D46A /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		E5BD66C71E6A522100822DDA /* UIScreenExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
+		E5BD66CB1E6E046500822DDA /* UpdatePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordViewController.swift; sourceTree = "<group>"; };
 		E5E3F7941E5A5E9D00CB7C5F /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		E5E3F7961E5D338100CB7C5F /* TrainAlertSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainAlertSettingsViewController.swift; sourceTree = "<group>"; };
 		E5E3F7981E5E7E2000CB7C5F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				E5E3F7961E5D338100CB7C5F /* TrainAlertSettingsViewController.swift */,
 				E5E3F7981E5E7E2000CB7C5F /* SignupViewController.swift */,
 				E559F8031E6A1C8800F1153A /* NavigationController.swift */,
+				E5BD66CB1E6E046500822DDA /* UpdatePasswordViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				E5E3F7971E5D338100CB7C5F /* TrainAlertSettingsViewController.swift in Sources */,
 				E54E479B1E58E3D100BCDC28 /* TrainAlertTableViewCell.swift in Sources */,
 				E5B418F61E66443D00D9D46A /* UIViewExtension.swift in Sources */,
+				E5BD66CC1E6E046500822DDA /* UpdatePasswordViewController.swift in Sources */,
 				E5B418F81E665AED00D9D46A /* GradientView.swift in Sources */,
 				E5F5C3721E3CE33D005EAE21 /* ViewController.swift in Sources */,
 				E5F5C3931E3D8562005EAE21 /* MapController.swift in Sources */,

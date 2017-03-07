@@ -26,6 +26,9 @@ struct Constants {
         static let nearbyTrainCrossings = "/api/nearby/traincrossings"
         static let storeDeviceToken = "/api/users/resources/tokens"
         static let getFirebaseToken = "/api/users/resources/firebase"
+        static let updateLanguageKey = "/api/users/langkey"
+        static let updateEmailPrefs = "/api/users/emailupdates"
+        static let updatePassword = "/api/users/password"
         
     }
     
