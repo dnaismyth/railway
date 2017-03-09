@@ -18,7 +18,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     let userDefaults = Foundation.UserDefaults.standard
     let locationManager = CLLocationManager()
     let enableLocation = false;
-    var trainCrossingData : NSDictionary = [:]     // data from api call to retrieve all user train crossings
+    var trainCrossingData : NSMutableDictionary = [:]     // data from api call to retrieve all user train crossings
     var trainCrossingContent : [[String:AnyObject]] = []  // this will store the content of each train crossing
     var mapAnnotations:[Int : CustomPointAnnotation] = [:] // map pin annotiations for train crossing locations
     var firebaseData: [Int :TrainCrossingData]! = [:]   // store firebase data
@@ -29,6 +29,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     var radiusValue : Double = 5000.00
     let mileConversion : Double = 0.000621371 // (meters in one mile)
 
+    @IBOutlet weak var radiusSlider: UISlider!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var inputLocationView: UIView!
     
@@ -40,6 +41,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     override func viewDidAppear(_ animated: Bool) {
         //mapView.removeAnnotations(mapAnnotations)
+        radiusSlider.isContinuous = false
         self.mapView.delegate = self
         self.mapView.isRotateEnabled = false
         locationManager.delegate = self
@@ -188,9 +190,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         //let screenSize: CGRect = UIScreen.main.bounds
     }
     
-    // Custom annotation view
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
         if !(annotation is CustomPointAnnotation) {
             return nil
         }
@@ -210,6 +210,9 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         icon.image = UIImage(named:cpa.imageName)
         icon.layer.zPosition = 1
         anView?.rightCalloutAccessoryView = cpa.annotationButton
+        for view in (anView?.subviews)! {
+            view.removeFromSuperview()
+        }
         anView?.addSubview(cpa.notificationCount)
         anView?.addSubview(icon)
         anView?.frame = CGRect(x: 0, y:0, width:32, height:32)
@@ -318,4 +321,19 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             }
         })
     }
+    
+    @IBAction func sliderInput(_ sender: UISlider) {
+        if(mapView.annotations.count > 0){
+            mapView.removeAnnotations(mapView.annotations)
+        }
+        self.mapView.removeOverlays(mapView.overlays)
+        self.mapAnnotations.removeAll()
+        self.trainCrossingContent.removeAll()
+        self.trainCrossingData.removeAllObjects()
+        radiusValue = (Double(sender.value))
+        self.addRadiusCircle(location: location!, radius: radiusValue)
+        locationManager.startUpdatingLocation()
+
+    }
+    
 }

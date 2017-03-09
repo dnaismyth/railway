@@ -579,6 +579,13 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBQ-Ej-h8O">
                                 <rect key="frame" x="0.0" y="28" width="320" height="402"/>
                             </mapView>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5000" minValue="1" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="MVB-qE-V4w">
+                                <rect key="frame" x="14" y="45" width="292" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="sliderInput:" destination="6iN-cd-48L" eventType="valueChanged" id="t6b-jQ-eMr"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -591,11 +598,12 @@
                     <tabBarItem key="tabBarItem" title="Map" image="mapIcon" selectedImage="mapIcon" id="RTn-tp-F46"/>
                     <connections>
                         <outlet property="mapView" destination="bBQ-Ej-h8O" id="mBL-1M-NAi"/>
+                        <outlet property="radiusSlider" destination="MVB-qE-V4w" id="Z3u-kj-AtP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YyH-eF-3hh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="973.60000000000002" y="649.92503748125944"/>
+            <point key="canvasLocation" x="973.125" y="648.75"/>
         </scene>
         <!--Train Alerts-->
         <scene sceneID="fKN-2J-XEt">
@@ -728,7 +736,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5DF-8z-oA4">
-                                <rect key="frame" x="16" y="334" width="288" height="55"/>
+                                <rect key="frame" x="16" y="383" width="288" height="55"/>
                                 <color key="backgroundColor" red="0.97157451923076921" green="0.3431755041363001" blue="0.36257880799431863" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="Ci7-YO-kmt"/>
@@ -743,7 +751,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZn-o7-TSD">
-                                <rect key="frame" x="16" y="140" width="288" height="36"/>
+                                <rect key="frame" x="16" y="96" width="288" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="Ryp-GA-vbK"/>
                                 </constraints>
@@ -752,7 +760,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Az-1m-8OO">
-                                <rect key="frame" x="16" y="88" width="288" height="44"/>
+                                <rect key="frame" x="16" y="44" width="288" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="gex-ta-4dt"/>
                                 </constraints>
