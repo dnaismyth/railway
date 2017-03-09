@@ -25,6 +25,10 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     let rootRef = FIRDatabase.database().reference()    // reference to the firebase database
     var location : CLLocation?
     let defaultAudioId : Int = 1
+    var circle : MKCircle = MKCircle()
+    var radiusValue : Double = 5000.00
+    let mileConversion : Double = 0.000621371 // (meters in one mile)
+
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var inputLocationView: UIView!
     
@@ -62,6 +66,49 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         // Dispose of any resources that can be recreated.
     }
     
+    func addRadiusCircle(location: CLLocation, radius: Double){
+        self.mapView.delegate = self
+        circle = MKCircle(center: location.coordinate, radius:radius as CLLocationDistance)
+        self.mapView.add(circle)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let circleRenderer = MKCircleRenderer(circle: overlay as! MKCircle)
+        circleRenderer.strokeColor = UIColor.red
+        circleRenderer.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.1)
+        circleRenderer.lineWidth = 1
+        return circleRenderer
+    }
+    
+    private func showAlert(alertTitle: String, alertMessage: String){
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc private func removeTrainCrossingAlert(_ sender: AnyObject?) -> Bool{
+        let access_token : String = userDefaults.string(forKey: "access_token")!
+        let trainCrossingId : Int = sender!.tag
+        let formatUrl : String = Constants.API.removeTrainAlert.replacingOccurrences(of: "id", with: String(trainCrossingId))
+        var removed : Bool = false
+        DeleteRequest().HTTPDelete(getUrl: formatUrl, token: access_token, completionHandler: {
+            (dictionary) -> Void in  OperationQueue.main.addOperation{
+                let dataResponse : [String : AnyObject] = dictionary["data"] as! [String : AnyObject]
+                if(dictionary["operationType"] as! String == "DELETE"){
+                    let FCMTopic : String? = dataResponse["notificationTopic"] as? String
+                    if(FCMTopic != nil){
+                        print("Topic is: \(FCMTopic)")
+                        FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/".appending(FCMTopic!))
+                        removed = true;
+                        self.buildAddTrainAlertButton(button: sender as! UIButton)
+                        self.showAlert(alertTitle: "Train Alert Removed", alertMessage: "You will no longer receive notification activity from this train crossing.")
+                    }
+                }
+            }
+        })
+        return removed
+    }
+
     @objc private func addTrainCrossingAlert(_ sender: AnyObject?){
         let access_token : String = userDefaults.string(forKey: "access_token")!
         let trainCrossingId : Int = sender!.tag
@@ -77,6 +124,8 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
                 let notificationName = Notification.Name("RefreshTrainAlertData")   // refresh table view
                 FIRMessaging.messaging().subscribe(toTopic: "/topics/".appending(FCMTopic))
                 NotificationCenter.default.post(name: notificationName, object: nil)
+                self.buildRemoveButton(button: sender as! UIButton)
+                self.showAlert(alertTitle: "Train Alerted Added!", alertMessage: "You will now be eligible to report and recieve notification activity from this train crossing location.")
             }
         })
     }
@@ -91,12 +140,13 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         let myLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
         print("My Location is: \(myLocation)")
         let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-        
+        addRadiusCircle(location: CLLocation(latitude: myLocation.latitude, longitude: myLocation.longitude), radius: radiusValue)
+
         mapView.setRegion(region, animated: true)
         self.mapView.showsUserLocation = true
         if((latitude != nil) && (longitude != nil)){
             locationManager.stopUpdatingLocation()
-            getAllTrainCrossingsNearby(latitude: latitude!, longitude: longitude!)
+            getAllTrainCrossingsNearby(latitude: latitude!, longitude: longitude!, radius : (radiusValue * mileConversion))
         }
 
     }
@@ -159,9 +209,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         let icon : UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
         icon.image = UIImage(named:cpa.imageName)
         icon.layer.zPosition = 1
-        cpa.annotationButton.addTarget(self, action: #selector(self.addTrainCrossingAlert(_:)), for: .touchUpInside)
         anView?.rightCalloutAccessoryView = cpa.annotationButton
-        anView?.rightCalloutAccessoryView = cpa.reportButton
         anView?.addSubview(cpa.notificationCount)
         anView?.addSubview(icon)
         anView?.frame = CGRect(x: 0, y:0, width:32, height:32)
@@ -170,11 +218,11 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     }
     
     //TODO: Change this to get nearby train crossings
-    private func getAllTrainCrossingsNearby(latitude : Double, longitude : Double){
+    private func getAllTrainCrossingsNearby(latitude : Double, longitude : Double, radius : Double){
         print("calling get all nearby train crossings")
         let latitude : String = String(latitude)
         let longitude : String = String(longitude)
-        let params : String = "?page=0&size=50&radius=3&lat=".appending(latitude).appending("&lon=").appending(longitude)
+        let params : String = "?page=0&size=50&radius=".appending(String(radius)).appending("&lat=").appending(latitude).appending("&lon=").appending(longitude)   // radius = 3 miles
         let token : String? = userDefaults.string(forKey: "access_token")
         GetRequest().HTTPGet(getUrl: Constants.API.nearbyTrainCrossings.appending(params), token: token!, completionHandler : { (dictionary) -> Void in
             OperationQueue.main.addOperation{
@@ -206,7 +254,8 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             let longitude : Double = location["longitude"] as! Double
             let city : String = location["city"] as! String
             let address : String = location["address"] as! String
-            
+            let isUserAlert : Bool = trainCrossing["markedForAlerts"] as! Bool
+
             annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             annotation.title = city
             annotation.subtitle = address
@@ -214,12 +263,39 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             annotation.trainCrossingId = trainCrossing["id"] as! Int!
             loadTrainCrossingData(trainCrossingId: annotation.trainCrossingId)
             annotation.annotationButton.tag = annotation.trainCrossingId
+            self.setButtonDesign(isUserAlert: isUserAlert, annotation: annotation)
             self.mapAnnotations[annotation.trainCrossingId] = annotation
         }
         
         let pins = Array(mapAnnotations.values)
         self.mapView.addAnnotations(pins)   // add all of the annotations to the map
     }
+    
+    private func setButtonDesign(isUserAlert : Bool, annotation : CustomPointAnnotation){
+        let button = annotation.annotationButton
+        if(isUserAlert){
+            buildRemoveButton(button: button)
+        } else {
+            buildAddTrainAlertButton(button: button)
+        }
+    }
+    
+    private func buildRemoveButton(button : UIButton){
+        button.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+        button.addTarget(self, action: #selector(self.removeTrainCrossingAlert(_:)), for: .touchUpInside)
+        button.backgroundColor = UIColor(red:0.88, green:0.39, blue:0.39, alpha:1.0)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = button.frame.width/2
+    }
+    
+    private func buildAddTrainAlertButton(button : UIButton){
+        button.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+        button.backgroundColor = UIColor(red:0.23, green:0.56, blue:0.17, alpha:1.0)
+        button.addTarget(self, action: #selector(self.addTrainCrossingAlert(_:)), for: .touchUpInside)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = button.frame.width/2
+    }
+
     
     // Load train crossing data from Firebase Database
     private func loadTrainCrossingData(trainCrossingId : Int){
