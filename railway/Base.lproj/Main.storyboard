@@ -629,8 +629,26 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBQ-Ej-h8O">
                                 <rect key="frame" x="0.0" y="28" width="320" height="402"/>
                             </mapView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5000" minValue="1" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="MVB-qE-V4w">
-                                <rect key="frame" x="14" y="45" width="292" height="31"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwE-zA-ILg">
+                                <rect key="frame" x="15" y="45" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="BDP-KO-oOw"/>
+                                    <constraint firstAttribute="width" constant="45" id="GZu-TV-po8"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleRadiusSlider:" destination="6iN-cd-48L" eventType="touchUpInside" id="SxW-MU-wCu"/>
+                                </connections>
+                            </button>
+                            <slider opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="MVB-qE-V4w">
+                                <rect key="frame" x="14" y="52" width="292" height="31"/>
+                                <color key="backgroundColor" white="1" alpha="0.60832435344827585" colorSpace="calibratedWhite"/>
+                                <color key="minimumTrackTintColor" red="0.0" green="0.54631228259999998" blue="0.76266025640000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="thumbTintColor" red="0.0" green="0.54631228262493847" blue="0.76266025641025648" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="sliderInput:" destination="6iN-cd-48L" eventType="valueChanged" id="t6b-jQ-eMr"/>
                                 </connections>
@@ -638,11 +656,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="MVB-qE-V4w" firstAttribute="top" secondItem="AtK-Wo-GvQ" secondAttribute="bottom" constant="25" id="GDR-01-MTq"/>
+                            <constraint firstItem="MVB-qE-V4w" firstAttribute="top" secondItem="AtK-Wo-GvQ" secondAttribute="bottom" constant="32" id="9XZ-f9-BQF"/>
+                            <constraint firstItem="hwE-zA-ILg" firstAttribute="top" secondItem="AtK-Wo-GvQ" secondAttribute="bottom" constant="25" id="9vN-nW-grv"/>
                             <constraint firstItem="4Qj-Dr-7jU" firstAttribute="top" secondItem="bBQ-Ej-h8O" secondAttribute="bottom" constant="1" id="QuC-r7-Ru1"/>
                             <constraint firstItem="MVB-qE-V4w" firstAttribute="trailing" secondItem="1GR-6R-8j3" secondAttribute="trailingMargin" id="aCY-sH-APC"/>
                             <constraint firstAttribute="trailing" secondItem="bBQ-Ej-h8O" secondAttribute="trailing" id="j8g-mx-MWg"/>
                             <constraint firstItem="bBQ-Ej-h8O" firstAttribute="leading" secondItem="1GR-6R-8j3" secondAttribute="leading" id="l3M-j2-Rha"/>
+                            <constraint firstItem="hwE-zA-ILg" firstAttribute="leading" secondItem="1GR-6R-8j3" secondAttribute="leadingMargin" id="qpa-Ct-uEq"/>
                             <constraint firstItem="MVB-qE-V4w" firstAttribute="leading" secondItem="1GR-6R-8j3" secondAttribute="leadingMargin" id="rsl-03-mD3"/>
                             <constraint firstItem="bBQ-Ej-h8O" firstAttribute="top" secondItem="AtK-Wo-GvQ" secondAttribute="bottom" constant="8" id="tQc-gC-2cc"/>
                         </constraints>
@@ -650,6 +670,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="mapIcon" selectedImage="mapIcon" id="RTn-tp-F46"/>
                     <connections>
                         <outlet property="mapView" destination="bBQ-Ej-h8O" id="mBL-1M-NAi"/>
+                        <outlet property="radiusButton" destination="hwE-zA-ILg" id="77k-RW-Op7"/>
                         <outlet property="radiusSlider" destination="MVB-qE-V4w" id="Z3u-kj-AtP"/>
                     </connections>
                 </viewController>

@@ -29,16 +29,29 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     var radiusValue : Double = 5000.00
     let mileConversion : Double = 0.000621371 // (meters in one mile)
     var radiusIsShowing = false
+    var sliderRect : CGRect = CGRect()
 
     @IBOutlet weak var radiusSlider: UISlider!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var inputLocationView: UIView!
+    @IBOutlet weak var radiusButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("View is loaded")
-        radiusSlider.thumbTintColor = UIColor.black
-        self.hideKeyboardWhenTappedAround()
+        self.radiusSlider.setValue(Float(1), animated:true)
+        radiusSlider.isHidden = true
+        radiusSlider.layer.cornerRadius = 5.0
+        self.sliderRect = radiusSlider.frame
+        self.radiusSlider.transform = CGAffineTransform(scaleX: 0, y: 1);
+        radiusButton.layer.cornerRadius = radiusButton.frame.width/2
+        radiusButton.backgroundColor = UIColor.white
+        //radiusButton.setBackgroundImage(UIImage(named: "distance"), for: .normal)
+        let buttonImage : UIImageView = UIImageView(frame: CGRect(x:0, y:0 ,width: 32, height: 32))
+        buttonImage.image = UIImage(named: "distance")
+        radiusButton.addSubview(buttonImage)
+        buttonImage.center = CGPoint(x: radiusButton.bounds.midX, y: radiusButton.bounds.midY)
+        radiusButton.alpha = 0.75
+        self.hideRadiusSliderWhenTappedAround()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -356,6 +369,49 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         self.addRadiusCircle(location: location!, radius: radiusValue)
         locationManager.startUpdatingLocation()
 
+    }
+    
+    @IBAction func toggleRadiusSlider(_ sender: UIButton) {
+        print("Showing slider")
+        radiusButton.isHidden = true
+        radiusSlider.isHidden = false
+        UIView.animate(withDuration: 0.4, animations: {
+            self.radiusSlider.transform = CGAffineTransform(scaleX: 1, y: 1);
+        }, completion: { (isFinished) in
+            if(isFinished){
+                UIView.animate(withDuration: 0.4, animations: {
+                    self.radiusSlider.setValue(Float(self.radiusValue), animated:true)
+                })
+            }
+        })
+    }
+    
+    // Reset the view of the radius toggle button
+    private func setDefaultToggleView(){
+        if(radiusButton.isHidden){
+            print("Setting default toggle view")
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.radiusSlider.setValue(Float(1), animated:true)
+            }, completion: { (isFinished) in
+                if(isFinished){
+                    UIView.animate(withDuration:0.4, animations: {
+                        self.radiusSlider.transform = CGAffineTransform(scaleX: 0.001, y: 1) // issue with unique scale factor of 0, set to 0.001 instead
+                        self.radiusSlider.isHidden = true
+                        self.radiusButton.isHidden = false
+                    })
+                }
+            })
+        }
+    }
+    
+    func hideRadiusSliderWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MapController.dismissSlider))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissSlider() {
+        setDefaultToggleView()
     }
     
 }
