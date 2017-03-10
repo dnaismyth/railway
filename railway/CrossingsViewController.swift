@@ -91,7 +91,8 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         }
         // TODO: Use this later to change the image icon
         let railway : String = trainCrossing["railway"] as! String
-        setRailwayCellImage(railway: railway, cell: cell)
+        cell.railwayImage.image = UIImage(named: railway)
+        //setRailwayCellImage(railway: railway, cell: cell)
         //formatCellLabels(cell: cell)
         return cell
         
@@ -105,25 +106,6 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         cell.cityLabel.numberOfLines = 1
         cell.cityLabel.adjustsFontSizeToFitWidth = true
         cell.addressLabel.minimumScaleFactor = 0.5
-    }
-    
-    private func setRailwayCellImage(railway : String, cell : TrainAlertTableViewCell){
-        switch(railway){
-            case "CN":
-                cell.railwayImage.image = #imageLiteral(resourceName: "CNRailway")
-                break
-            case "VIA":
-                cell.railwayImage.image = #imageLiteral(resourceName: "VIARailway")
-                break
-            case "GO":
-                cell.railwayImage.image = #imageLiteral(resourceName: "GORailway")
-                break
-            case "CP":
-                cell.railwayImage.image = #imageLiteral(resourceName: "CPRailway")
-                break
-            default:
-                break
-        }
     }
     
     

@@ -30,6 +30,7 @@ struct Constants {
         static let updateEmailPrefs = "/api/users/emailupdates"
         static let updatePassword = "/api/users/password"
         static let logout = "/api/logout"
+        static let requestPasswordReset = "/api/account/reset_password"
         
     }
     

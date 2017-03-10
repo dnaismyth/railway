@@ -28,6 +28,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     var circle : MKCircle = MKCircle()
     var radiusValue : Double = 5000.00
     let mileConversion : Double = 0.000621371 // (meters in one mile)
+    var radiusIsShowing = false
 
     @IBOutlet weak var radiusSlider: UISlider!
     @IBOutlet weak var mapView: MKMapView!
@@ -40,6 +41,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         //mapView.removeAnnotations(mapAnnotations)
         radiusSlider.isContinuous = false
         self.mapView.delegate = self
@@ -49,6 +51,10 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         //self.setupAnnotationData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     override open var shouldAutorotate: Bool {
@@ -142,11 +148,15 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         let myLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
         print("My Location is: \(myLocation)")
         let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-        addRadiusCircle(location: CLLocation(latitude: myLocation.latitude, longitude: myLocation.longitude), radius: radiusValue)
+        
 
         mapView.setRegion(region, animated: true)
         self.mapView.showsUserLocation = true
         if((latitude != nil) && (longitude != nil)){
+            if(!radiusIsShowing){
+                addRadiusCircle(location: CLLocation(latitude: myLocation.latitude, longitude: myLocation.longitude), radius: radiusValue)
+                self.radiusIsShowing = true
+            }
             locationManager.stopUpdatingLocation()
             getAllTrainCrossingsNearby(latitude: latitude!, longitude: longitude!, radius : (radiusValue * mileConversion))
         }
@@ -209,7 +219,11 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         let icon : UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
         icon.image = UIImage(named:cpa.imageName)
         icon.layer.zPosition = 1
+        let railwayImage : UIImageView = UIImageView(frame: CGRect(x: 0, y:0, width: 32, height: 32))
+        railwayImage.image = UIImage(named: cpa.railwayImageName)
+        anView?.leftCalloutAccessoryView = railwayImage
         anView?.rightCalloutAccessoryView = cpa.annotationButton
+    
         for view in (anView?.subviews)! {
             view.removeFromSuperview()
         }
@@ -258,12 +272,13 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             let city : String = location["city"] as! String
             let address : String = location["address"] as! String
             let isUserAlert : Bool = trainCrossing["markedForAlerts"] as! Bool
-
+            let railwayName : String = trainCrossing["railway"] as! String
             annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             annotation.title = city
             annotation.subtitle = address
             annotation.imageName = "mapPin"
             annotation.trainCrossingId = trainCrossing["id"] as! Int!
+            annotation.railwayImageName = railwayName
             loadTrainCrossingData(trainCrossingId: annotation.trainCrossingId)
             annotation.annotationButton.tag = annotation.trainCrossingId
             self.setButtonDesign(isUserAlert: isUserAlert, annotation: annotation)
@@ -281,6 +296,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         } else {
             buildAddTrainAlertButton(button: button)
         }
+        
     }
     
     private func buildRemoveButton(button : UIButton){

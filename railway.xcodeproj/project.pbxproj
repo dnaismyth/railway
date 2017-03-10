@@ -21,6 +21,7 @@
 		E590A58D1E61ED5F008BE58F /* PutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590A58C1E61ED5F008BE58F /* PutRequest.swift */; };
 		E590A58F1E624384008BE58F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E590A58E1E624384008BE58F /* GoogleService-Info.plist */; };
 		E590A5901E624384008BE58F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E590A58E1E624384008BE58F /* GoogleService-Info.plist */; };
+		E596BD861E71BB19009F8AB1 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E596BD851E71BB19009F8AB1 /* ForgetPasswordViewController.swift */; };
 		E5B40ECA1E5546000030F8ED /* CrossingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B40EC91E5546000030F8ED /* CrossingsViewController.swift */; };
 		E5B40ECC1E5895C00030F8ED /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B40ECB1E5895C00030F8ED /* TabBarController.swift */; };
 		E5B418F11E64BBB300D9D46A /* RobotBlip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E5B418F01E64BBB300D9D46A /* RobotBlip.mp3 */; };
@@ -76,6 +77,7 @@
 		E57A0A9C1E628A32005D8A1F /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E590A58C1E61ED5F008BE58F /* PutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PutRequest.swift; sourceTree = "<group>"; };
 		E590A58E1E624384008BE58F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E596BD851E71BB19009F8AB1 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 		E5B40EC91E5546000030F8ED /* CrossingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossingsViewController.swift; sourceTree = "<group>"; };
 		E5B40ECB1E5895C00030F8ED /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E5B418F01E64BBB300D9D46A /* RobotBlip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = RobotBlip.mp3; path = ../../Downloads/RobotBlip.mp3; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				E5E3F7981E5E7E2000CB7C5F /* SignupViewController.swift */,
 				E559F8031E6A1C8800F1153A /* NavigationController.swift */,
 				E5BD66CB1E6E046500822DDA /* UpdatePasswordViewController.swift */,
+				E596BD851E71BB19009F8AB1 /* ForgetPasswordViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				E5F5C3931E3D8562005EAE21 /* MapController.swift in Sources */,
 				E5E3F7991E5E7E2000CB7C5F /* SignupViewController.swift in Sources */,
 				E5B418F41E662EA900D9D46A /* ViewControllerExtension.swift in Sources */,
+				E596BD861E71BB19009F8AB1 /* ForgetPasswordViewController.swift in Sources */,
 				E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */,
 				E5F5C3701E3CE33D005EAE21 /* AppDelegate.swift in Sources */,
 				E5B40ECA1E5546000030F8ED /* CrossingsViewController.swift in Sources */,

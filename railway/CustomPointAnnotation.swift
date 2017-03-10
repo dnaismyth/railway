@@ -15,6 +15,7 @@ class CustomPointAnnotation: MKPointAnnotation {
     var trainCrossingId : Int!
     var notificationCount : UILabel = UILabel()
     var labelIsHidden : Bool = true
-    var annotationButton : UIButton = UIButton(type : UIButtonType.contactAdd) as UIButton // button for map annotations
+    var annotationButton : UIButton = UIButton() // button for map annotations
     var reportButton : UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton // button to report train crossings
+    var railwayImageName : String!
 }
