@@ -37,6 +37,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         print("View is loaded")
+        radiusSlider.thumbTintColor = UIColor.black
         self.hideKeyboardWhenTappedAround()
     }
     
@@ -219,7 +220,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         let icon : UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
         icon.image = UIImage(named:cpa.imageName)
         icon.layer.zPosition = 1
-        let railwayImage : UIImageView = UIImageView(frame: CGRect(x: 0, y:0, width: 32, height: 32))
+        let railwayImage : UIImageView = UIImageView(frame: CGRect(x: 0, y:0, width: 40, height: 40))
         railwayImage.image = UIImage(named: cpa.railwayImageName)
         anView?.leftCalloutAccessoryView = railwayImage
         anView?.rightCalloutAccessoryView = cpa.annotationButton
@@ -274,7 +275,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             let isUserAlert : Bool = trainCrossing["markedForAlerts"] as! Bool
             let railwayName : String = trainCrossing["railway"] as! String
             annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            annotation.title = city
+            annotation.title = String(city).uppercased()
             annotation.subtitle = address
             annotation.imageName = "mapPin"
             annotation.trainCrossingId = trainCrossing["id"] as! Int!
@@ -291,6 +292,9 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     private func setButtonDesign(isUserAlert : Bool, annotation : CustomPointAnnotation){
         let button = annotation.annotationButton
+        button.titleLabel?.font = UIFont(name: Constants.FONT.navBarFont, size: 17) ?? UIFont.systemFont(ofSize: 17)
+        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        button.layer.borderWidth = 2.0
         if(isUserAlert){
             buildRemoveButton(button: button)
         } else {
@@ -300,19 +304,21 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     }
     
     private func buildRemoveButton(button : UIButton){
-        button.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
         button.addTarget(self, action: #selector(self.removeTrainCrossingAlert(_:)), for: .touchUpInside)
+        button.layer.borderColor = UIColor(red:0.69, green:0.27, blue:0.27, alpha:1.0).cgColor
         button.backgroundColor = UIColor(red:0.88, green:0.39, blue:0.39, alpha:1.0)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = button.frame.width/2
+        button.setTitle("\u{2796}\n Remove", for: .normal)
     }
     
     private func buildAddTrainAlertButton(button : UIButton){
-        button.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-        button.backgroundColor = UIColor(red:0.23, green:0.56, blue:0.17, alpha:1.0)
+        button.backgroundColor = UIColor(red:0.22, green:0.52, blue:0.15, alpha:1.0)
+        button.layer.borderColor = UIColor(red:0.24, green:0.40, blue:0.13, alpha:1.0).cgColor
         button.addTarget(self, action: #selector(self.addTrainCrossingAlert(_:)), for: .touchUpInside)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = button.frame.width/2
+        button.setTitle("\u{254B}\n Add", for: .normal)
     }
 
     
