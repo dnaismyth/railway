@@ -30,7 +30,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     let mileConversion : Double = 0.000621371 // (meters in one mile)
     var radiusIsShowing = false
     var sliderRect : CGRect = CGRect()
-
+    
     @IBOutlet weak var radiusSlider: UISlider!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var inputLocationView: UIView!
@@ -50,12 +50,14 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         buttonImage.image = UIImage(named: "distance")
         radiusButton.addSubview(buttonImage)
         buttonImage.center = CGPoint(x: radiusButton.bounds.midX, y: radiusButton.bounds.midY)
-        radiusButton.alpha = 0.75
+        radiusButton.alpha = 0.82
         self.hideRadiusSliderWhenTappedAround()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        let notificationName = Notification.Name("RemoveMapData")
+        NotificationCenter.default.addObserver(self, selector: #selector(self.removeMapData), name: notificationName, object: nil)
         //mapView.removeAnnotations(mapAnnotations)
         radiusSlider.isContinuous = false
         self.mapView.delegate = self
@@ -248,6 +250,24 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         return anView
     }
     
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        let visibleRect = mapView.annotationVisibleRect
+        
+        for view:MKAnnotationView in views{
+            let endFrame:CGRect = view.frame
+            var startFrame:CGRect = endFrame
+            startFrame.origin.y = visibleRect.origin.y - startFrame.size.height
+            view.frame = startFrame;
+            
+            UIView.beginAnimations("drop", context: nil)
+            UIView.setAnimationDuration(0.7)
+            
+            view.frame = endFrame;
+            
+            UIView.commitAnimations()
+        }
+    }
+    
     //TODO: Change this to get nearby train crossings
     private func getAllTrainCrossingsNearby(latitude : Double, longitude : Double, radius : Double){
         print("calling get all nearby train crossings")
@@ -263,9 +283,9 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     }
     
     private func formatNotificationLabel(notifyLabel : UILabel){
-        notifyLabel.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        notifyLabel.frame = CGRect(x: -5, y: -8, width: 20, height: 20)
         notifyLabel.layer.zPosition = 0
-        notifyLabel.backgroundColor = UIColor(red:0.32, green:0.49, blue:0.69, alpha:1.0)
+        notifyLabel.backgroundColor = UIColor(red:0.36, green:0.71, blue:0.86, alpha:1.0)
         notifyLabel.textColor = UIColor.white
         //notifyLabel.tag = 30
         notifyLabel.textAlignment = NSTextAlignment.center
@@ -290,7 +310,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             annotation.title = String(city).uppercased()
             annotation.subtitle = address
-            annotation.imageName = "mapPin"
+            annotation.imageName = "clearTrainCrossing"
             annotation.trainCrossingId = trainCrossing["id"] as! Int!
             annotation.railwayImageName = railwayName
             loadTrainCrossingData(trainCrossingId: annotation.trainCrossingId)
@@ -345,8 +365,12 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             if(snapshot.hasChild("is_active") && snapshot.hasChild("notification_count")){
                 let notificationCount : Int = snapshot.childSnapshot(forPath: "notification_count").value as! Int
                 if(notificationCount > 0){
+                    let isActive : Bool = snapshot.childSnapshot(forPath: "is_active").value as! Bool
                     self.mapView.removeAnnotation(self.mapAnnotations[trainCrossingId]!)
                     let annotation: CustomPointAnnotation = self.mapAnnotations[trainCrossingId]!
+                    if(isActive){
+                        annotation.imageName = "trainAlertPin"
+                    }
                     annotation.notificationCount.text = String(notificationCount)
                     self.formatNotificationLabel(notifyLabel: annotation.notificationCount)
                     annotation.labelIsHidden = false
@@ -412,6 +436,15 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     func dismissSlider() {
         setDefaultToggleView()
+    }
+    
+    func removeMapData(notification: NSNotification){
+        if(mapView.annotations.count > 0){
+            mapView.removeAnnotations(mapView.annotations)
+        }
+        self.mapAnnotations.removeAll()
+        self.trainCrossingContent.removeAll()
+        self.trainCrossingData.removeAllObjects()
     }
     
 }

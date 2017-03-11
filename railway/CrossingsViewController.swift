@@ -25,9 +25,12 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        let notificationName = Notification.Name("RemoveMapData")   // remove map data
+        NotificationCenter.default.post(name: notificationName, object: nil)
         // Find user train alerts
         getUserTrainAlerts(completed :{
             () -> () in

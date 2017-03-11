@@ -14,8 +14,8 @@ struct Constants {
     // API Related constants
     struct API {
         //static let baseUrl = "http://10.0.9.100:8080" // starbucks
-        //static let baseUrl = "http://192.168.1.73:8080"
-        static let baseUrl = "http://localhost:8080"
+        static let baseUrl = "http://192.168.1.73:8080"
+        //static let baseUrl = "http://localhost:8080"
         static let login = "/oauth/token"
         static let signup = "/api/signup"
         static let allTrainCrossings = "/api/traincrossings"

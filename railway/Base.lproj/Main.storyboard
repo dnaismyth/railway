@@ -646,9 +646,9 @@
                             <slider opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="MVB-qE-V4w">
                                 <rect key="frame" x="14" y="52" width="292" height="31"/>
                                 <color key="backgroundColor" white="1" alpha="0.60832435344827585" colorSpace="calibratedWhite"/>
-                                <color key="minimumTrackTintColor" red="0.0" green="0.54631228259999998" blue="0.76266025640000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="minimumTrackTintColor" red="0.70254407050000001" green="0.096500425380000004" blue="0.1131257002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="thumbTintColor" red="0.0" green="0.54631228262493847" blue="0.76266025641025648" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="thumbTintColor" red="0.70254407050000001" green="0.096500425380000004" blue="0.1131257002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="sliderInput:" destination="6iN-cd-48L" eventType="valueChanged" id="t6b-jQ-eMr"/>
                                 </connections>

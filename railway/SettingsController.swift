@@ -30,6 +30,12 @@ class SettingsController: UITableViewController, UIPickerViewDelegate, UIPickerV
         pickerData = ["English", "French"]
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let notificationName = Notification.Name("RemoveMapData")   // remove map data
+        NotificationCenter.default.post(name: notificationName, object: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
