@@ -16,6 +16,7 @@
 		E559F7FB1E68F45000F1153A /* TrainCrossingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559F7FA1E68F45000F1153A /* TrainCrossingData.swift */; };
 		E559F8001E69F89100F1153A /* NotificationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559F7FF1E69F89100F1153A /* NotificationLabel.swift */; };
 		E559F8041E6A1C8800F1153A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559F8031E6A1C8800F1153A /* NavigationController.swift */; };
+		E5754B191E73B6DE00BE2767 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5754B181E73B6DE00BE2767 /* CustomTextField.swift */; };
 		E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E578CD721E3E952A00915825 /* InputLocationView.swift */; };
 		E57A0A9D1E628A32005D8A1F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E57A0A9C1E628A32005D8A1F /* .gitignore */; };
 		E590A58D1E61ED5F008BE58F /* PutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590A58C1E61ED5F008BE58F /* PutRequest.swift */; };
@@ -73,6 +74,7 @@
 		E559F7FA1E68F45000F1153A /* TrainCrossingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCrossingData.swift; sourceTree = "<group>"; };
 		E559F7FF1E69F89100F1153A /* NotificationLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationLabel.swift; sourceTree = "<group>"; };
 		E559F8031E6A1C8800F1153A /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		E5754B181E73B6DE00BE2767 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		E578CD721E3E952A00915825 /* InputLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputLocationView.swift; sourceTree = "<group>"; };
 		E57A0A9C1E628A32005D8A1F /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E590A58C1E61ED5F008BE58F /* PutRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PutRequest.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				E5E3F7941E5A5E9D00CB7C5F /* CustomPointAnnotation.swift */,
 				E5B418F71E665AED00D9D46A /* GradientView.swift */,
 				E559F7FF1E69F89100F1153A /* NotificationLabel.swift */,
+				E5754B181E73B6DE00BE2767 /* CustomTextField.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5754B191E73B6DE00BE2767 /* CustomTextField.swift in Sources */,
 				E50DC8BE1E520F7600920A89 /* KeychainWrapper.m in Sources */,
 				E559F8001E69F89100F1153A /* NotificationLabel.swift in Sources */,
 				E559F7FB1E68F45000F1153A /* TrainCrossingData.swift in Sources */,

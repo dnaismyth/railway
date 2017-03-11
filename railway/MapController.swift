@@ -47,7 +47,9 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         radiusButton.backgroundColor = UIColor.white
         //radiusButton.setBackgroundImage(UIImage(named: "distance"), for: .normal)
         let buttonImage : UIImageView = UIImageView(frame: CGRect(x:0, y:0 ,width: 32, height: 32))
-        buttonImage.image = UIImage(named: "distance")
+        buttonImage.tintColor = Constants.COLOR.defaultColor
+        buttonImage.image = UIImage(named: "distance")?.withRenderingMode(.alwaysTemplate)
+        buttonImage.tintColor = Constants.COLOR.defaultColor
         radiusButton.addSubview(buttonImage)
         buttonImage.center = CGPoint(x: radiusButton.bounds.midX, y: radiusButton.bounds.midY)
         radiusButton.alpha = 0.82
@@ -232,8 +234,14 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         }
         
         let cpa = annotation as! CustomPointAnnotation
-        let icon : UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
-        icon.image = UIImage(named:cpa.imageName)
+        let icon : UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
+        if(cpa.imageName == "clearTrainCrossing"){
+            icon.image = UIImage(named:cpa.imageName)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            icon.tintColor = Constants.COLOR.defaultGreen
+        } else {
+            icon.image = UIImage(named:cpa.imageName)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            icon.tintColor = Constants.COLOR.hazardRed
+        }
         icon.layer.zPosition = 1
         let railwayImage : UIImageView = UIImageView(frame: CGRect(x: 0, y:0, width: 40, height: 40))
         railwayImage.image = UIImage(named: cpa.railwayImageName)
@@ -285,7 +293,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     private func formatNotificationLabel(notifyLabel : UILabel){
         notifyLabel.frame = CGRect(x: -5, y: -8, width: 20, height: 20)
         notifyLabel.layer.zPosition = 0
-        notifyLabel.backgroundColor = UIColor(red:0.36, green:0.71, blue:0.86, alpha:1.0)
+        notifyLabel.backgroundColor = Constants.COLOR.defaultColor
         notifyLabel.textColor = UIColor.white
         //notifyLabel.tag = 30
         notifyLabel.textAlignment = NSTextAlignment.center

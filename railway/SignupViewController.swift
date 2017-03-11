@@ -22,10 +22,41 @@ class SignupViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        nameTextField.addRadius()
-        emailTextField.addRadius()
-        passwordTextField.addRadius()
-        RegisterButton.addRadius()
+        // Placeholder attributes
+        
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.7)])
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.7)])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.7)])
+        
+        // Email Setup
+        let emailIcon : UIImageView = UIImageView(image: UIImage(named: "emailIcon"))
+        emailIcon.frame = CGRect(x: 8, y: 0, width: 20, height: 20)
+        let emailPadding : UIView = UIView(frame: CGRect(x:0, y:0, width: 28, height: 20))
+        emailPadding.addSubview(emailIcon)
+        emailTextField.leftView = emailPadding
+        emailTextField.leftViewMode = UITextFieldViewMode.always
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor(red:1.00, green:1.00,blue:1.00, alpha:0.7)])
+        
+        // Password Setup
+        let passwordIcon : UIImageView = UIImageView(image: UIImage(named: "passwordIcon"))
+        passwordIcon.frame = CGRect(x: 8, y: 0, width: 20, height: 20)
+        let passwordPadding : UIView = UIView(frame: CGRect(x:0, y:0, width: 28, height: 20))
+        passwordPadding.addSubview(passwordIcon)
+        passwordTextField.leftView = passwordPadding
+        passwordTextField.leftViewMode = UITextFieldViewMode.always
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.7)])
+        
+        // Name Setup
+        let nameIcon : UIImageView = UIImageView(image: UIImage(named: "nameIcon"))
+        nameIcon.frame = CGRect(x: 8, y: 0, width: 20, height: 20)
+        let namePadding : UIView = UIView(frame: CGRect(x:0, y:0, width: 28, height: 20))
+        namePadding.addSubview(nameIcon)
+        nameTextField.leftView = namePadding
+        nameTextField.leftViewMode = UITextFieldViewMode.always
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.7)])
+
+        
+        
         RegisterButton.addShadowView()
         self.hideKeyboardWhenTappedAround()
     }

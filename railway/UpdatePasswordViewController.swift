@@ -21,7 +21,23 @@ class UpdatePasswordViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let passwordIcon : UIImageView = UIImageView(image: UIImage(named: "passwordIcon"))
+        passwordIcon.frame = CGRect(x: 8, y: 0, width: 20, height: 20)
+        let passwordPadding : UIView = UIView(frame: CGRect(x:0, y:0, width: 28, height: 20))
+        passwordPadding.addSubview(passwordIcon)
+        newPasswordField.leftView = passwordPadding
+        newPasswordField.leftViewMode = UITextFieldViewMode.always
+        newPasswordField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.7)])
         self.hideKeyboardWhenTappedAround()
+        
+        let verifyIcon : UIImageView = UIImageView(image: UIImage(named: "verifyPasswordIcon"))
+        verifyIcon.frame = CGRect(x: 8, y: 0, width: 20, height: 20)
+        let verifyPadding : UIView = UIView(frame: CGRect(x:0, y:0, width: 28, height: 20))
+        verifyPadding.addSubview(verifyIcon)
+        verifyPasswordField.leftView = verifyPadding
+        verifyPasswordField.leftViewMode = UITextFieldViewMode.always
+        verifyPasswordField.attributedPlaceholder = NSAttributedString(string: "Verify", attributes: [NSForegroundColorAttributeName : UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.7)])
+        
     }
     
     

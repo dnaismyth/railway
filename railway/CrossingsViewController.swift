@@ -79,8 +79,11 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         let city : String = trainCrossingLocation ["city"] as! String
         let address : String = trainCrossingLocation["address"] as! String
         print("Index path row is : \(indexPath.row)")
+        cell.latitude = trainCrossingLocation["latitude"] as! Double
+        cell.longitude = trainCrossingLocation["longitude"] as! Double
         cell.cityLabel.text = city.appending(", ").appending(province)
         cell.addressLabel.text = address
+        cell.lastFlaggedActive = trainCrossing["lastFlaggedActive"] as! String
         let trainCrossingId : Int = trainCrossing["id"] as! Int
         cell.tag = trainCrossingId
         let data : TrainCrossingData? = firebaseData[trainCrossingId]
@@ -195,6 +198,9 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         alertSettings.city = cell.cityLabel.text!
         alertSettings.address = cell.addressLabel.text!
         alertSettings.trainCrossingId = cell.tag
+        alertSettings.latitude = cell.latitude
+        alertSettings.longitude = cell.longitude
+        alertSettings.lastFlaggedActive = cell.lastFlaggedActive    // set the time in which the train crossing was last flagged as active
         self.navigationController?.pushViewController(alertSettings, animated: true)
     }
     

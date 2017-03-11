@@ -15,6 +15,9 @@ class TrainAlertTableViewCell: UITableViewCell {
     @IBOutlet weak var notificationCount: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    var latitude : Double = Double()
+    var longitude : Double = Double()
+    var lastFlaggedActive : String = String()
 
     
     let userDefaults = Foundation.UserDefaults.standard

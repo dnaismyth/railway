@@ -14,6 +14,13 @@ class ForgetPasswordViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let emailIcon : UIImageView = UIImageView(image: UIImage(named: "emailIcon"))
+        emailIcon.frame = CGRect(x: 8, y: 0, width: 20, height: 20)
+        let emailPadding : UIView = UIView(frame: CGRect(x:0, y:0, width: 28, height: 20))
+        emailPadding.addSubview(emailIcon)
+        emailInput.leftView = emailPadding
+        emailInput.leftViewMode = UITextFieldViewMode.always
+        emailInput.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor(red:1.00, green:1.00,blue:1.00, alpha:0.7)])
 
         // Do any additional setup after loading the view.
     }
