@@ -22,10 +22,9 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
     var trainAlertContent : [[String:AnyObject]] = []  // this will store the content of each train alert
     var firebaseData: [Int :TrainCrossingData]! = [:]
     let rootRef = FIRDatabase.database().reference()    // reference to the firebase database
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -87,6 +86,8 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         let trainCrossingId : Int = trainCrossing["id"] as! Int
         cell.tag = trainCrossingId
         let data : TrainCrossingData? = firebaseData[trainCrossingId]
+        cell.cautionIcon.image = UIImage(named: "cautionIcon")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        cell.cautionIcon.tintColor = Constants.COLOR.cautionYellow
         if(data != nil){
             if(data!.getNotificationCount() > 0){
                 cell.notificationCount.text = String(data!.getNotificationCount())

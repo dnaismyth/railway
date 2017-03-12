@@ -23,14 +23,6 @@ class NotificationLabel : UILabel {
     }
     
     func commonInit(){
-            self.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-            self.layer.zPosition = 0
-            self.backgroundColor = UIColor(red:0.32, green:0.49, blue:0.69, alpha:1.0)
-            self.textColor = UIColor.white
-            self.textAlignment = NSTextAlignment.center
-            self.font =  UIFont(name: Constants.FONT.navBarFont, size: 16) ?? UIFont.systemFont(ofSize: 16)
-            self.layer.cornerRadius = self.bounds.width/2
-            self.clipsToBounds = true
     }
 
 }

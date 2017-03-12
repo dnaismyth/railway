@@ -333,9 +333,8 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     private func setButtonDesign(isUserAlert : Bool, annotation : CustomPointAnnotation){
         let button = annotation.annotationButton
-        button.titleLabel?.font = UIFont(name: Constants.FONT.navBarFont, size: 17) ?? UIFont.systemFont(ofSize: 17)
         button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        button.layer.borderWidth = 2.0
+        button.layer.borderWidth = 1.3
         if(isUserAlert){
             buildRemoveButton(button: button)
         } else {
@@ -346,20 +345,38 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     private func buildRemoveButton(button : UIButton){
         button.addTarget(self, action: #selector(self.removeTrainCrossingAlert(_:)), for: .touchUpInside)
-        button.layer.borderColor = UIColor(red:0.69, green:0.27, blue:0.27, alpha:1.0).cgColor
-        button.backgroundColor = UIColor(red:0.88, green:0.39, blue:0.39, alpha:1.0)
+        //button.layer.borderColor = UIColor(red:0.69, green:0.27, blue:0.27, alpha:1.0).cgColor
+        button.backgroundColor = Constants.COLOR.hazardRed
         button.layer.masksToBounds = true
         button.layer.cornerRadius = button.frame.width/2
-        button.setTitle("\u{2796}\n Remove", for: .normal)
+        self.buildRemoveIcon(button: button)
     }
     
     private func buildAddTrainAlertButton(button : UIButton){
-        button.backgroundColor = UIColor(red:0.22, green:0.52, blue:0.15, alpha:1.0)
-        button.layer.borderColor = UIColor(red:0.24, green:0.40, blue:0.13, alpha:1.0).cgColor
+        button.backgroundColor = Constants.COLOR.defaultGreen
+        //button.layer.borderColor = UIColor(red:0.24, green:0.40, blue:0.13, alpha:1.0).cgColor
         button.addTarget(self, action: #selector(self.addTrainCrossingAlert(_:)), for: .touchUpInside)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = button.frame.width/2
-        button.setTitle("\u{254B}\n Add", for: .normal)
+        self.buildAddIcon(button: button)
+    }
+    
+    private func buildAddIcon(button: UIButton){
+        let imageView : UIImageView = UIImageView(image: UIImage(named:"addIcon")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate))
+        imageView.frame = CGRect(x:0, y:0, width:30, height:30)
+        imageView.tintColor = Constants.COLOR.greenComp
+        imageView.addShadowView()
+        button.addSubview(imageView)
+        imageView.center = CGPoint(x: button.bounds.midX, y: button.bounds.midY)
+    }
+    
+    private func buildRemoveIcon(button : UIButton) {
+        let imageView : UIImageView = UIImageView(image: UIImage(named:"removeIcon")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate))
+        imageView.frame = CGRect(x: 0, y:0, width: 30, height:30)
+        imageView.tintColor = Constants.COLOR.redComp
+        imageView.addShadowView()
+        button.addSubview(imageView)
+        imageView.center = CGPoint(x: button.bounds.midX, y: button.bounds.midY)
     }
 
     

@@ -15,8 +15,8 @@ struct Constants {
     // API Related constants
     struct API {
         //static let baseUrl = "http://10.0.9.100:8080" // starbucks
-        static let baseUrl = "http://192.168.1.73:8080"
-        //static let baseUrl = "http://localhost:8080"
+        //static let baseUrl = "http://192.168.1.73:8080"
+        static let baseUrl = "http://localhost:8080"
         static let login = "/oauth/token"
         static let signup = "/api/signup"
         static let allTrainCrossings = "/api/traincrossings"
@@ -54,7 +54,11 @@ struct Constants {
     struct COLOR {
         static let defaultColor : UIColor = UIColor(red:0.20, green:0.37, blue:0.95, alpha:1.0)
         static let compColor : UIColor = UIColor(red:0.14, green:0.54, blue:0.72, alpha:0.7)
-        static let defaultGreen : UIColor = UIColor(red:0.00, green:0.60, blue:0.40, alpha:1.0)
+        static let defaultGreen : UIColor = UIColor(red:0.00, green:0.60, blue:0.20, alpha:1.0)
         static let hazardRed : UIColor = UIColor(red:0.80, green:0.00, blue:0.00, alpha:1.0)
+        static let redComp : UIColor = UIColor(red:0.40, green:0.00, blue:0.00, alpha:1.0)
+        static let greenComp : UIColor = UIColor(red:0.00, green:0.40, blue:0.00, alpha:1.0)
+        static let cautionYellow : UIColor = UIColor(red:1.00, green:0.80, blue:0.00, alpha:1.0)
+
     }
 }
