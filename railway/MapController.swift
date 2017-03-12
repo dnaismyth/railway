@@ -234,12 +234,12 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         }
         
         let cpa = annotation as! CustomPointAnnotation
-        let icon : UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
+        let icon : UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 34, height: 34))
         if(cpa.imageName == "clearTrainCrossing"){
             icon.image = UIImage(named:cpa.imageName)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
             icon.tintColor = Constants.COLOR.defaultGreen
         } else {
-            icon.image = UIImage(named:cpa.imageName)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            icon.image = UIImage(named:"clearTrainCrossing")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
             icon.tintColor = Constants.COLOR.hazardRed
         }
         icon.layer.zPosition = 1
@@ -291,7 +291,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     }
     
     private func formatNotificationLabel(notifyLabel : UILabel){
-        notifyLabel.frame = CGRect(x: -5, y: -8, width: 20, height: 20)
+        notifyLabel.frame = CGRect(x: -4, y: -7, width: 20, height: 20)
         notifyLabel.layer.zPosition = 0
         notifyLabel.backgroundColor = Constants.COLOR.defaultColor
         notifyLabel.textColor = UIColor.white

@@ -93,13 +93,14 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.notificationCount.layer.isHidden = false   // show notification
             } else {
                 print ("I have zero notifications")
+                cell.notificationCount.layer.isHidden = true    // hide notification
             }
         }
         // TODO: Use this later to change the image icon
         let railway : String = trainCrossing["railway"] as! String
         cell.railwayImage.image = UIImage(named: railway)
         //setRailwayCellImage(railway: railway, cell: cell)
-        //formatCellLabels(cell: cell)
+        formatCellLabels(cell: cell)
         return cell
         
     }
@@ -120,7 +121,7 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         let deleteButton = UITableViewRowAction(style: .default, title: "\u{267A}\n Remove") { action, indexPath in
             self.tableView(tableView, commit: UITableViewCellEditingStyle.delete, forRowAt: indexPath)
         }
-        deleteButton.backgroundColor = UIColor(red:0.87, green:0.48, blue:0.48, alpha:1.0)
+        deleteButton.backgroundColor = Constants.COLOR.hazardRed
         return [deleteButton]
     }
     

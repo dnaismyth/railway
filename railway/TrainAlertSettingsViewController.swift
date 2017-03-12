@@ -148,10 +148,13 @@ class TrainAlertSettingsViewController: UIViewController, MKMapViewDelegate {
         let trainCrossingData = rootRef.child("traincrossing")
         let childNode = trainCrossingData.child(key)    // find a child node by the train crossing id
         childNode.observeSingleEvent(of: .value, with: { snapshot in
-            if(snapshot.hasChild("is_active") && snapshot.hasChild("notification_count")){
+            if(snapshot.hasChild("notification_count")){
                 var notificationCount : Int = snapshot.childSnapshot(forPath: "notification_count").value as! Int
                 notificationCount += 1
                 childNode.child("notification_count").setValue(notificationCount)
+            } else {
+                let newNotification = 1
+                childNode.child("notification_count").setValue(newNotification)
             }
         })
         
