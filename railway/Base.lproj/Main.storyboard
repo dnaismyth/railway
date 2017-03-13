@@ -300,12 +300,13 @@
             </objects>
             <point key="canvasLocation" x="-980" y="908.9955022488756"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Settings-->
         <scene sceneID="VeO-lz-UFQ">
             <objects>
                 <navigationController id="EAC-ew-v4I" customClass="NavigationController" customModule="railway" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="settingsIcon" selectedImage="settingsIcon" id="DZ9-sU-Jwa">
-                        <inset key="imageInsets" minX="2" minY="9" maxX="2" maxY="-5"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settingsIcon" selectedImage="settingsIcon" id="DZ9-sU-Jwa">
+                        <inset key="imageInsets" minX="4" minY="6" maxX="4" maxY="2"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-1"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="S0D-U3-NFX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -474,7 +475,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Settings" image="settingsIcon" selectedImage="settingsIcon" id="WbW-Du-pV9">
-                        <inset key="imageInsets" minX="2" minY="2" maxX="2" maxY="2"/>
+                        <inset key="imageInsets" minX="4" minY="8" maxX="4" maxY="2"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="37b-5W-Rk6"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -645,7 +646,7 @@
             </objects>
             <point key="canvasLocation" x="121.875" y="908.75"/>
         </scene>
-        <!--Map Controller-->
+        <!--Map-->
         <scene sceneID="jKm-xb-9wZ">
             <objects>
                 <viewController id="6iN-cd-48L" customClass="MapController" customModule="railway" customModuleProvider="target" sceneMemberID="viewController">
@@ -677,9 +678,9 @@
                             <slider opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="MVB-qE-V4w">
                                 <rect key="frame" x="14" y="52" width="292" height="31"/>
                                 <color key="backgroundColor" white="1" alpha="0.60832435344827585" colorSpace="calibratedWhite"/>
-                                <color key="minimumTrackTintColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="minimumTrackTintColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
                                 <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="thumbTintColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="thumbTintColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
                                     <action selector="sliderInput:" destination="6iN-cd-48L" eventType="valueChanged" id="t6b-jQ-eMr"/>
                                 </connections>
@@ -698,8 +699,9 @@
                             <constraint firstItem="bBQ-Ej-h8O" firstAttribute="top" secondItem="AtK-Wo-GvQ" secondAttribute="bottom" constant="8" id="tQc-gC-2cc"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="mapIcon" selectedImage="mapIcon" id="RTn-tp-F46">
-                        <inset key="imageInsets" minX="2" minY="9" maxX="2" maxY="-5"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="mapIcon" selectedImage="mapIcon" id="RTn-tp-F46">
+                        <inset key="imageInsets" minX="4" minY="6" maxX="4" maxY="3"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-1"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="mapView" destination="bBQ-Ej-h8O" id="mBL-1M-NAi"/>
@@ -711,7 +713,7 @@
             </objects>
             <point key="canvasLocation" x="973.125" y="648.75"/>
         </scene>
-        <!--Train Alerts-->
+        <!--Alerts-->
         <scene sceneID="fKN-2J-XEt">
             <objects>
                 <viewController storyboardIdentifier="crossingsView" id="eFK-xy-eug" customClass="CrossingsViewController" customModule="railway" customModuleProvider="target" sceneMemberID="viewController">
@@ -723,15 +725,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="center" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dm4-4B-XRr">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPc-Xi-n3N">
+                                <rect key="frame" x="0.0" y="64" width="320" height="454"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="center" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dm4-4B-XRr">
+                                <rect key="frame" x="0.0" y="64" width="320" height="454"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="trainAlertCell" rowHeight="110" id="s8G-eN-NR6" customClass="TrainAlertTableViewCell" customModule="railway" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" tableViewCell="s8G-eN-NR6" id="MPf-io-2lJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="109.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="109"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CNRailway" translatesAutoresizingMaskIntoConstraints="NO" id="lpn-3I-zVL">
@@ -742,22 +748,22 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="mmG-14-663">
-                                                    <rect key="frame" x="97" y="16" width="172" height="78"/>
+                                                    <rect key="frame" x="97" y="16" width="172" height="77"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="city city city city   " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="boz-D5-l8W">
-                                                            <rect key="frame" x="13" y="0.0" width="146" height="34.5"/>
+                                                            <rect key="frame" x="13" y="0.0" width="146" height="33.5"/>
                                                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="19"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Address address address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="7nP-Ii-Mvp">
-                                                            <rect key="frame" x="1" y="37.5" width="170.5" height="17.5"/>
+                                                            <rect key="frame" x="1" y="36.5" width="170.5" height="17.5"/>
                                                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Jd5-n9-Akd">
-                                                            <rect key="frame" x="55" y="58" width="62" height="20"/>
+                                                            <rect key="frame" x="54" y="57" width="64.5" height="20"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cautionIcon" translatesAutoresizingMaskIntoConstraints="NO" id="J0d-9z-DWe">
                                                                     <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -767,11 +773,11 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 alert" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="20" translatesAutoresizingMaskIntoConstraints="NO" id="hba-gv-tof">
-                                                                    <rect key="frame" x="23" y="0.0" width="39" height="20"/>
+                                                                    <rect key="frame" x="23" y="0.0" width="41.5" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="eyt-Xe-eNe"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
                                                                     <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <size key="shadowOffset" width="-0.59999999999999998" height="-0.89999999999999991"/>
@@ -816,14 +822,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="aPc-Xi-n3N" secondAttribute="trailing" id="65e-hf-gYp"/>
+                            <constraint firstItem="aPc-Xi-n3N" firstAttribute="top" secondItem="HK4-R7-Jzf" secondAttribute="bottom" id="7aU-xu-ohz"/>
                             <constraint firstItem="Dm4-4B-XRr" firstAttribute="leading" secondItem="ddR-en-lc4" secondAttribute="leading" id="Zp9-Mq-2du"/>
-                            <constraint firstItem="Dm4-4B-XRr" firstAttribute="top" secondItem="ddR-en-lc4" secondAttribute="top" id="dS5-Dr-5Vq"/>
+                            <constraint firstItem="PgM-4Y-Aah" firstAttribute="top" secondItem="aPc-Xi-n3N" secondAttribute="bottom" constant="1" id="ezg-C9-CPN"/>
+                            <constraint firstItem="aPc-Xi-n3N" firstAttribute="leading" secondItem="ddR-en-lc4" secondAttribute="leading" id="gNO-dQ-9lG"/>
                             <constraint firstItem="PgM-4Y-Aah" firstAttribute="top" secondItem="Dm4-4B-XRr" secondAttribute="bottom" constant="1" id="hCZ-gz-Jft"/>
+                            <constraint firstItem="Dm4-4B-XRr" firstAttribute="top" secondItem="HK4-R7-Jzf" secondAttribute="bottom" id="nDX-ZX-eNl"/>
                             <constraint firstAttribute="trailing" secondItem="Dm4-4B-XRr" secondAttribute="trailing" id="vWX-Ff-Rth"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Train Alerts" id="rkG-AD-Sfz"/>
+                    <navigationItem key="navigationItem" title="Alerts" id="rkG-AD-Sfz"/>
                     <connections>
+                        <outlet property="placeholderView" destination="aPc-Xi-n3N" id="hDx-nc-N8r"/>
                         <outlet property="trainAlertTableView" destination="Dm4-4B-XRr" id="DHU-Sq-8ah"/>
                     </connections>
                 </viewController>
@@ -924,12 +935,13 @@
             </objects>
             <point key="canvasLocation" x="3503.1999999999998" y="137.18140929535232"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Alerts-->
         <scene sceneID="dBd-RZ-3ns">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fjc-H6-QRE" customClass="NavigationController" customModule="railway" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="trainIcon" selectedImage="trainIcon" id="Bga-Tz-Zjy">
-                        <inset key="imageInsets" minX="2" minY="9" maxX="2" maxY="-5"/>
+                    <tabBarItem key="tabBarItem" title="Alerts" image="trainIcon" selectedImage="trainIcon" id="Bga-Tz-Zjy">
+                        <inset key="imageInsets" minX="4" minY="7" maxX="4" maxY="2"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-1"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2LS-0v-3Pb">

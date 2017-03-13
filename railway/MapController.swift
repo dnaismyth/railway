@@ -126,6 +126,9 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
                         print("Topic is: \(FCMTopic)")
                         FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/".appending(FCMTopic!))
                         removed = true;
+                        for view in (sender?.subviews)!{
+                            view.removeFromSuperview()
+                        }
                         self.buildAddTrainAlertButton(button: sender as! UIButton)
                         self.showAlert(alertTitle: "Train Alert Removed", alertMessage: "You will no longer receive notification activity from this train crossing.")
                     }
@@ -150,6 +153,9 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
                 let notificationName = Notification.Name("RefreshTrainAlertData")   // refresh table view
                 FIRMessaging.messaging().subscribe(toTopic: "/topics/".appending(FCMTopic))
                 NotificationCenter.default.post(name: notificationName, object: nil)
+                for view in (sender?.subviews)!{
+                    view.removeFromSuperview()
+                }
                 self.buildRemoveButton(button: sender as! UIButton)
                 self.showAlert(alertTitle: "Train Alerted Added!", alertMessage: "You will now be eligible to report and recieve notification activity from this train crossing location.")
             }

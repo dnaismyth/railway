@@ -23,12 +23,18 @@ class NavigationController: UINavigationController {
     
 
     private func formatNavigationBar(){
+        // Set insets for tab bar items as they are not retaining when set in storyboard
+        for item in (tabBarController?.tabBar.items)! {
+            item.imageInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        }
         //self.navigationBar.barTintColor = UIColor.lightGray
-        let navbarFont = UIFont(name: Constants.FONT.navBarFont, size: 20) ?? UIFont.systemFont(ofSize: 20)
-        let barbuttonFont = UIFont(name: Constants.FONT.navBarFont, size: 20) ?? UIFont.systemFont(ofSize: 20)
-        
-        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarFont, NSForegroundColorAttributeName:UIColor.black]
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: barbuttonFont, NSForegroundColorAttributeName:UIColor.black], for: UIControlState.normal)
+//        let navbarFont = UIFont(name: Constants.FONT.navBarFont, size: 20) ?? UIFont.systemFont(ofSize: 20)
+//        let barbuttonFont = UIFont(name: Constants.FONT.navBarFont, size: 20) ?? UIFont.systemFont(ofSize: 20)
+//        
+//        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: navbarFont, NSForegroundColorAttributeName:UIColor.black]
+//        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: barbuttonFont, NSForegroundColorAttributeName:UIColor.black], for: UIControlState.normal)
     }
+    
+    
 
 }

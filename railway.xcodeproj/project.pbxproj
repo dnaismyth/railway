@@ -34,6 +34,8 @@
 		E5E3F7971E5D338100CB7C5F /* TrainAlertSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E3F7961E5D338100CB7C5F /* TrainAlertSettingsViewController.swift */; };
 		E5E3F7991E5E7E2000CB7C5F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E3F7981E5E7E2000CB7C5F /* SignupViewController.swift */; };
 		E5E546D21E61DCB80007C79A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E546D11E61DCB80007C79A /* UserNotifications.framework */; };
+		E5EB24591E7603B80036D4C3 /* emptyPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5EB24581E7603B80036D4C3 /* emptyPlaceholderView.xib */; };
+		E5EB245D1E7607C70036D4C3 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EB245C1E7607C70036D4C3 /* PlaceholderView.swift */; };
 		E5F218261E4FE97200BD6AB0 /* PostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F218251E4FE97200BD6AB0 /* PostRequest.swift */; };
 		E5F2182B1E51413F00BD6AB0 /* GetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2182A1E51413F00BD6AB0 /* GetRequest.swift */; };
 		E5F2182D1E5141D400BD6AB0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2182C1E5141D400BD6AB0 /* Constants.swift */; };
@@ -90,6 +92,8 @@
 		E5E3F7961E5D338100CB7C5F /* TrainAlertSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainAlertSettingsViewController.swift; sourceTree = "<group>"; };
 		E5E3F7981E5E7E2000CB7C5F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E5E546D11E61DCB80007C79A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		E5EB24581E7603B80036D4C3 /* emptyPlaceholderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = emptyPlaceholderView.xib; sourceTree = "<group>"; };
+		E5EB245C1E7607C70036D4C3 /* PlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		E5F218251E4FE97200BD6AB0 /* PostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRequest.swift; sourceTree = "<group>"; };
 		E5F2182A1E51413F00BD6AB0 /* GetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRequest.swift; sourceTree = "<group>"; };
 		E5F2182C1E5141D400BD6AB0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 				E5E3F7941E5A5E9D00CB7C5F /* CustomPointAnnotation.swift */,
 				E5B418F71E665AED00D9D46A /* GradientView.swift */,
 				E5754B181E73B6DE00BE2767 /* CustomTextField.swift */,
+				E5EB245C1E7607C70036D4C3 /* PlaceholderView.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 				E50DC8BC1E520F7600920A89 /* KeychainWrapper.h */,
 				E50DC8BD1E520F7600920A89 /* KeychainWrapper.m */,
 				E5F5C3731E3CE33D005EAE21 /* Main.storyboard */,
+				E5EB24581E7603B80036D4C3 /* emptyPlaceholderView.xib */,
 				E578CD721E3E952A00915825 /* InputLocationView.swift */,
 				E52E6A841E3EA7B5000B485F /* InputLocationView.xib */,
 				E5F5C3761E3CE33D005EAE21 /* Assets.xcassets */,
@@ -384,6 +390,7 @@
 				E590A58F1E624384008BE58F /* GoogleService-Info.plist in Resources */,
 				E52E6A851E3EA7B5000B485F /* InputLocationView.xib in Resources */,
 				E57A0A9D1E628A32005D8A1F /* .gitignore in Resources */,
+				E5EB24591E7603B80036D4C3 /* emptyPlaceholderView.xib in Resources */,
 				E5F5C3751E3CE33D005EAE21 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,6 +484,7 @@
 				E578CD731E3E952A00915825 /* InputLocationView.swift in Sources */,
 				E5F5C3701E3CE33D005EAE21 /* AppDelegate.swift in Sources */,
 				E5B40ECA1E5546000030F8ED /* CrossingsViewController.swift in Sources */,
+				E5EB245D1E7607C70036D4C3 /* PlaceholderView.swift in Sources */,
 				E5F2182D1E5141D400BD6AB0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,15 +16,19 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
 
     //MARK: Properties
     @IBOutlet weak var trainAlertTableView: UITableView!
+    @IBOutlet weak var placeholderView: UIView!
     
     let userDefaults = Foundation.UserDefaults.standard
     var trainAlertData : NSDictionary = [:]     // data from api call to retrieve all user train alerts
     var trainAlertContent : [[String:AnyObject]] = []  // this will store the content of each train alert
     var firebaseData: [Int :TrainCrossingData]! = [:]
     let rootRef = FIRDatabase.database().reference()    // reference to the firebase database
+    var nibView : UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let view : PlaceholderView = PlaceholderView()
+        nibView = view.loadViewFromNib()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -162,6 +166,15 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
                 self.trainAlertContent = self.trainAlertData["content"] as! [[String:AnyObject]]
                 self.trainAlertTableView.reloadData()
                 print("Content size: \(self.trainAlertContent.count)")
+                if(self.trainAlertContent.count <= 0){
+                    self.trainAlertTableView.isHidden = true    // show placeholder view if there is no selected alerts
+                    self.placeholderView.isHidden = false
+                    self.placeholderView.addSubview(self.nibView!)
+                    self.nibView!.center = CGPoint(x: self.placeholderView.bounds.midX, y: self.placeholderView.bounds.midY)
+                } else {
+                    self.placeholderView.isHidden = true
+                    self.trainAlertTableView.isHidden = false
+                }
                 completed()
             }
         })
