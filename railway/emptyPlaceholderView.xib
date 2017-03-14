@@ -23,7 +23,7 @@
                     <rect key="frame" x="34" y="265" width="253" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="30"/>
-                    <color key="textColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Get started by tapping the map icon below!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qP0-VN-cls">

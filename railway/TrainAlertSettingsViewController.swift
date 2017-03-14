@@ -42,7 +42,7 @@ class TrainAlertSettingsViewController: UIViewController, MKMapViewDelegate {
         lastActiveLabel.adjustsFontSizeToFitWidth = true
         lastActiveLabel.minimumScaleFactor = 0.5
         if((String(lastFlaggedActive)?.characters.count)! > 0){
-            lastActiveLabel.text = "Last active alert on ".appending(lastFlaggedActive)
+            lastActiveLabel.text = "Last active: ".appending(lastFlaggedActive).appending(" ago.");
         } else {
             lastActiveLabel.isHidden = true
         }

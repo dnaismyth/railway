@@ -25,23 +25,25 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         
         // Set up email textfield
-        let emailIcon : UIImageView = UIImageView(image: UIImage(named: "emailIcon"))
+        let emailIcon : UIImageView = UIImageView(image: UIImage(named: "emailIcon")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate))
+        emailIcon.tintColor = Constants.COLOR.midnight
         emailIcon.frame = CGRect(x: 8, y: 0, width: 20, height: 20)
         let emailPadding : UIView = UIView(frame: CGRect(x:0, y:0, width: 28, height: 20))
         emailPadding.addSubview(emailIcon)
         emailLogin.leftView = emailPadding
         emailLogin.leftViewMode = UITextFieldViewMode.always
-        emailLogin.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor(red:1.00, green:1.00,blue:1.00, alpha:0.7)])
+        emailLogin.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor.lightGray])
         //emailLogin.addRadius()
         
         // Set up Password textfield
-        let passwordIcon : UIImageView = UIImageView(image: UIImage(named: "passwordIcon"))
+        let passwordIcon : UIImageView = UIImageView(image: UIImage(named: "passwordIcon")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate))
+        passwordIcon.tintColor = Constants.COLOR.midnight
         passwordIcon.frame = CGRect(x: 8, y: 0, width: 20, height: 20)
         let passwordPadding : UIView = UIView(frame: CGRect(x:0, y:0, width: 28, height: 20))
         passwordPadding.addSubview(passwordIcon)
         passwordLogin.leftView = passwordPadding
         passwordLogin.leftViewMode = UITextFieldViewMode.always
-        passwordLogin.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.7)])
+        passwordLogin.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor.lightGray])
         //passwordLogin.addRadius()
         
         //LoginButton.addRadius()

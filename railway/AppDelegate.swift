@@ -148,7 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AVSpeechSynthesizerDelega
     private func playSound(){
         setAudioSessionAsActive()
         do {
-            player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "RobotBlip", ofType:"mp3")!))
+            player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "empty", ofType:"wav")!))
         } catch {
             print("Error fetching resource sound")
             print(error)

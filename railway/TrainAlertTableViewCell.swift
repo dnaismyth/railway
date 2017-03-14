@@ -26,7 +26,8 @@ class TrainAlertTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        notificationCount.isHidden = true
+        cautionIcon.isHidden = true
 //        // Format for iPhone 5
 //        if UIScreen.main.sizeType == .iPhone5 {
 //            railwayImage.frame.size.width = 35

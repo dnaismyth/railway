@@ -90,15 +90,17 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         let trainCrossingId : Int = trainCrossing["id"] as! Int
         cell.tag = trainCrossingId
         let data : TrainCrossingData? = firebaseData[trainCrossingId]
-        cell.cautionIcon.image = UIImage(named: "cautionIcon")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-        cell.cautionIcon.tintColor = Constants.COLOR.cautionYellow
         if(data != nil){
             if(data!.getNotificationCount() > 0){
+                cell.cautionIcon.layer.isHidden = false
+                cell.cautionIcon.image = UIImage(named: "cautionIcon")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+                cell.cautionIcon.tintColor = Constants.COLOR.cautionYellow
                 cell.notificationCount.text = String(data!.getNotificationCount())
                 cell.notificationCount.layer.isHidden = false   // show notification
             } else {
                 print ("I have zero notifications")
                 cell.notificationCount.layer.isHidden = true    // hide notification
+                cell.cautionIcon.layer.isHidden = true
             }
         }
         // TODO: Use this later to change the image icon

@@ -36,6 +36,7 @@
 		E5E546D21E61DCB80007C79A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E546D11E61DCB80007C79A /* UserNotifications.framework */; };
 		E5EB24591E7603B80036D4C3 /* emptyPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5EB24581E7603B80036D4C3 /* emptyPlaceholderView.xib */; };
 		E5EB245D1E7607C70036D4C3 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EB245C1E7607C70036D4C3 /* PlaceholderView.swift */; };
+		E5EB245F1E770A380036D4C3 /* empty.wav in Resources */ = {isa = PBXBuildFile; fileRef = E5EB245E1E770A380036D4C3 /* empty.wav */; };
 		E5F218261E4FE97200BD6AB0 /* PostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F218251E4FE97200BD6AB0 /* PostRequest.swift */; };
 		E5F2182B1E51413F00BD6AB0 /* GetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2182A1E51413F00BD6AB0 /* GetRequest.swift */; };
 		E5F2182D1E5141D400BD6AB0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2182C1E5141D400BD6AB0 /* Constants.swift */; };
@@ -94,6 +95,7 @@
 		E5E546D11E61DCB80007C79A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		E5EB24581E7603B80036D4C3 /* emptyPlaceholderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = emptyPlaceholderView.xib; sourceTree = "<group>"; };
 		E5EB245C1E7607C70036D4C3 /* PlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
+		E5EB245E1E770A380036D4C3 /* empty.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = empty.wav; path = ../../Downloads/18626__altaopa__futurebass/empty.wav; sourceTree = "<group>"; };
 		E5F218251E4FE97200BD6AB0 /* PostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRequest.swift; sourceTree = "<group>"; };
 		E5F2182A1E51413F00BD6AB0 /* GetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRequest.swift; sourceTree = "<group>"; };
 		E5F2182C1E5141D400BD6AB0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		E5B418EF1E64BBA900D9D46A /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				E5EB245E1E770A380036D4C3 /* empty.wav */,
 				E5B418F01E64BBB300D9D46A /* RobotBlip.mp3 */,
 			);
 			name = Sounds;
@@ -389,6 +392,7 @@
 				E5B418F11E64BBB300D9D46A /* RobotBlip.mp3 in Resources */,
 				E590A58F1E624384008BE58F /* GoogleService-Info.plist in Resources */,
 				E52E6A851E3EA7B5000B485F /* InputLocationView.xib in Resources */,
+				E5EB245F1E770A380036D4C3 /* empty.wav in Resources */,
 				E57A0A9D1E628A32005D8A1F /* .gitignore in Resources */,
 				E5EB24591E7603B80036D4C3 /* emptyPlaceholderView.xib in Resources */,
 				E5F5C3751E3CE33D005EAE21 /* Main.storyboard in Resources */,

@@ -47,9 +47,8 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         radiusButton.backgroundColor = UIColor.white
         //radiusButton.setBackgroundImage(UIImage(named: "distance"), for: .normal)
         let buttonImage : UIImageView = UIImageView(frame: CGRect(x:0, y:0 ,width: 32, height: 32))
-        buttonImage.tintColor = Constants.COLOR.defaultColor
         buttonImage.image = UIImage(named: "distance")?.withRenderingMode(.alwaysTemplate)
-        buttonImage.tintColor = Constants.COLOR.defaultColor
+        buttonImage.tintColor = Constants.COLOR.midnight
         radiusButton.addSubview(buttonImage)
         buttonImage.center = CGPoint(x: radiusButton.bounds.midX, y: radiusButton.bounds.midY)
         radiusButton.alpha = 0.82
@@ -272,7 +271,6 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             var startFrame:CGRect = endFrame
             startFrame.origin.y = visibleRect.origin.y - startFrame.size.height
             view.frame = startFrame;
-            
             UIView.beginAnimations("drop", context: nil)
             UIView.setAnimationDuration(0.7)
             

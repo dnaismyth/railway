@@ -59,6 +59,6 @@ struct Constants {
         static let redComp : UIColor = UIColor(red:0.40, green:0.00, blue:0.00, alpha:1.0)
         static let greenComp : UIColor = UIColor(red:0.00, green:0.40, blue:0.00, alpha:1.0)
         static let cautionYellow : UIColor = UIColor(red:1.00, green:0.80, blue:0.00, alpha:1.0)
-
+        static let midnight : UIColor = UIColor(red:0.00, green:0.00, blue:0.50, alpha:1.0)
     }
 }
