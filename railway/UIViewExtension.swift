@@ -22,4 +22,14 @@ extension UIView{
     func addRadius(radius:CGFloat=13.0){
         self.layer.cornerRadius = radius
     }
+    
+    func addLabelAndColor(label : UILabel, color : UIColor){
+        label.textColor = UIColor.white
+        label.layer.zPosition = 1
+        label.textAlignment = NSTextAlignment.center
+        label.font =  UIFont(name: Constants.FONT.navBarFont, size: 20) ?? UIFont.systemFont(ofSize: 20)
+        label.center = self.center
+        self.addSubview(label)
+        self.backgroundColor = color
+    }
 }

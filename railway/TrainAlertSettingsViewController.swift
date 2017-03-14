@@ -95,8 +95,8 @@ class TrainAlertSettingsViewController: UIViewController, MKMapViewDelegate {
         
         let cpa = annotation as! CustomPointAnnotation
         let icon : UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
-        icon.image = UIImage(named:cpa.imageName)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-        icon.tintColor = Constants.COLOR.defaultGreen
+        icon.image = UIImage(named:cpa.imageName)//?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        //icon.tintColor = Constants.COLOR.defaultGreen
         icon.layer.zPosition = 1
         
         for view in (anView?.subviews)! {

@@ -58,9 +58,6 @@ class SignupViewController: UIViewController {
         nameTextField.leftViewMode = UITextFieldViewMode.always
         nameTextField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.lightGray])
 
-        
-        
-        RegisterButton.addShadowView()
         self.hideKeyboardWhenTappedAround()
     }
     

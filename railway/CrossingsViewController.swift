@@ -92,24 +92,41 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         let data : TrainCrossingData? = firebaseData[trainCrossingId]
         if(data != nil){
             if(data!.getNotificationCount() > 0){
-                cell.cautionIcon.layer.isHidden = false
                 cell.cautionIcon.image = UIImage(named: "cautionIcon")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
                 cell.cautionIcon.tintColor = Constants.COLOR.cautionYellow
                 cell.notificationCount.text = String(data!.getNotificationCount())
-                cell.notificationCount.layer.isHidden = false   // show notification
             } else {
                 print ("I have zero notifications")
-                cell.notificationCount.layer.isHidden = true    // hide notification
-                cell.cautionIcon.layer.isHidden = true
+                cell.cautionIcon.image = UIImage(named: "noAlertIcon")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+                cell.cautionIcon.tintColor = Constants.COLOR.defaultGreen
+                cell.notificationCount.textColor = Constants.COLOR.defaultGreen
+                cell.notificationCount.text = "no active alerts."
             }
         }
+        cell.notificationCount.layer.isHidden = false    // hide notification
+        cell.cautionIcon.layer.isHidden = false
         // TODO: Use this later to change the image icon
         let railway : String = trainCrossing["railway"] as! String
-        cell.railwayImage.image = UIImage(named: railway)
-        //setRailwayCellImage(railway: railway, cell: cell)
+        cell.railwayLabel.backgroundColor = self.chooseBackgroundColor(railway: railway)
+        cell.railwayLabel.text = railway
         formatCellLabels(cell: cell)
         return cell
         
+    }
+    
+    private func chooseBackgroundColor(railway : String) -> UIColor {
+        var color : UIColor = Constants.COLOR.hazardRed
+        switch(railway){
+            
+        case "VIA":
+            color = Constants.COLOR.cautionYellow
+        case "GO" :
+            color = Constants.COLOR.defaultGreen
+        default :
+            return Constants.COLOR.hazardRed
+            
+        }
+        return color
     }
 
     

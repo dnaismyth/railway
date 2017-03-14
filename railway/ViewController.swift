@@ -47,8 +47,9 @@ class ViewController: UIViewController{
         //passwordLogin.addRadius()
         
         //LoginButton.addRadius()
-        LoginButton.addShadowView()
+        //LoginButton.addShadowView()
         //LogoImage.addShadowView()
+        LoginButton.backgroundColor = Constants.COLOR.midnight
         self.hideKeyboardWhenTappedAround()
     }
     

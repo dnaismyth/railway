@@ -11,11 +11,13 @@ import UIKit
 class TrainAlertTableViewCell: UITableViewCell {
     
     //MARK: Properties
-    @IBOutlet weak var railwayImage: UIImageView!
+    
+    @IBOutlet weak var railwayImage: UIView!
     @IBOutlet weak var notificationCount: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var cautionIcon: UIImageView!
+    @IBOutlet weak var railwayLabel: UILabel!
     
     var latitude : Double = Double()
     var longitude : Double = Double()
@@ -28,6 +30,8 @@ class TrainAlertTableViewCell: UITableViewCell {
         super.awakeFromNib()
         notificationCount.isHidden = true
         cautionIcon.isHidden = true
+        railwayLabel.clipsToBounds = true
+        railwayLabel.layer.cornerRadius = railwayLabel.bounds.width/2
 //        // Format for iPhone 5
 //        if UIScreen.main.sizeType == .iPhone5 {
 //            railwayImage.frame.size.width = 35

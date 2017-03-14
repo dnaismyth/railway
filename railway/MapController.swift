@@ -241,16 +241,14 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         let cpa = annotation as! CustomPointAnnotation
         let icon : UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 34, height: 34))
         if(cpa.imageName == "clearTrainCrossing"){
-            icon.image = UIImage(named:cpa.imageName)?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-            icon.tintColor = Constants.COLOR.defaultGreen
+            icon.image = UIImage(named:cpa.imageName)//?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            //icon.tintColor = Constants.COLOR.defaultGreen
         } else {
-            icon.image = UIImage(named:"clearTrainCrossing")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-            icon.tintColor = Constants.COLOR.hazardRed
+            icon.image = UIImage(named:"hazardPin")//?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            //icon.tintColor = Constants.COLOR.hazardRed
         }
         icon.layer.zPosition = 1
-        let railwayImage : UIImageView = UIImageView(frame: CGRect(x: 0, y:0, width: 40, height: 40))
-        railwayImage.image = UIImage(named: cpa.railwayImageName)
-        anView?.leftCalloutAccessoryView = railwayImage
+        anView?.leftCalloutAccessoryView = formatLeftCalloutAccessory(railway: cpa.railwayImageName)
         anView?.rightCalloutAccessoryView = cpa.annotationButton
     
         for view in (anView?.subviews)! {
@@ -261,6 +259,33 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         anView?.frame = CGRect(x: 0, y:0, width:32, height:32)
         anView?.canShowCallout = true
         return anView
+    }
+    
+    private func formatLeftCalloutAccessory(railway: String) -> UILabel {
+        let label = UILabel(frame: CGRect(x: 0, y:0, width: 40, height:40))
+        label.textColor = UIColor.white
+        label.text = railway
+        label.backgroundColor = chooseBackgroundColor(railway: railway)
+        label.clipsToBounds = true
+        label.layer.cornerRadius = label.bounds.width/4
+        label.font =  UIFont(name: Constants.FONT.navBarFont, size: 20) ?? UIFont.systemFont(ofSize: 20)
+        label.textAlignment = NSTextAlignment.center
+        return label
+    }
+    
+    private func chooseBackgroundColor(railway : String) -> UIColor {
+        var color : UIColor = Constants.COLOR.hazardRed
+        switch(railway){
+            
+        case "VIA":
+            color = Constants.COLOR.cautionYellow
+        case "GO" :
+            color = Constants.COLOR.defaultGreen
+        default :
+            return Constants.COLOR.hazardRed
+            
+        }
+        return color
     }
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
@@ -297,7 +322,7 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     private func formatNotificationLabel(notifyLabel : UILabel){
         notifyLabel.frame = CGRect(x: -4, y: -7, width: 20, height: 20)
         notifyLabel.layer.zPosition = 0
-        notifyLabel.backgroundColor = Constants.COLOR.defaultColor
+        notifyLabel.backgroundColor = Constants.COLOR.midnight
         notifyLabel.textColor = UIColor.white
         //notifyLabel.tag = 30
         notifyLabel.textAlignment = NSTextAlignment.center

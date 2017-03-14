@@ -11,18 +11,21 @@ import UIKit
 class ForgetPasswordViewController: UIViewController {
 
     @IBOutlet weak var emailInput: UITextField!
+    @IBOutlet weak var exitViewButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let emailIcon : UIImageView = UIImageView(image: UIImage(named: "emailIcon"))
+        let emailIcon : UIImageView = UIImageView(image: UIImage(named: "emailIcon")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate))
         emailIcon.frame = CGRect(x: 8, y: 0, width: 20, height: 20)
+        emailIcon.tintColor = Constants.COLOR.midnight
         let emailPadding : UIView = UIView(frame: CGRect(x:0, y:0, width: 28, height: 20))
         emailPadding.addSubview(emailIcon)
         emailInput.leftView = emailPadding
         emailInput.leftViewMode = UITextFieldViewMode.always
-        emailInput.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor(red:1.00, green:1.00,blue:1.00, alpha:0.7)])
-
-        // Do any additional setup after loading the view.
+        emailInput.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor.lightGray])
+        let buttonImage = UIImage(named: "removeIcon")?.withRenderingMode(.alwaysTemplate)
+        exitViewButton.setImage(buttonImage, for: .normal)
+        exitViewButton.tintColor = Constants.COLOR.midnight
     }
 
     override func didReceiveMemoryWarning() {
