@@ -122,6 +122,8 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
             color = Constants.COLOR.cautionYellow
         case "GO" :
             color = Constants.COLOR.defaultGreen
+        case "AMT" :
+            color = Constants.COLOR.lightBlue
         default :
             return Constants.COLOR.hazardRed
             
@@ -235,6 +237,7 @@ class CrossingsViewController: UIViewController, UITableViewDataSource, UITableV
         alertSettings.latitude = cell.latitude
         alertSettings.longitude = cell.longitude
         alertSettings.lastFlaggedActive = cell.lastFlaggedActive    // set the time in which the train crossing was last flagged as active
+        print("Last flagged active on: \(cell.lastFlaggedActive)")
         self.navigationController?.pushViewController(alertSettings, animated: true)
     }
     

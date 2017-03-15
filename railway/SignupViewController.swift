@@ -130,7 +130,6 @@ class SignupViewController: UIViewController {
                         self.storeSignupResponse(response: response as NSDictionary, completed :{
                             () -> () in
                             self.saveUserResourceTokens() // save the device token on registration
-                            FirebaseAuthentication().getFirebaseToken(token: "Bearer ".appending(dictionary["access_token"] as! String))
                         })
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let viewController = storyboard.instantiateViewController(withIdentifier :"tabBarView")
@@ -168,6 +167,7 @@ class SignupViewController: UIViewController {
         PutRequest().jsonPut(postUrl: Constants.API.storeDeviceToken, token: access_token!, body: data, completionHandler: { (dictionary) -> Void in
             OperationQueue.main.addOperation {
                 print(dictionary)
+                FirebaseAuthentication().getFirebaseToken(token: access_token!)
             }
         })
         

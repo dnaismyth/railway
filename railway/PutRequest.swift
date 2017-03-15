@@ -23,6 +23,7 @@ class PutRequest{
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue(token, forHTTPHeaderField: "Authorization")
+        
         if(body.count > 0){
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
@@ -31,7 +32,7 @@ class PutRequest{
             }
         }
         
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { data,response,error in
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { (data,response,error) in
             if error != nil{
                 print(error?.localizedDescription ?? "Error")
                 return

@@ -281,6 +281,8 @@ class MapController: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             color = Constants.COLOR.cautionYellow
         case "GO" :
             color = Constants.COLOR.defaultGreen
+        case "AMT" :
+            color = Constants.COLOR.lightBlue
         default :
             return Constants.COLOR.hazardRed
             
